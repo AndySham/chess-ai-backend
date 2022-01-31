@@ -51,7 +51,7 @@ def min_tconorm(xs: Tensor, dim: int) -> Tensor:
     return xs.max(dim=dim)
 
 
-def min_conjunction(xs, ws) -> Tensor:
+def min_conjunction(xs: Tensor, ws: Tensor) -> Tensor:
     xs, ws = _align_shapes(xs, ws)
     return min_tnorm((1 - ws) + xs * ws, dim=1)
 
@@ -72,7 +72,7 @@ def luk_tconorm(xs: Tensor, dim: int) -> Tensor:
     return bf_clamp(xs.sum(dim=dim))
 
 
-def luk_conjunction(xs, ws) -> Tensor:
+def luk_conjunction(xs: Tensor, ws: Tensor) -> Tensor:
     xs, ws = _align_shapes(xs, ws)
     return luk_tnorm((1 - ws) + xs * ws, dim=1)
 
@@ -84,6 +84,7 @@ def luk_disjunction(xs: Tensor, ws: Tensor) -> Tensor:
 
 # Weighted Non-Linear Logic : x, y, beta -> max(a + b - 2 + beta)
 # Equivalent to Lukasiewicz logic for beta = 1
+# https://arxiv.org/pdf/2006.13155.pdf
 
 
 def wnl_tnorm(xs: Tensor, beta: float, dim: int) -> Tensor:
@@ -94,14 +95,14 @@ def wnl_tconorm(xs: Tensor, beta: float, dim: int) -> Tensor:
     return bf_clamp(xs.sum(dim=dim) + 1 - beta)
 
 
-def wnl_conjunction(xs, ws) -> Tensor:
+def wnl_conjunction(xs: Tensor, ws: Tensor, beta: float) -> Tensor:
     xs, ws = _align_shapes(xs, ws)
-    return wnl_tnorm((1 - ws) + xs * ws, dim=1)
+    return wnl_tnorm((1 - ws) + xs * ws, beta=beta, dim=1)
 
 
-def wnl_disjunction(xs: Tensor, ws: Tensor) -> Tensor:
+def wnl_disjunction(xs: Tensor, ws: Tensor, beta: float) -> Tensor:
     xs, ws = _align_shapes(xs, ws)
-    return wnl_tconorm(xs * ws, dim=1)
+    return wnl_tconorm(xs * ws, beta=beta, dim=1)
 
 
 # Fuzzy Negation
