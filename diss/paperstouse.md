@@ -22,3 +22,6 @@ https://arxiv.org/pdf/1906.08495.pdf
 Neural-symbolic Learning Systems: Foundations and Applications
 (This one is cited by a lot of good papers!)
 https://www.semanticscholar.org/paper/Neural-symbolic-learning-systems-foundations-and-Garcez-Broda/45d75a53d6df802906a6ca5fa5474cc8962a056f#citing-papers
+
+Neural Logic Machines
+https://arxiv.org/pdf/1904.11694.pdf
