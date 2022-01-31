@@ -1,5 +1,6 @@
 import torch
 from torch import nn
+import fuzzy
 
 class NOTs(nn.Module):
     def __init__(self, width):
@@ -7,7 +8,7 @@ class NOTs(nn.Module):
         self.width = width
 
     def forward(self, input):
-        nots = 1 - input
+        nots = fuzzy.fnot(input)
         return torch.cat([input, nots], dim=1)
 
 class FuzzyOp(nn.Module):

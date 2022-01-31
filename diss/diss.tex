@@ -13,6 +13,7 @@
 \def\NOT{\texttt{NOT}}
 \def\AND{\texttt{AND}}
 \def\OR{\texttt{OR}}
+\def\XOR{\texttt{XOR}}
 \def\R{\mathbb{R}}
 \def\B{\mathbb{B}}
 
@@ -287,11 +288,34 @@ Rather than modifying the architecture of the network, we can instead regularise
 
 \subsection{Boolean Embeddings}
 
-We have discussed the idea of embedding values representing $\T$ and $\F$ into a continuous space, and then differentiating over the space in backpropagation. In fuzzy logic, we specifically fix the set $[0,1]$ to act as our continuous space, and exploit this by using continuous functions which are guaranteed to behave like logical operators. What if we instead allow for the full range of parameters $\R$, how may we begin to interpret this as a boolean function?
+We have discussed the idea of embedding values representing $\T$ and $\F$ into a continuous space $\B$, and then differentiating over the space in backpropagation. In fuzzy logic, we specifically fix the set $\B_\text{f}\coloneqq[0,1]$ to act as our continuous space, and exploit this by using continuous functions which are guaranteed to behave like logical operators. What if we instead allow for the full range of parameters $\R$, how may we begin to interpret this as a boolean function?
 
-We can take inspiration from other architectures where feature embeddings are common. In natural language processing, word embeddings are maps which take words in a dictionary, and map them into a finite-dimensional vector space. The position the word is mapped to in this vector space can be used to characterise the meaning of the word, and capture relations between words. We could likewise map the boolean values $\T$, $\F$ into a vector space, and measure the ``crispness" of a learnt function by how similar certain values are to the boolean embeddings in this vector space.
+We can take inspiration from other architectures where feature embeddings are common. In natural language processing, word embeddings are maps which take words in a dictionary, and map them into a finite-dimensional vector space. The position the word is mapped to in this vector space can be used to characterise the meaning of the word, and capture relations between words. We could likewise map the boolean values $\T$, $\F$ into a vector space $\B$, and measure the ``crispness" of a learnt function by how similar certain values are to the boolean embeddings in this vector space.
 
-Suppose we want to learn the function $\texttt{XOR}(a, b) = (a \land \lnot b) \lor (\lnot a \land b)$. The model we will use to approximate this will be a NN with a single hidden layer, as it is well known that this cannot be done by a simple single-layer perceptron model. The model will therefore map values between three spaces, which we will call $B^2 \to B^N \to B$, for some $B$, representing the space of boolean embeddings.
+We can define some sort of ``distance metric" over $\B$, a convex, commutative function $d : \B^2 \to \R$ such that $d(\mathbf{a, a}) = 0$ for all $\mathbf{a} \in \B$. This can be a formal distance metric in the topological sense, but it need not be. With this, we can say that the more distant a value $\mathbf{x} \in \B$ is from both $\T$ and $\F$, the less crisp. A particular example which is effective in practice is given later in this section.
+
+\subsection{Learning a Boolean Operator}
+
+Suppose we want to learn the function $\XOR(a, b) = (a \land \lnot b) \lor (\lnot a \land b)$. The model we will use to approximate this will be a NN with a single hidden layer, as it is well known that this cannot be done by a simple single-layer perceptron model. The model will therefore map values between three spaces, which we will call $\B^2 \to X \to \B$, for some $\B, X$, which we will not yet specify.
+
+From here, we can proceed as usual and simply backpropagate with correct input-output pairs to learn an appropriate parameterisation for $\XOR$. However, we can somewhat cheat, because we know the appropriate behaviours of the function we're trying to learn, we only want to learn it over our arbitrary boolean embedding $\B$. We can exploit known properties of $\XOR$ to ``push along" our learning. For instance, we know that;
+
+$$
+\begin{aligned}
+\text{(Associativity)}&\ \XOR(\XOR(\mathbf{a, b}), \mathbf{c}) = \XOR(\mathbf{a}, \XOR(\mathbf{b, c})) \\
+\text{(Commutativity)}&\ \XOR(\mathbf{a, b}) = \XOR(\mathbf{b, a}) \\
+\text{(Identity)}&\ \forall \mathbf{a} \in \B, \XOR(\mathbf{a}, \F) = \mathbf{a} \\
+\text{(Negation)}&\ \forall \mathbf{a} \in \B, \XOR(\mathbf{a}, \T) = \lnot \mathbf{a}
+\end{aligned}
+$$
+
+We will define $\lnot\mathbf{a}$ in the next section. We will define a ``$\XOR$-iness loss",
+$$\ell_\XOR(\mathbf{x,y}) = d(\XOR(\mathbf{x, y}),\XOR(\mathbf{y, x})) + d(\XOR(\mathbf{x}, \F), \mathbf{x}) + d(\XOR(\mathbf{x}, \T), \lnot \mathbf{x})$$
+
+We can see that a perfect parameterisation of $\XOR$ would minimise this loss. Thus, a complete loss function would look like so,
+$$\ell(\mathbf{x,y,z}) = d(\XOR(\mathbf{x,y}),\mathbf{z}) + \lambda_\XOR \ell_\XOR(\mathbf{x,y})$$
+
+The parameters of $\XOR$ are hidden in this representation, as they need not be of any particular architecture.
 
 \subsection{Boolean Regularisation}
 
