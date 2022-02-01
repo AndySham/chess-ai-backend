@@ -3,11 +3,6 @@ import torch
 from torch import nn
 
 
-class NOT(nn.Module):
-    def forward(self, input):
-        return logic.fnot(input)
-
-
 class FuzzyOp(nn.Module):
     def __init__(self, in_features: int, out_features: int):
         super(FuzzyOp, self).__init__()
