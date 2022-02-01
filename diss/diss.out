@@ -10,14 +10,17 @@
 \BOOKMARK [2][-]{subsection.2.4.1}{T-Norms}{section.2.4}% 10
 \BOOKMARK [2][-]{subsection.2.4.2}{A Full Fuzzy Operator Scheme}{section.2.4}% 11
 \BOOKMARK [2][-]{subsection.2.4.3}{Defuzzification and Interpretation}{section.2.4}% 12
-\BOOKMARK [1][-]{section.2.5}{Weighted Non-Linear Logic}{chapter.2}% 13
-\BOOKMARK [1][-]{section.2.6}{Bool2vec}{chapter.2}% 14
-\BOOKMARK [2][-]{subsection.2.6.1}{Boolean Embeddings}{section.2.6}% 15
-\BOOKMARK [2][-]{subsection.2.6.2}{Learning a Boolean Operator}{section.2.6}% 16
-\BOOKMARK [2][-]{subsection.2.6.3}{Boolean Regularisation}{section.2.6}% 17
-\BOOKMARK [2][-]{subsection.2.6.4}{Measuring Similarity}{section.2.6}% 18
-\BOOKMARK [1][-]{section.2.7}{Overview of Different Architectures}{chapter.2}% 19
-\BOOKMARK [0][-]{chapter.3}{LNNs in Practice}{}% 20
-\BOOKMARK [0][-]{chapter.4}{A Chess Architecture}{}% 21
-\BOOKMARK [0][-]{chapter.5}{Interpreting Chess}{}% 22
-\BOOKMARK [0][-]{chapter.6}{Conclusions}{}% 23
+\BOOKMARK [1][-]{section.2.5}{Parameterised Fuzzy Logic}{chapter.2}% 13
+\BOOKMARK [2][-]{subsection.2.5.1}{Parameterised T-Norms}{section.2.5}% 14
+\BOOKMARK [2][-]{subsection.2.5.2}{Biased Logic}{section.2.5}% 15
+\BOOKMARK [2][-]{subsection.2.5.3}{Boolean Regularisation}{section.2.5}% 16
+\BOOKMARK [2][-]{subsection.2.5.4}{Measuring Similarity}{section.2.5}% 17
+\BOOKMARK [1][-]{section.2.6}{Boolean Embeddings}{chapter.2}% 18
+\BOOKMARK [2][-]{subsection.2.6.1}{Booleans as Vectors}{section.2.6}% 19
+\BOOKMARK [2][-]{subsection.2.6.2}{Learning a Boolean Operator}{section.2.6}% 20
+\BOOKMARK [2][-]{subsection.2.6.3}{Measuring Similarity}{section.2.6}% 21
+\BOOKMARK [1][-]{section.2.7}{Overview of Different Architectures}{chapter.2}% 22
+\BOOKMARK [0][-]{chapter.3}{LNNs in Practice}{}% 23
+\BOOKMARK [0][-]{chapter.4}{A Chess Architecture}{}% 24
+\BOOKMARK [0][-]{chapter.5}{Interpreting Chess}{}% 25
+\BOOKMARK [0][-]{chapter.6}{Conclusions}{}% 26

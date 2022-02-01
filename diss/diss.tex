@@ -274,19 +274,26 @@ In practice, this hinders learning quite a bit. Much of the strength of fuzzy lo
 
 A more effective approach in practice seems much more naive - that is to simply clamp the value of the parameters $w$ into the range $[0,1]$ at every optimisation step. This allows the model to maintain a level of vagueness where it cannot learn much information, i.e. not ``jumping to conclusions". When it actually can decide the nature of a concept, it can freely do so. We may then choose to terminate our learning when the parameters are sufficiently close to values $\{0,1\}$.
 
-\section{Weighted Non-Linear Logic}
+\section{Parameterised Fuzzy Logic}
 
-I'll return to this section once I've actually implemented an example
+\subsection{Parameterised T-Norms}
+
+\subsection{Biased Logic}
 
 https://arxiv.org/pdf/2006.13155.pdf
 
-\section{Bool2vec}
+
+\subsection{Boolean Regularisation}
+
+\subsection{Measuring Similarity}
+
+\section{Boolean Embeddings}
 
 So far we have met Fuzzy Logic, which fundamentally reinvents the common perceptron architecture seen in most NNs. What if we want to maintain an architecture which is more conventional in it's approach, while still allowing for boolean interpretations? This seems difficult at first - although we can approximate any boolean function, determining the nature of this function is difficult in conventional architectures, as we have seen.
 
 Rather than modifying the architecture of the network, we can instead regularise an existing network architecture to act like a boolean function, while making sure that the regularisation somehow allows us to easily interpret the network's parameters. This sounds rather involved - how might we begin to approach this?
 
-\subsection{Boolean Embeddings}
+\subsection{Booleans as Vectors}
 
 We have discussed the idea of embedding values representing $\T$ and $\F$ into a continuous space $\B$, and then differentiating over the space in backpropagation. In fuzzy logic, we specifically fix the set $\B_\text{f}\coloneqq[0,1]$ to act as our continuous space, and exploit this by using continuous functions which are guaranteed to behave like logical operators. What if we instead allow for the full range of parameters $\R$, how may we begin to interpret this as a boolean function?
 
@@ -316,8 +323,6 @@ We can see that a perfect parameterisation of $\XOR$ would minimise this loss. T
 $$\ell(\mathbf{x,y,z}) = d(\XOR(\mathbf{x,y}),\mathbf{z}) + \lambda_\XOR \ell_\XOR(\mathbf{x,y})$$
 
 The parameters of $\XOR$ are hidden in this representation, as they need not be of any particular architecture.
-
-\subsection{Boolean Regularisation}
 
 \subsection{Measuring Similarity}
  
