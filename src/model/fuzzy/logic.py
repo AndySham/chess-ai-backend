@@ -15,7 +15,7 @@ def _align_shapes(xs: Tensor, ws: Tensor):
     return xs, ws
 
 
-def bf_clamp(xs: Tensor) -> Tensor:
+def _bf_clamp(xs: Tensor) -> Tensor:
     return torch.clamp(xs, min=0.0, max=1.0)
 
 
@@ -65,11 +65,11 @@ def min_disjunction(xs: Tensor, ws: Tensor) -> Tensor:
 
 
 def luk_tnorm(xs: Tensor, dim: int) -> Tensor:
-    return bf_clamp(xs.sum(dim=dim) - xs.size(dim=dim) + 1)
+    return _bf_clamp(xs.sum(dim=dim) - xs.size(dim=dim) + 1)
 
 
 def luk_tconorm(xs: Tensor, dim: int) -> Tensor:
-    return bf_clamp(xs.sum(dim=dim))
+    return _bf_clamp(xs.sum(dim=dim))
 
 
 def luk_conjunction(xs: Tensor, ws: Tensor) -> Tensor:
@@ -88,11 +88,11 @@ def luk_disjunction(xs: Tensor, ws: Tensor) -> Tensor:
 
 
 def wnl_tnorm(xs: Tensor, beta: float, dim: int) -> Tensor:
-    return bf_clamp(xs.sum(dim=dim) - xs.size(dim=dim) + beta)
+    return _bf_clamp(xs.sum(dim=dim) - xs.size(dim=dim) + beta)
 
 
 def wnl_tconorm(xs: Tensor, beta: float, dim: int) -> Tensor:
-    return bf_clamp(xs.sum(dim=dim) + 1 - beta)
+    return _bf_clamp(xs.sum(dim=dim) + 1 - beta)
 
 
 def wnl_conjunction(xs: Tensor, ws: Tensor, beta: float) -> Tensor:

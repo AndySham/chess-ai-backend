@@ -1,10 +1,12 @@
+from model.fuzzy import logic
 import torch
 from torch import nn
-import fuzzy
+
 
 class NOT(nn.Module):
     def forward(self, input):
-        return fuzzy.fnot(input)
+        return logic.fnot(input)
+
 
 class FuzzyOp(nn.Module):
     def __init__(self, in_features: int, out_features: int):
@@ -13,26 +15,27 @@ class FuzzyOp(nn.Module):
         self.in_features = in_features
         self.out_features = out_features
 
-        self.weights = torch.nn.Parameter(torch.rand(in_features, out_features), requires_grad=True)
+        self.weights = torch.nn.Parameter(
+            torch.rand(in_features, out_features), requires_grad=True
+        )
+
+        self.beta = torch.nn.Parameter(torch.rand(out_features), requires_grad=True)
 
     def harden(self):
         self.weights.requires_grad = False
-        self.weights[:] = self.weights.data.clamp(min = 0, max = 1)
+        self.weights[:] = self.weights.data.clamp(min=0, max=1)
         self.weights.requires_grad = True
 
+
 class OR(FuzzyOp):
-    def forward(self, input: torch.Tensor):
-        return 1 - (1 - 
-            self.weights.reshape((self.weights.shape[1], self.weights.shape[0], 1))  * 
-            input.transpose(1, 0).transpose(1, 0).reshape(1, input.shape[1], input.shape[0])
-        ).prod(dim=1).transpose(1,0)
+    def forward(self, xs: torch.Tensor):
+        return logic.prod_disjunction(xs, self.weights)
+
 
 class AND(FuzzyOp):
-    def forward(self, input: torch.Tensor):
-        return (1 - 
-            self.weights.transpose(1,0).reshape((self.weights.shape[1], self.weights.shape[0], 1)) 
-            * (1 - input).transpose(1, 0).reshape(1, input.shape[1], input.shape[0])
-        ).prod(dim=1).transpose(1,0)
+    def forward(self, xs: torch.Tensor):
+        return logic.prod_conjunction(xs, self.weights)
+
 
 class FuzzyDNF(nn.Module):
     def __init__(self, in_features: int, out_features: int, hidden_features: int = 10):
@@ -42,17 +45,11 @@ class FuzzyDNF(nn.Module):
         self.hidden_features = hidden_features
         self.out_features = out_features
 
-        self.conjunctions = FuzzyAND(2 * in_features, hidden_features)
-        self.disjunctions = FuzzyOR(hidden_features, out_features)
+        self.conjunctions = AND(2 * in_features, hidden_features)
+        self.disjunctions = OR(hidden_features, out_features)
 
-        self.net = nn.Sequential(
-            NOTs(in_features),
-            self.conjunctions,
-            self.disjunctions
-        )
-
-    def forward(self, input):
-        return self.net(input)
+    def forward(self, xs):
+        return self.disjunctions(self.conjunctions(torch.cat(xs, logic.fnot(xs))))
 
     def harden(self):
         self.conjunctions.harden()
