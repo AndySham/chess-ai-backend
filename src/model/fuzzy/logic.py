@@ -144,7 +144,7 @@ def hmc_tnorm(xs: Tensor, p: Tensor, dim: int) -> Tensor:
     return torch.where(
         p == 0,
         ((xs ** -1).sum(dim=dim) - xs.size(dim=dim) + 1) ** -1,
-        p * ((p / xs - (p - 1)).prod(dim=dim) + p - 1) ** -1
+        p * ((p - (p - 1) * xs).prod(dim=dim) / xs.prod(dim=dim) + p - 1) ** -1
     )
 
 
@@ -160,6 +160,8 @@ def hmc_conjunction(xs: Tensor, ws: Tensor, p: Tensor) -> Tensor:
 def hmc_disjunction(xs: Tensor, ws: Tensor, p: Tensor) -> Tensor:
     xs, ws = _align_shapes(xs, ws)
     return hmc_tconorm(xs * ws, p, dim=1)
+
+
 
 
 
