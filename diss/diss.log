@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.1)  2 FEB 2022 00:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.1)  2 FEB 2022 17:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -317,11 +317,11 @@ LaTeX Info: Redefining \nameref on input line 9.
 \@outlinefile=\write3
 \openout3 = `diss.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 23.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 27.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 23.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 27.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
@@ -333,11 +333,11 @@ LaTeX Warning: No \author given.
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.28 \end{abstract}
+l.32 \end{abstract}
                     [1] (/Users/andy/Documents/Projects/chess-ai-backend/diss/diss.tocpdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.31 ...\numberline {6}Conclusions}{22}{chapter.6}
+l.30 ...\numberline {6}Conclusions}{24}{chapter.6}
                                                   % [1
 
 ])
@@ -353,44 +353,44 @@ Chapter 2.
 [8
 
 ] [9] [10]
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 216.
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 220.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-) [11] [12] [13] [14] [15] [16] [17] [18]
+) [11] [12] [13] [14] [15] [16] [17] [18] [19] [20]
 Chapter 3.
-[19
-
-]
-Chapter 4.
-[20
-
-]
-Chapter 5.
 [21
 
 ]
-Chapter 6.
+Chapter 4.
 [22
 
-] [23
+]
+Chapter 5.
+[23
+
+]
+Chapter 6.
+[24
+
+] [25
 
 ] (/Users/andy/Documents/Projects/chess-ai-backend/diss/diss.aux)
 Package rerunfilecheck Info: File `diss.out' has not changed.
-(rerunfilecheck)             Checksum: CE2A9E893B1585B4EEA144CA023330F6;5126.
+(rerunfilecheck)             Checksum: 322BE1E4A959717BB384AA17DE5C57A5;4965.
  ) 
 Here is how much of TeX's memory you used:
- 9640 strings out of 478994
+ 9643 strings out of 478994
  141884 string characters out of 5858185
- 446219 words of memory out of 5000000
- 26914 multiletter control sequences out of 15000+600000
+ 447219 words of memory out of 5000000
+ 26916 multiletter control sequences out of 15000+600000
  415342 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  81i,13n,88p,1315b,379s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/andy/Library/texlive/2021/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600pk></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on /Users/andy/Documents/Projects/chess-ai-backend/diss/diss.pdf (25 pages, 276167 bytes).
+Output written on /Users/andy/Documents/Projects/chess-ai-backend/diss/diss.pdf (27 pages, 288407 bytes).
 PDF statistics:
- 398 PDF objects out of 1000 (max. 8388607)
- 344 compressed objects within 4 object streams
- 62 named destinations out of 1000 (max. 500000)
- 249 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 401 PDF objects out of 1000 (max. 8388607)
+ 345 compressed objects within 4 object streams
+ 63 named destinations out of 1000 (max. 500000)
+ 241 words of extra memory for PDF output out of 10000 (max. 10000000)
 

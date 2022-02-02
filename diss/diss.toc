@@ -5,27 +5,26 @@
 \contentsline {chapter}{\numberline {2}Logical Neural Networks}{8}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Introduction}{8}{section.2.1}%
 \contentsline {section}{\numberline {2.2}A Useful Logical System}{8}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Boolean Algebras}{8}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Measuring Crispness}{9}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Notation}{10}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.1}Notation}{8}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Boolean Algebras}{9}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Measuring Crispness}{10}{subsection.2.2.3}%
 \contentsline {section}{\numberline {2.3}A General Neurosymbolic Architecture}{11}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Interpreting a Neurosymbolic Layer}{12}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.1}Interpreting a Neurosymbolic Layer}{13}{subsection.2.3.1}%
 \contentsline {section}{\numberline {2.4}Fuzzy Logic}{13}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}T-Norms}{13}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}A Full Fuzzy Operator Scheme}{14}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}Constructing Fuzzy Operators}{15}{subsection.2.4.3}%
-\contentsline {subsection}{\numberline {2.4.4}Defuzzification and Interpretation}{16}{subsection.2.4.4}%
-\contentsline {section}{\numberline {2.5}Parameterised Fuzzy Logic}{17}{section.2.5}%
+\contentsline {subsection}{\numberline {2.4.1}Fuzzy Operators}{14}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Constructing Fuzzy Operators}{16}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Defuzzification and Interpretation}{17}{subsection.2.4.3}%
+\contentsline {section}{\numberline {2.5}Parameterised Logic}{17}{section.2.5}%
 \contentsline {subsection}{\numberline {2.5.1}Parameterised T-Norms}{17}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Biased Logic}{17}{subsection.2.5.2}%
-\contentsline {subsection}{\numberline {2.5.3}Boolean Regularisation}{17}{subsection.2.5.3}%
-\contentsline {subsection}{\numberline {2.5.4}Measuring Similarity}{17}{subsection.2.5.4}%
-\contentsline {section}{\numberline {2.6}Boolean Embeddings}{17}{section.2.6}%
-\contentsline {subsection}{\numberline {2.6.1}Booleans as Vectors}{17}{subsection.2.6.1}%
-\contentsline {subsection}{\numberline {2.6.2}Learning a Boolean Operator}{18}{subsection.2.6.2}%
-\contentsline {subsection}{\numberline {2.6.3}Measuring Similarity}{18}{subsection.2.6.3}%
-\contentsline {section}{\numberline {2.7}Overview of Different Architectures}{18}{section.2.7}%
-\contentsline {chapter}{\numberline {3}LNNs in Practice}{19}{chapter.3}%
-\contentsline {chapter}{\numberline {4}A Chess Architecture}{20}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Interpreting Chess}{21}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Conclusions}{22}{chapter.6}%
+\contentsline {subsection}{\numberline {2.5.2}Biased Logic}{18}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}Boolean Regularisation}{19}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4}Measuring Similarity}{19}{subsection.2.5.4}%
+\contentsline {section}{\numberline {2.6}General Boolean Embeddings}{19}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}Booleans as Vectors}{19}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}Learning a Boolean Operator}{19}{subsection.2.6.2}%
+\contentsline {subsection}{\numberline {2.6.3}Measuring Similarity}{20}{subsection.2.6.3}%
+\contentsline {section}{\numberline {2.7}Overview of Different Architectures}{20}{section.2.7}%
+\contentsline {chapter}{\numberline {3}LNNs in Practice}{21}{chapter.3}%
+\contentsline {chapter}{\numberline {4}A Chess Architecture}{22}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Interpreting Chess}{23}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Conclusions}{24}{chapter.6}%

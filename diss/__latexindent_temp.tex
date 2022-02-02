@@ -16,6 +16,10 @@
 \def\XOR{\texttt{XOR}}
 \def\R{\mathbb{R}}
 \def\B{\mathbb{B}}
+\def\N{\mathbb{N}}
+
+\def\custop#1{{\mspace{4mu}#1\mspace{4mu}}}
+\def\concat{\custop{@}}
 
 \title{\LARGE Designing Interpretable Chess Engines Using Logical Neural Networks}
 
@@ -114,6 +118,25 @@ The natural solution to solving the problem of $\{0,1\}$ being a discrete space,
 
 \section{A Useful Logical System}
 
+\subsection{Notation}
+
+The notation of linear algebra is very useful in succinctly describing the nature of a classical perceptron model, but within neurosymbolic layers, we do not have this luxury. Further in this paper, we will discuss many different kinds of logical systems, and we will discuss and compare their qualities in learning. To describe our models, it's useful to phrase the layers we construct in a manner similar to linear algebra.
+
+Given a logical system $\B$, we will define a matrix/vector system much like the standard one. A boolean vector of size $n$ is an element of the set $\B^n$, and similarly a boolean matrix of height $a$ and width $b$ is an element of the set $\B^{a \times b}$. Where we now differ is in matrix algebra - in linear algebra, matrix multiplication is defined like so;
+$$\mathbf{AB}_{ij} = \sum_{k}\mathbf{A}_{ik}\cdot\mathbf{B}_{kj}$$
+
+We can define boolean matrix multiplication likewise;
+$$\mathbf{AB}_{ij} = \bigvee_{k}\mathbf{A}_{ik}\land\mathbf{B}_{kj}$$
+
+This allows us to motivate a meaning for ``dot products" also;
+$$\mathbf{a\cdot b} = \mathbf{a}^\text{T}\mathbf{b} = \bigvee_i a_i \land b_i$$
+
+It would be useful to define element-wise operations on vectors/matrices. For any operator $\circ : \B^2 \to \B$, we write $\mathbf{a} \circ \mathbf{b}$ to mean $(\mathbf{a} \circ \mathbf{b})_i = a_i \circ b_i$. If we want to apply an operator with a constant scalar value to every element of a vector, we can write this likewise, $(\mathbf{a} \circ b)_i = a_i \circ b$, etc.
+
+Finally, if an operator $\circ$ is both associative and commutative, we write $^\circ(\mathbf{a})$ to refer to $a_1 \circ a_2 \circ \cdots$.
+
+Using the above two, we can likewise define the ``dot product" by $\mathbf{a \cdot b} ={^\lor}(\mathbf{a \land b})$. We can use a similar notation as syntactic sugar to define matrix multiplication $\mathbf{AB} ={^\lor}(\mathbf{A \land B})$. This notation allows us to use other operators also, for example standard matrix multiplication would be written by ${^+}(\mathbf{A \times B})$. 
+
 \subsection{Boolean Algebras}
 
 While classical perceptron layers heavily rely on linear algebra, neurosymbolic layers cannot. Instead, we must rely on \textit{boolean algebra} to motivate our models. Boolean algebra is fundamentally different to any algebra motivated by classical arithmetic, as we do not have access to the regular operators $+$ or $\times$. Nevertheless, boolean operators behave much like arithmetic ones. A boolean algebra, formally speaking, is a mathematical object $\B$, which contains elements $\T$, $\F$, and for which we have binary operators $\lor$, $\land$, and a unary operator $\neg$, such that the following axioms always hold.
@@ -145,13 +168,13 @@ We can immediately see the similarities to classical arithmetic. In fact, the ab
 
 The above system is very intuitive, as it by design can fully motivate a propositional logic. However, we have not motivated our logical system by direct construction, but by necessitating certain behaviours. We therefore need not restrict ourselves to simply the set $\B=\{0,1\}$, we can define $\B$ however we'd like, and exploit the unique characteristics of the $\B$ we have chosen in our learning.
 
-Let's consider an alternative boolean algebra - given a set $S$, let $\B = {\{ U \subseteq S \}}$, that is, the power set of $S$. It is natural to let $\land$ be the intersection of two sets, and $\lor$ the union. We can further say $\T = S$, $\F = \varnothing$, and $\neg:U \mapsto S \setminus U$. One can immediately see that the above axioms follow from basic facts in set theory.
+Let's consider an alternative boolean algebra - given a set $S$, let $\B = {\{ U \subseteq S \}}$, that is, the power set of $S$. It is natural to let $\land$ be the intersection of two sets, and $\lor$ the union. We can further say $\T = S$, $\F = \varnothing$, and $\neg:U \mapsto S \setminus U$. One can immediately see that the above axioms follow from basic facts in set theory. This construction is not useful to us, however, as we cannot differentiate over it.
 
-This construction is not useful to us, however. We'd really like not to stray too far away from classical logic $\B = \{0,1\}$, and simply approximate classical logic with our choice of $\B$. In this way, it would be useful to define a way of measuring how close our values $a \in \B$ are to ideal values $\T, \F$. We can axiomatise this also.
+In practice, we'd really like not to stray too far away from classical logic $\B = \{0,1\}$, and simply approximate classical logic with our choice of $\B$. In this way, our goal is not to necessarily to exploit the properties of a boolean algebra once we have them, but to use the axioms of boolean algebras (and derivations thereof) to measure the quality of hypothetical boolean approximations we propose.
 
 \subsection{Measuring Crispness}
 
-To somehow measure how well our model is behaving like a boolean function, it would be useful to construct a distance metric within our space $\B$. The further away from ideal values $\T$, $\F$ we are, the worse our model may become to intuit as a logical formula.
+To somehow measure how well our model is behaving like a boolean function, it would be useful to construct a distance metric within our space $\B$. The further away from ideal values $\T$, $\F$ we are, or from basic facts true of all boolean algebras, the worse our model may become to intuit as a logical formula.
 
 There exist well understood ways of doing so already. A metric space $X$ is a set endowed with a \textit{distance metric} $d: X^2 \to R$ with the following properties;
 
@@ -166,31 +189,12 @@ $$
 \end{aligned}
 $$
 
-Over classical booleans $\B = \{0,1\}$, we have that any distance metric $d$ is fully defined by our choice of $d(0,1)$.
+For example, over classical booleans $\B = \{0,1\}$, a valid metric is $d(a,b) = a +_2 b$, where $+_2$ is addition in the finite field $\mathbb{F}_2$. This can also be interpreted as the function $\XOR(a,b) = (\neg a \land b) \lor (a \land \neg b)$. For boolean vectors $\{0,1\}^n$, a valid distance metric would be the \textit{Hamming distance} $d(\mathbf{a,b}) = {^+}(\mathbf{a} +_2 \mathbf{b})$.
 
 For any boolean algebra $\B$, given $d$, we can define a \textit{vagueness metric}
 $$v_d(a) = \min\{d(a, \T), d(a, \F)\}$$
 
 In cases where the choice of $d$ is obvious, we will omit the subscript. We refer to values that have low vagueness as being \textit{crisp}.
-
-\subsection{Notation}
-
-The notation of linear algebra is very useful in succinctly describing the nature of a classical perceptron model, but within neurosymbolic layers, we do not have this luxury. Further in this paper, we will discuss many different kinds of boolean algebras, and we will discuss and compare their qualities in learning. To describe our models, it's useful to phrase the layers we construct in a manner similar to linear algebra.
-
-Given a boolean algebra $\B$, we will define a matrix/vector system much like the standard one. A boolean vector of size $n$ is an element of the set $\B^n$, and similarly a boolean matrix of height $a$ and width $b$ is an element of the set $\B^{a \times b}$. Where we now differ is in matrix algebra - in linear algebra, matrix multiplication is defined like so;
-$$\mathbf{AB}_{ij} = \sum_{k}\mathbf{A}_{ik}\cdot\mathbf{B}_{kj}$$
-
-We can define boolean matrix multiplication likewise;
-$$\mathbf{AB}_{ij} = \bigvee_{k}\mathbf{A}_{ik}\land\mathbf{B}_{kj}$$
-
-This allows us to motivate a meaning for ``dot products" also;
-$$\mathbf{a\cdot b} = \mathbf{a}^\text{T}\mathbf{b} = \bigvee_i a_i \land b_i$$
-
-It would be useful to define element-wise operations on vectors/matrices. For any operator $\circ : \B^2 \to \B$, we write $\mathbf{a} \circ \mathbf{b}$ to mean $(\mathbf{a} \circ \mathbf{b})_i = a_i \circ b_i$.
-
-Finally, if an operator $\circ$ is both associative and commutative, we write $^\circ(\mathbf{a})$ to refer to $a_1 \circ a_2 \circ \cdots$.
-
-Using the above two, we can likewise define the dot product by $\mathbf{a \cdot b} =\ ^\lor(\mathbf{a \land b})$. We can use a similar notation as syntactic sugar to define matrix multiplication $\mathbf{AB} =\ ^\lor(\mathbf{A \land B})$. This notation allows us to use other operators also, for example standard matrix multiplication would be written by $\ ^+(\mathbf{A \times B})$. 
 
 \section{A General Neurosymbolic Architecture}
 
@@ -220,7 +224,7 @@ $$
 D_W(\mathbf{x}) 
 &= \left(\bigvee_{i \in W} x_i\right) \lor \left(\bigvee_{i \not\in W} \F\right) \\
 &= \bigvee_{i} x_i \land w_i \\
-&=\ ^\lor(\mathbf{w \land x}) = \mathbf{w}^T\mathbf{x}
+&= {^\lor}(\mathbf{w \land x}) = \mathbf{w}^T\mathbf{x}
 \end{aligned}
 $$
 
@@ -234,13 +238,13 @@ C_W(\mathbf{x})
 &= \bigwedge_{i \in W} x_i \\
 &= \left(\bigwedge_{i \in W} x_i\right) \land \left(\bigwedge_{i \not\in W} \T \right) \\
 &= \bigwedge_i \neg w_i \lor x_i \\
-&=\ ^\land(\mathbf{w} \Rightarrow \mathbf{x})
+&= {^\land}(\mathbf{w} \Rightarrow \mathbf{x})
 \end{aligned}
 $$
 
 The above notation allows us to represent boolean functions in DNF, as any formula in DNF is a disjunction of \textit{weighted conjunctions} as seen above. We write this like so.
 
-$$F(\mathbf{x; W}) =\ ^\lor(^\land(\mathbf{W \Rightarrow x\ @\ \neg x}))$$
+$$F(\mathbf{x; W}) = {^\lor}({^\land}(\mathbf{W \Rightarrow x \concat \neg x}))$$
 
 Here, $@$ is an operator representing vector concatenation.
 
@@ -268,16 +272,16 @@ An intuitive, and well researched approach to extending the space of valid boole
 
 It is important to note that while this emulates the definition of a probability measure, it is distinctly not. $\mathbb{P}(x) = \frac{1}{2}$ states that $x$ is true with a probability of $\frac{1}{2}$, which can mean either that in $\frac{1}{2}$ of cases, $x$ appears true (the frequentist interpretation), or that we believe that $x$ is true with $\frac{1}{2}$ certainty (the Bayesian interpretation). In fuzzy logic, $x = \frac{1}{2}$ instead states that $x$ is ``half-true", with 100\% certainty. We are only using fuzzy logic to approximate classical, discrete logic, so it is not important to dwell on the philosophical implications of this. Extending the domain of boolean values means that we have to revisit the definitions of simple logical operators $\lnot, \land$ and $\lor$.
 
-\subsection{T-Norms}
+\subsection{Fuzzy Operators}
 
-\def\prodand{{\otimes_\times}}
-\def\minand{{\otimes_<}}
-\def\lukand{{\otimes_\text{L}}}
-\def\draand{{\otimes_\text{D}}}
+\def\prodand{\custop{\otimes_\times}}
+\def\minand{\custop{\otimes_<}}
+\def\lukand{\custop{\otimes_\text{L}}}
+\def\draand{\custop{\otimes_\text{D}}}
 
-\def\prodor{{\oplus_\times}}
-\def\minor{{\oplus_<}}
-\def\lukor{{\oplus_\text{L}}}
+\def\prodor{\custop{\oplus_\times}}
+\def\minor{\custop{\oplus_<}}
+\def\lukor{\custop{\oplus_\text{L}}}
 
 We will begin with a generalisation for $\land$, as all further definitions follow from this. We want to find a function $\otimes : \Bf^2 \to \Bf$ which has the same value as $\land$ for $\B_2$, and maintains some natural properties of $\land$ also. Suppose we assume the following axioms for $\otimes$;
 $$
@@ -297,15 +301,6 @@ $$
     \text{(Łukasiewicz t-norm)}&\ a \lukand b \coloneqq \max\{a+b-1,0\}
 \end{aligned}
 $$
-
-%Taking one of these definitions for $\otimes$, we can define a \textit%{fuzzy conjunction} in the same way we defined classical conjunctions before.
-%$$C(x_1, \dots, x_N) = \bigotimes_{i=1}^N(1 \cdot (1-w_i) + x_i \cdot w_i)$$
-
-%Where the $w_i = (i \in S) \in B_\text{f}$. That is, the $i$'s can now be ``partially" in the set $S$. This is what is meant by \textit{fuzzy set membership}. Intuitively, we can interpret this as linearly interpolating between values $x_i$ and identity $1$, based on ``how much" $i$ is a member of $S$.
-
-%T-norms are an important first step, but if we hope to do any kind of learning at all, we need to be able to generalise some other operators too.
-
-\subsection{A Full Fuzzy Operator Scheme}
 
 If we can generalise either $\lnot$ or $\lor$, then we can generalise both. A seemingly obvious way to generalise $\lnot$ is by simply declaring that $\lnot x = (1 - x)$. This immediately satisfies the definition of $\lnot$ in classical logic, and comes with some useful properties;
 $$
@@ -344,7 +339,8 @@ The only difference here being that the identity has value 0, rather than 1. Fro
 In the field of fuzzy logic, the above method of constructing fuzzy operators is not actually the preferred way of doing so. Fuzzy logicians instead choose to define the \textit{residuum} $\Rightarrow$ in terms of fuzzy conjunction $\otimes$. The residuum, as the symbol suggests, is meant to generalise the implication operator $(a \Rightarrow b) = \lnot(a \land \lnot b)$. The reason this can be done only relying on the existence of the t-norm (rather than t-norm + fuzzy negation) is because it can be proven that the residuum is the \textit{only} function that satisfies the conditions
 $$a \otimes b \leq c \iff a \leq (b \Rightarrow c)$$
 
-If we can find this unique definition for $\Rightarrow$, we can go on to define all other logical operators;
+The justification for this fact comes from the understanding of fuzzy logic as measuring ``confidence" - if we have confidence valuations for $a, a \Rightarrow b \in \B_f$, and we know that $a, a \Rightarrow b$ entails $b$ in classical logic, then we would expect to be at least $a \otimes (a \Rightarrow b)$ confident in $b$, i.e. that $a \otimes (a \Rightarrow b) \leq b$. A similar construction results in the conclusion above, and allows us to uniquely determine $\Rightarrow$. From here, we can choose to define the other logical operators like so;
+
 $$
 \begin{aligned}
 \lnot a =&\ (a \Rightarrow 0) \\
@@ -352,7 +348,9 @@ a \oplus b =&\ (\lnot a \Rightarrow b)
 \end{aligned}
 $$
 
-Again, we will not dwell on this, as we are aiming to construct fuzzy operators specifically to approximate classical logical formulae in DNF. The definitions for negation, conjunction and disjunction given above are more than enough to begin doing so.
+Again, we will not dwell on this, as we are aiming to construct fuzzy operators specifically to approximate classical logical formulae in DNF. The definitions for negation, conjunction and disjunction given above are more than enough to begin doing so. In the notation introduced previously, we could write a formula for a fuzzy DNF layer like so.
+$$
+F(\mathbf{x, W}) = {^\oplus}({^\otimes}(\mathbf{W \Rightarrow x \concat \neg x}))$$
 
 \subsection{Constructing Fuzzy Operators}
 
@@ -363,9 +361,9 @@ $$a \draand b = \begin{cases}
     0 &\text{otherwise}
 \end{cases}$$
 
-The gradient of $\draand$ is 0 nearly everywhere, which isn't terribly ideal for gradient descent. We want to be able to avoid cases like this, and to do so it would beneficial to come up with a method to construct t-norms reliably. Suppose we had a decreasing function $f:\Bf \to [0,\infty]$ with $f(1)=0$. Then the function $T(a,b) = f^{-1}(\min\{f(0), f(a) + f(b)\})$ is a t-norm - in fact, most common t-norms can be constructed in this way. This statement omits some details, but for our use cases this is fine.
+The gradient of $\draand$ is 0 almost everywhere, which isn't terribly ideal for gradient descent. We want to be able to avoid cases like this, and to do so it would beneficial to come up with a method to construct t-norms reliably. Suppose we had a decreasing function $f:\Bf \to [0,\infty]$ with $f(1)=0$. Then the function $T(a,b) = f^{-1}(\min\{f(0), f(a) + f(b)\})$ is a t-norm - in fact, most common t-norms can be constructed in this way. This statement omits some details, but for our use cases this is fine.
 
-A function $f$ which characterises a t-norm in this manner is called an \textit{additive generator} of the t-norm. Some examples are;
+A function $f$ which begets a t-norm in this manner is called an \textit{additive generator} of the t-norm. Some examples are;
 
 $$
 \begin{aligned}
@@ -375,16 +373,19 @@ $$
 \end{aligned}
 $$
 
-This characterisation of t-norms also allows us to explicitly define conjunctions over many variables - if $a \otimes b = f^{-1}(\min\{f(0), f(a) + f(b)\})$, then $^\otimes(\mathbf{x}) = f^{-1}(\min\{f(0),\ ^+(f(\mathbf{x}))\})$. Thus,
+This characterisation of t-norms also allows us to explicitly define conjunctions over many variables - if $a \otimes b = f^{-1}(\min\{f(0), f(a) + f(b)\})$, then ${^\otimes}(\mathbf{x}) = f^{-1}(\min\{f(0),{^+}(f(\mathbf{x}))\})$. Thus,
 
 $$
 \begin{aligned}
-^\prodand(\mathbf{x}) &=\ ^\times(\mathbf{x}) \\
-^\lukand(\mathbf{x}) &= \max\{0, 1 +\ ^+(\mathbf{x} - 1)\}
+^\prodand(\mathbf{x}) &= {^\times}(\mathbf{x}) \\
+^\lukand(\mathbf{x}) &= \max\{0, 1 + {^+}(\mathbf{x} - 1)\}
 \end{aligned}
 $$
 
-and so on.
+
+and so on. In the construction of t-norms from additive generators, we have to add a $\min$ operation, as the sum $f(a) + f(b)$ may be out of the range of $f$. If there exist $a,b \neq 0$ such that this is the case, we refer to the corresponding t-norm as \textit{nilpotent}, since $a \otimes b = 0$. More accurately, this name arises due to the fact that for such $a \neq 0$, there exists $n \in \N$ such that $\underbrace{a \otimes \cdots \otimes a}_{n \text{ times}} = 0$. 
+
+Examples of nilpotent t-norms are the Łukasiewicz t-norm $\lukand$, and the drastic t-norm $\draand$. In fact, any t-norm whose additive generator is continuous around $0$, and doesnt cover the full possible range $[0, \infty]$, is nilpotent in this manner. Any nilpotent t-norm has a non-negligible region of zero gradient, so this will help inform our future discussion on constructed t-norms.
 
 \subsection{Defuzzification and Interpretation}
 
@@ -396,20 +397,46 @@ In practice, this hinders learning quite a bit. Much of the strength of fuzzy lo
 
 A more effective approach in practice seems much more naive - that is to simply clamp the value of the parameters $w$ into the range $[0,1]$ at every optimisation step. This allows the model to maintain a level of vagueness where it cannot learn much information, i.e. not ``jumping to conclusions". When it actually can decide the nature of a concept, it can freely do so. We may then choose to terminate our learning when the parameters are sufficiently close to values $\{0,1\}$.
 
-\section{Parameterised Fuzzy Logic}
+In future sections, we see that using the distance metric $d$ \textit{can} be quite effective in regularisation, but not for directly ensuring crispness - we will use the function $v$ to evaluate the interpretability of our chosen models, but we will not actively optimise for interpretability, we want the models to passively approach crisp parameterisations.
+
+\section{Parameterised Logic}
+
+So far, we have discussed learning the membership of conjunctions and disjunctions only, while keeping the actual definitions of operators constant. We have discussed the fact that some choices of operators may be more successful in learning through backpropagation than others, with the case of the drastic t-norm $\draand$ being a particularly bad choice. How may we find the \textit{most successful} one? 
+
+It's difficult to quantify what this means, so we will not attempt to do so. Instead, we can find some way of defining parameterised \textit{families} of logical systems, and learn the optimals parameters of these families in the same way we learn the parameters of the formulae we are trying to learn.
 
 \subsection{Parameterised T-Norms}
 
+In the previous section, we discussed an easy way to construct new t-norms, so it would make sense to use this technique here. We would like to find a family of t-norms that are all parameterisations of a more general construction. We can begin by parameterising additive generators, and constructing their respective t-norms likewise.
+
+Let $f_p(x) = \frac{1 - x^p}{p}$. This satisfies all the criteria for an additive generator, since $f_p'(x) = -x^{p-1} \leq 0$, and $f_p(1) = 0$. For $p=0$, this is not well defined, but taking the limit as $p$ approaches 0 allows us to extend the function further. In fact this limit is well known - we can say that $f_0(x)=-\log x$, which is actually the additive generator for the product t-norm $\prodand$. What is the resultant t-norm in general?
+
+Since $f^{-1}_p(x) = (1-px)^\frac{1}{p}$, we have $a \otimes_p b = \max\{0, (x^p + y^p - 1)^\frac{1}{p}\}$, and more generally, ${^{\otimes_p}}(\mathbf{x}) = \max\{0, (1 - {^+}((1 - \mathbf{x})^p))^\frac{1}{p}\}$. Of note is that, for $p=1$, this is the Łukasiewicz t-norm $\lukand$. It seems as though many t-norms we have already encountered are members of this family. Indeed, if we further extend the definition we have to $-\infty, \infty$ via continuity, we discover that $\otimes_{-\infty}$ is the minimum t-norm, and $\otimes_\infty$ is the drastic t-norm.
+
+This is wonderful news, as it means with one parametric family of t-norms, we can capture all the examples we might like to study, and then some. These operators are known as the \textit{Schweizer–Sklar t-norms}. Some more parameterised families of t-norms are given by the following additive generators;
+
+$$
+\begin{aligned}
+\text{(Yager t-norms)}&\ f(x) = (1-x)^p \\
+\text{(Aczél–Alsina t-norms)}&\ f(x) = (- \log x)^p \\
+\text{(Hamacher t-norms)}&\ f(x) = \log\frac{p+(1-p)x}{x}
+\end{aligned}
+$$
+
 \subsection{Biased Logic}
 
-https://arxiv.org/pdf/2006.13155.pdf
+There are many properties of classical logical operators that cannot necessarily be captured by fuzzy operators. \textit{Idempotence} is a resultant property of both $\land$ and $\lor$ in boolean algebras, which specifies that for all $a, b \in \B_2$, $(a \land b) \land b = (a \land b)$, and likewise for $\lor$. For most t-norms, this is specifically not the case - an obvious example is the product t-norm, where $abb=ab \iff b = 1$. It would be nice to preserve idempotence, but this is not really required. What if we can sacrifice other properties of boolean operators as well?
+
+Another example of a parameterised family of boolean operators is the \textit{weighted non-linear logic} (WNL). WNL is a generalisation of Łukasiewicz which introduces a bias term $\beta$, which mirrors the bias used in perceptron layers of classical NN architectures. 
+
+
 
 
 \subsection{Boolean Regularisation}
 
 \subsection{Measuring Similarity}
 
-\section{Boolean Embeddings}
+\section{General Boolean Embeddings}
 
 So far we have met Fuzzy Logic, which fundamentally reinvents the common perceptron architecture seen in most NNs. What if we want to maintain an architecture which is more conventional in it's approach, while still allowing for boolean interpretations? This seems difficult at first - although we can approximate any boolean function, determining the nature of this function is difficult in conventional architectures, as we have seen.
 

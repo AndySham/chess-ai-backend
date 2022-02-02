@@ -25,3 +25,6 @@ https://www.semanticscholar.org/paper/Neural-symbolic-learning-systems-foundatio
 
 Neural Logic Machines
 https://arxiv.org/pdf/1904.11694.pdf
+
+TensorLog: A Differentiable Deductive Database
+https://arxiv.org/pdf/1605.06523.pdf
