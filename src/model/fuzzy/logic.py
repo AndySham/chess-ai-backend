@@ -3,7 +3,7 @@ from torch import Tensor
 
 
 # Implementations of various Fuzzy Logic systems. Much of the derivations of sequence operations
-# are derived from the methods given in the following article.
+# are found using the methods given in the following article.
 #
 # https://en.wikipedia.org/wiki/Construction_of_t-norms
 
@@ -56,6 +56,10 @@ class FuzzyLogic:
         """
         The residuum in fuzzy logic is analogous to the impliciation operator `=>` in classical logic.
         """
+        # This definition is not accurate. The residuum should
+        # be constructed as the adjoint of conjunction, but
+        # the following is suitable for neurosymbolic learning
+        # purposes (for now?)
         return self.neg(self.bin_conjoin(a, self.neg(b)))
 
     def xor(self, a: Tensor, b: Tensor):
@@ -186,7 +190,7 @@ class MinimumLogic(FuzzyLogic):
 
 
 class LukasiewiczLogic(FuzzyLogic):
-    """`a ⊗ b = max{a + b - 1, 0}"""
+    """`a ⊗ b = max{a + b - 1, 0}`"""
 
     def conjoin(self, xs: Tensor, dim: int = None) -> Tensor:
         return (xs.sum(dim=dim) - self.dim_size(xs, dim=dim) + 1).clamp(0, 1)
@@ -232,6 +236,7 @@ class SchweizerSklarLogic(FuzzyLogic):
     """`a ⊗ b = (a**p + b**p - 1) ** (1/p)`"""
 
     def __init__(self, p: Tensor):
+        super().__init__()
         self.p = p
 
     def conjoin(self, xs: Tensor, dim: int = None) -> Tensor:
@@ -249,6 +254,7 @@ class HamacherLogic(FuzzyLogic):
     """`a ⊗ b = ab / (p + (1 - p)(a + b - ab))`"""
 
     def __init__(self, p: Tensor):
+        super().__init__()
         self.p = p
 
     def conjoin(self, xs: Tensor, dim: int = None) -> Tensor:
@@ -269,10 +275,12 @@ class WNLLogic(FuzzyLogic):
     """
     `a ⊗ b = max{a + b - 2 + beta, 0}`
     Equivalent to Lukasiewicz Logic for `beta == 1`.
+    Does not necessarily satisfy the t-norm axioms.
     See https://arxiv.org/pdf/2006.13155.pdf for more information.
     """
 
     def __init__(self, beta: Tensor):
+        super().__init__()
         self.beta = beta
 
     def conjoin(self, xs: Tensor, dim: int = None) -> Tensor:
