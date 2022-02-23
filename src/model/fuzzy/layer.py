@@ -9,7 +9,9 @@ class FuzzyModule(nn.Module):
     ):
         super().__init__()
 
-        self.logic_system = logic.LukasiewiczLogic if logic_system == None else logic
+        self.logic_system = (
+            logic.LukasiewiczLogic if logic_system == None else logic_system
+        )
         self.logic: logic.FuzzyLogic = None
 
         if self.logic_system == logic.SchweizerSklarLogic:

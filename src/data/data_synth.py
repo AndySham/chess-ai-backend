@@ -1,7 +1,6 @@
 import torch
 from torch.utils.data import Dataset
 from src.logic import reduce_or, reduce_and
-from src.model.fuzzy import logic
 
 
 class OpDataset(Dataset):
@@ -36,7 +35,7 @@ class ANDDataset(OpDataset):
 
 
 def dnfs(X, conj_sets, disj_set):
-    with_nots = torch.cat([X, logic.fnot(X)], dim=1)
+    with_nots = torch.cat([X, 1.0 - X], dim=1)
     stacked = torch.unsqueeze(with_nots, dim=0).repeat((conj_sets.shape[0], 1, 1))
     conj_filter = conj_sets.repeat(1, 1, X.shape[0]).reshape(
         conj_sets.shape[0], X.shape[0], X.shape[1] * 2

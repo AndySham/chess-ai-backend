@@ -1,5 +1,6 @@
 import torch
 from torch import Tensor
+from src.util import match_shapes
 
 
 # Implementations of various Fuzzy Logic systems. Much of the derivations of sequence operations
@@ -32,11 +33,12 @@ class FuzzyLogic:
         Take the conjunction of two values. 
         This is referred to as the t-norm in fuzzy logic.
         """
+        a, b = match_shapes(a, b)
         return self.conjoin(torch.cat([a.unsqueeze(0), b.unsqueeze(0)], dim=0), dim=0)
 
     def neg(self, xs: Tensor):
         """Fuzzy negation. This tends to just be the operation x -> 1 - x."""
-        return 1 - xs
+        return 1.0 - xs
 
     def disjoin(self, xs: Tensor, dim=None):
         """
@@ -148,7 +150,7 @@ class FuzzyLogic:
         - Returns value of shape `(B, W)`
         """
         xs, ws, ss = self._align_signed_weight_shapes(xs, ws, ss)
-        return self.weighted_conjoins(self.bin_xnor(xs, ss), ws)
+        return self.conjoin(self.residuum(ws, self.bin_xnor(xs, ss)), dim=1)
 
     def signed_weighted_disjoins(self, xs: Tensor, ws: Tensor, ss: Tensor):
         """
@@ -159,7 +161,7 @@ class FuzzyLogic:
         - Returns value of shape `(B, W)`
         """
         xs, ws, ss = self._align_signed_weight_shapes(xs, ws, ss)
-        return self.weighted_disjoins(self.bin_xnor(xs, ss), ws)
+        return self.disjoin(self.bin_conjoin(ws, self.bin_xnor(xs, ss)), dim=1)
 
     @staticmethod
     def dim_size(xs: Tensor, dim: int = None) -> int:
@@ -183,10 +185,16 @@ class MinimumLogic(FuzzyLogic):
     """`a ⊗ b = min{a, b}`"""
 
     def conjoin(self, xs: Tensor, dim: int = None) -> Tensor:
-        return xs.min(dim=dim)
+        if dim == None:
+            return xs.min()
+        else:
+            return xs.min(dim=dim).values
 
     def disjoin(self, xs: Tensor, dim: int = None) -> Tensor:
-        return xs.max(dim=dim)
+        if dim == None:
+            return xs.max()
+        else:
+            return xs.max(dim=dim).values
 
 
 class LukasiewiczLogic(FuzzyLogic):
