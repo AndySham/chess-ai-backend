@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.1)  22 FEB 2022 13:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.1)  24 FEB 2022 14:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -260,7 +260,7 @@ File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
 LaTeX Warning: Unused global option(s):
     [conference].
 
-(/Users/andy/Documents/Projects/chess-ai-backend/diss/output/diss.aux (/Users/andy/Documents/Projects/chess-ai-backend/diss/output/c1.aux) (/Users/andy/Documents/Projects/chess-ai-backend/diss/output/c2.aux) (/Users/andy/Documents/Projects/chess-ai-backend/diss/output/c3.aux))
+(/Users/andy/Documents/Projects/chess-ai-backend/diss/output/diss.aux)
 \openout1 = `diss.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
@@ -313,7 +313,6 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 9.
 LaTeX Info: Redefining \pageref on input line 9.
 LaTeX Info: Redefining \nameref on input line 9.
- (/Users/andy/Documents/Projects/chess-ai-backend/diss/output/diss.out) (/Users/andy/Documents/Projects/chess-ai-backend/diss/output/diss.out)
 \@outlinefile=\write3
 \openout3 = `diss.out'.
 
@@ -334,81 +333,100 @@ LaTeX Warning: No \author given.
 <to be read again> 
                    \relax 
 l.32 \end{abstract}
-                    [1] (/Users/andy/Documents/Projects/chess-ai-backend/diss/output/diss.tocpdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.30 ...\numberline {6}Conclusions}{24}{chapter.6}
-                                                  % [1
-
-])
+                    [1]
 \tf@toc=\write4
 \openout4 = `diss.toc'.
 
- [2]
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.37 
+      [1
+
+]
 \openout2 = `c1.aux'.
 
  (./c1.tex
 Chapter 1.
-[3
+[2
 
 
-] [4] [5] [6]) [7]
+]
+
+LaTeX Warning: Citation `gradientattribute' on page 3 undefined on input line 15.
+
+
+LaTeX Warning: Citation `neuraladditive' on page 3 undefined on input line 23.
+
+[3]
+
+LaTeX Warning: Citation `xnn' on page 4 undefined on input line 32.
+
+[4] [5]) [6]
 \openout2 = `c2.aux'.
 
  (./c2.tex
 Chapter 2.
-[8
+[7
 
 
 
 
-] [9] [10]
+] [8] [9]
 LaTeX Font Info:    Trying to load font information for U+bbm on input line 115.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-) [11] [12] [13] [14] [15] [16] [17] [18] [19]) [20]
+) [10] [11] [12] [13] [14] [15] [16] [17] [18]) [19]
 \openout2 = `c3.aux'.
 
  (./c3.tex
 Chapter 3.
-) [21
+) [20
 
 
 
 
 ]
 Chapter 4.
-[22
+[21
 
 
 
 ]
 Chapter 5.
-[23
+[22
 
 ]
 Chapter 6.
-[24
-
-] [25
+No file diss.bbl.
+[23
 
 ] (/Users/andy/Documents/Projects/chess-ai-backend/diss/output/diss.aux (/Users/andy/Documents/Projects/chess-ai-backend/diss/output/c1.aux) (/Users/andy/Documents/Projects/chess-ai-backend/diss/output/c2.aux) (/Users/andy/Documents/Projects/chess-ai-backend/diss/output/c3.aux))
-Package rerunfilecheck Info: File `diss.out' has not changed.
-(rerunfilecheck)             Checksum: 322BE1E4A959717BB384AA17DE5C57A5;4965.
+
+LaTeX Warning: There were undefined references.
+
+
+Package rerunfilecheck Warning: File `diss.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `diss.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  322BE1E4A959717BB384AA17DE5C57A5;4965.
  ) 
 Here is how much of TeX's memory you used:
- 9674 strings out of 478994
- 142919 string characters out of 5858185
- 448252 words of memory out of 5000000
- 26925 multiletter control sequences out of 15000+600000
+ 9619 strings out of 478994
+ 141523 string characters out of 5858185
+ 446875 words of memory out of 5000000
+ 26887 multiletter control sequences out of 15000+600000
  415342 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 81i,13n,88p,1332b,379s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 81i,13n,88p,1340b,350s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/andy/Library/texlive/2021/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600pk></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on /Users/andy/Documents/Projects/chess-ai-backend/diss/output/diss.pdf (27 pages, 288447 bytes).
+Output written on /Users/andy/Documents/Projects/chess-ai-backend/diss/output/diss.pdf (25 pages, 277241 bytes).
 PDF statistics:
- 401 PDF objects out of 1000 (max. 8388607)
- 345 compressed objects within 4 object streams
- 63 named destinations out of 1000 (max. 500000)
- 241 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 254 PDF objects out of 1000 (max. 8388607)
+ 201 compressed objects within 3 object streams
+ 57 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

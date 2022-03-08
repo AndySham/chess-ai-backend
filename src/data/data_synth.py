@@ -1,6 +1,7 @@
 import torch
 from torch.utils.data import Dataset
 from src.logic import reduce_or, reduce_and
+from src.util import match_shapes
 
 
 class OpDataset(Dataset):
@@ -34,31 +35,39 @@ class ANDDataset(OpDataset):
         )
 
 
-def dnfs(X, conj_sets, disj_set):
-    with_nots = torch.cat([X, 1.0 - X], dim=1)
-    stacked = torch.unsqueeze(with_nots, dim=0).repeat((conj_sets.shape[0], 1, 1))
-    conj_filter = conj_sets.repeat(1, 1, X.shape[0]).reshape(
-        conj_sets.shape[0], X.shape[0], X.shape[1] * 2
-    )
-    conjs = reduce_and(
-        torch.logical_or(
-            torch.logical_and(stacked, conj_filter), torch.logical_not(conj_filter)
-        ),
-        dim=2,
-    ).transpose(1, 0)
-    return reduce_or(
-        torch.logical_and(
-            conjs, disj_set.reshape(1, conj_sets.shape[0]).repeat((X.shape[0], 1))
-        ),
-        dim=1,
-    )
+def logical_xnor(a, b):
+    return torch.logical_not(torch.logical_xor(a, b))
+
+
+def logical_impl(a, b):
+    return torch.logical_or(torch.logical_not(a), b)
+
+
+def dnfs(X, conj_weights, conj_signs, disj_weights):
+    B, N = X.shape
+    N_2, H = conj_weights.shape
+    N_3, H_2 = conj_signs.shape
+    H_3, O = disj_weights.shape
+
+    if N != N_2 or N_2 != N_3 or H != H_2 or H_2 != H_3:
+        raise Exception("Misaligned shapes for DNF.")
+
+    X, conj_weights = match_shapes(X.view(B, N, 1), conj_weights.view(1, N, H))
+    _, conj_signs = match_shapes(X, conj_signs.view(1, N, H))
+
+    conjs = reduce_and(logical_impl(conj_weights, logical_xnor(X, conj_signs)), dim=1)
+
+    conjs, disj_weights = match_shapes(conjs.view(B, H, 1), disj_weights.view(1, H, O))
+
+    return reduce_or(torch.logical_and(conjs, disj_weights), dim=1)
 
 
 class DNFDataset(Dataset):
-    def __init__(self, no_dims, no_samples, p_sample, no_conjs, p_conj_set, p_disj_set):
+    def __init__(self, no_dims, no_samples, p_sample, no_conjs, p_conj_set):
         self.X = (torch.rand(no_samples, no_dims) < p_sample).float()
-        self.conj_sets = torch.rand(no_conjs, 2 * no_dims) < p_conj_set
-        self.disj_set = torch.rand(no_conjs) < p_disj_set
+        self.conj_weights = torch.rand(no_dims, no_conjs) < p_conj_set
+        self.conj_signs = torch.rand(no_dims, no_conjs) < 0.5
+        self.disj_weights = torch.ones(no_conjs, 1)
 
     def __len__(self):
         return self.X.shape[0]
@@ -66,6 +75,13 @@ class DNFDataset(Dataset):
     def __getitem__(self, idx):
         return (
             self.X[idx],
-            dnfs(self.X[idx : idx + 1, :], self.conj_sets, self.disj_set)[0],
+            torch.squeeze(
+                dnfs(
+                    self.X[idx : idx + 1, :],
+                    self.conj_weights,
+                    self.conj_signs,
+                    self.disj_weights,
+                )[0]
+            ),
         )
 
