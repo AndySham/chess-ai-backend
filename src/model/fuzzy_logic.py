@@ -1,7 +1,7 @@
 import torch
 from torch import Tensor
 from src.model.logic import Logic
-from src.util import match_shapes, recursive_binop
+from src.util import dim_size, match_shapes, recursive_binop
 
 
 # Implementations of various Fuzzy Logic systems. Much of the derivations of sequence operations
@@ -44,7 +44,7 @@ class LukasiewiczLogic(FuzzyLogic):
     """`a ⊗ b = max{a + b - 1, 0}`"""
 
     def conjoin(self, xs: Tensor, dim: int = None) -> Tensor:
-        return (xs.sum(dim=dim) - self.dim_size(xs, dim=dim) + 1).clamp(0, 1)
+        return (xs.sum(dim=dim) - dim_size(xs, dim=dim) + 1).clamp(0, 1)
 
     def disjoin(self, xs: Tensor, dim: int = None) -> Tensor:
         return (xs.sum(dim=dim)).clamp(0, 1)
@@ -95,7 +95,7 @@ class SchweizerSklarLogic(FuzzyLogic):
             self.p == 0,
             xs.prod(dim=dim),
             (
-                ((xs ** self.p).sum(dim=dim) - self.dim_size(xs, dim=dim) + 1)
+                ((xs ** self.p).sum(dim=dim) - dim_size(xs, dim=dim) + 1)
                 ** (1 / self.p)
             ).clamp(0, 1),
         )
@@ -111,7 +111,7 @@ class HamacherLogic(FuzzyLogic):
     def conjoin(self, xs: Tensor, dim: int = None) -> Tensor:
         return torch.where(
             self.p == 0,
-            ((xs ** -1).sum(dim=dim) - self.dim_size(xs, dim=dim) + 1) ** -1,
+            ((xs ** -1).sum(dim=dim) - dim_size(xs, dim=dim) + 1) ** -1,
             self.p
             * (
                 (self.p - (self.p - 1) * xs).prod(dim=dim) / xs.prod(dim=dim)
@@ -135,7 +135,7 @@ class WNLLogic(FuzzyLogic):
         self.beta = beta
 
     def conjoin(self, xs: Tensor, dim: int = None) -> Tensor:
-        return (xs.sum(dim=dim) - self.dim_size(xs, dim=dim) + self.beta).clamp(0, 1)
+        return (xs.sum(dim=dim) - dim_size(xs, dim=dim) + self.beta).clamp(0, 1)
 
     def disjoin(self, xs: Tensor, dim: int = None) -> Tensor:
         return (xs.sum(dim=dim) + 1 - self.beta).clamp(0, 1)

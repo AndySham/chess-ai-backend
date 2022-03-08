@@ -9,7 +9,7 @@ class FuzzySignedAxisOp(nn.Module):
         self, in_features: int, out_features: int, logic: FuzzyLogic,
     ):
         super().__init__()
-        self.logic = logic
+        self._logic = logic
         self.weights = torch.nn.Parameter(
             torch.rand(in_features, out_features) - 0.5, requires_grad=True
         )
@@ -28,8 +28,8 @@ class FuzzySignedConjunction(FuzzySignedAxisOp):
     def forward(self, input):
         input = input.unsqueeze(-1)
         weights, signs = self.fuzzy_params()
-        return self.logic.conjoin(
-            self.logic.implies(weights, self.logic.bin_xnor(input, signs)), dim=1,
+        return self._logic.conjoin(
+            self._logic.implies(weights, self._logic.bin_xnor(input, signs)), dim=1,
         )
 
 
@@ -37,8 +37,8 @@ class FuzzySignedDisjunction(FuzzySignedAxisOp):
     def forward(self, input):
         input = input.unsqueeze(-1)
         weights, signs = self.fuzzy_params()
-        return self.logic.disjoin(
-            self.logic.bin_conjoin(weights, self.logic.bin_xnor(input, signs)), dim=1,
+        return self._logic.disjoin(
+            self._logic.bin_conjoin(weights, self._logic.bin_xnor(input, signs)), dim=1,
         )
 
 
@@ -47,6 +47,7 @@ class FuzzyUnsignedAxisOp(nn.Module):
         self, in_features: int, out_features: int, logic: FuzzyLogic,
     ):
         super().__init__()
+        self._logic = logic
         self.weights = torch.nn.Parameter(
             torch.rand(in_features, out_features) - 0.5, requires_grad=True
         )
@@ -59,20 +60,20 @@ class FuzzyUnsignedConjunction(FuzzySignedAxisOp):
     def forward(self, input):
         input = input.unsqueeze(-1)
         weights = self.fuzzy_params()
-        return self.logic.conjoin(self.logic.implies(weights, input), dim=1)
+        return self._logic.conjoin(self._logic.implies(weights, input), dim=1)
 
 
 class FuzzyUnsignedDisjunction(FuzzySignedAxisOp):
     def forward(self, input):
         input = input.unsqueeze(-1)
         weights = self.fuzzy_params()
-        return self.logic.disjoin(self.logic.bin_conjoin(weights, input), dim=1)
+        return self._logic.disjoin(self._logic.bin_conjoin(weights, input), dim=1)
 
 
 class FuzzyDNF(nn.Module):
     def __init__(self, shape: tuple[int, int, int], logic: FuzzyLogic):
         super().__init__()
-        self.logic = logic
+        self._logic = logic
         in_f, hidden_f, out_f = shape
         self.conj = FuzzySignedConjunction(in_f, hidden_f, logic)
         self.disj = FuzzyUnsignedDisjunction(hidden_f, out_f, logic)

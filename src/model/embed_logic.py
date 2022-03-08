@@ -14,7 +14,7 @@ def cosine_similarity(a, b, alpha=10, dim=-1):
 
 
 class EmbedLogic(Logic):
-    def __init__(self, embed_dims):
+    def __init__(self, embed_dims: int):
         super().__init__()
         self.embed_dims = embed_dims
 
@@ -27,16 +27,16 @@ class EmbedLogic(Logic):
         t[0] = 1.0
         return t
 
-    def _matrix_shape(self, input):
-        matrix_shape = tuple(1 for _ in range(len(input.shape) + 1))
+    def _matrix_shape(self, input: Tensor):
+        matrix_shape = [1 for _ in range(len(input.shape) + 1)]
         matrix_shape[-1] = self.embed_dims
         matrix_shape[-2] = self.embed_dims
-        return matrix_shape
+        return tuple(matrix_shape)
 
     def _bias_shape(self, input):
-        bias_shape = tuple(1 for _ in range(len(input.shape)))
+        bias_shape = [1 for _ in range(len(input.shape))]
         bias_shape[-1] = self.embed_dims
-        return bias_shape
+        return tuple(bias_shape)
 
     def _binop_to_axis(self, input: Tensor, binop, dim: int) -> Tensor:
         last_dim = len(input.shape) - 1
