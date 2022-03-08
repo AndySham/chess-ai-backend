@@ -48,13 +48,13 @@ class EmbedUnsignedAxisOp(nn.Module):
 class EmbedUnsignedConjunction(EmbedUnsignedAxisOp):
     def forward(self, input: Tensor) -> Tensor:
         input = input.unsqueeze(-2)
-        return self.logic.conjoin(self.logic.implies(self.weights, input), dim=1,)
+        return self.logic.conjoin(self.logic.implies(self.weights, input), dim=1)
 
 
 class EmbedUnsignedDisjunction(EmbedUnsignedAxisOp):
     def forward(self, input: Tensor) -> Tensor:
         input = input.unsqueeze(-2)
-        return self.logic.disjoin(self.logic.bin_conjoin(self.weights, input), dim=1,)
+        return self.logic.disjoin(self.logic.bin_conjoin(self.weights, input), dim=1)
 
 
 class EmbedDNF(nn.Module):

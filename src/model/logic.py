@@ -43,7 +43,7 @@ class Logic(nn.Module):
         """
         The impliciation operator `=>`.
         """
-        # This definition is not accurate. The residuum should
+        # This definition is not the residuum. The residuum should
         # be constructed as the adjoint of conjunction, but
         # the following is suitable for neurosymbolic learning
         # purposes (for now?)
