@@ -1,0 +1,7 @@
+name: interpret-nsym
+channels:
+  - defaults
+dependencies:
+  - pytorch
+  - tqdm
+prefix: /Users/andy/opt/anaconda3/envs/interpret-nsym

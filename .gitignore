@@ -1,4 +1,6 @@
 venv
 */**/__pychase__
 */**/__pycache__
+*/**/.ipynb_chcekpoints
 data/**
+.DS_Store

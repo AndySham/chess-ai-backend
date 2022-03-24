@@ -13,6 +13,9 @@ from src.util import dim_size, match_shapes, recursive_binop
 class FuzzyLogic(Logic):
     """A base class for different instances of fuzzy logics."""
 
+    def neg(self, xs: Tensor) -> Tensor:
+        return 1 - xs
+
 
 # Implementations ----------------------------------------------------------------------
 

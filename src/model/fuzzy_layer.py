@@ -56,14 +56,14 @@ class FuzzyUnsignedAxisOp(nn.Module):
         return torch.sigmoid(self.weights)
 
 
-class FuzzyUnsignedConjunction(FuzzySignedAxisOp):
+class FuzzyUnsignedConjunction(FuzzyUnsignedAxisOp):
     def forward(self, input):
         input = input.unsqueeze(-1)
         weights = self.fuzzy_params()
         return self._logic.conjoin(self._logic.implies(weights, input), dim=1)
 
 
-class FuzzyUnsignedDisjunction(FuzzySignedAxisOp):
+class FuzzyUnsignedDisjunction(FuzzyUnsignedAxisOp):
     def forward(self, input):
         input = input.unsqueeze(-1)
         weights = self.fuzzy_params()
@@ -73,13 +73,14 @@ class FuzzyUnsignedDisjunction(FuzzySignedAxisOp):
 class FuzzyDNF(nn.Module):
     def __init__(self, shape: tuple[int, int, int], logic: FuzzyLogic):
         super().__init__()
-        self._logic = logic
         in_f, hidden_f, out_f = shape
-        self.conj = FuzzySignedConjunction(in_f, hidden_f, logic)
-        self.disj = FuzzyUnsignedDisjunction(hidden_f, out_f, logic)
+        self.layer = nn.Sequential(
+            FuzzySignedConjunction(in_f, hidden_f, logic),
+            FuzzyUnsignedDisjunction(hidden_f, out_f, logic),
+        )
 
     def forward(self, input: Tensor) -> Tensor:
-        return self.disj(self.conj(input))
+        return self.layer(input)
 
 
 """
