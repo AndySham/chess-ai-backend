@@ -1,2 +1,0 @@
-torch==1.10.2
-typing-extensions==4.0.1
