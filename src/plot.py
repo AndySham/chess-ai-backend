@@ -1,5 +1,5 @@
 import torch
-from src.util import norm_pdf
+from util import norm_pdf
 import matplotlib.pyplot as plt
 
 

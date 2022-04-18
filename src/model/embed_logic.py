@@ -1,8 +1,8 @@
 import torch
 from torch import nn, Tensor
-from src.model.logic import Logic
+from model.logic import Logic
 
-from src.util import match_shapes, recursive_binop, shuffle
+from util import match_shapes, recursive_binop, shuffle
 
 
 def cosine_similarity(a, b, alpha=3):

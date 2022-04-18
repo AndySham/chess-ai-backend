@@ -1,6 +1,6 @@
 venv
 */**/__pychase__
 */**/__pycache__
-*/**/.ipynb_chcekpoints
+*/**/.ipynb_checkpoints
 data/**
 .DS_Store

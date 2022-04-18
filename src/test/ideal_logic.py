@@ -1,5 +1,5 @@
 import torch
-from src.logic import reduce_or, reduce_and
+from logic import reduce_or, reduce_and
 
 
 class OpIdealModel:

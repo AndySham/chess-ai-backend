@@ -1,11 +1,22 @@
 import torch
 from torch import Tensor, nn
 
-from src.util import match_shapes, recursive_binop
+from util import match_shapes, recursive_binop
 
 
 class Logic(nn.Module):
     """A base class for different definitions of logics."""
+
+    def encode(self, xs: Tensor) -> Tensor:
+        """Embed the input boolean tensor in the logic space."""
+        raise NotImplementedError
+
+    def decode(self, xs: Tensor) -> Tensor:
+        """
+        Return a confidence value for each item in the space (i.e. a value in [0,1]), where
+        1 represents full confidence in `True`, 0 represents full confidence in `False`.
+        """
+        raise NotImplementedError
 
     def conjoin(self, xs: Tensor, dim: int = None) -> Tensor:
         """

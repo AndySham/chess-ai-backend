@@ -1,7 +1,7 @@
 import torch
 from torch import nn, Tensor
 
-from src.model.embed_logic import EmbedLogic
+from model.embed_logic import EmbedLogic
 
 
 class EmbedLayer(nn.Module):

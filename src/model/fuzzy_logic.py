@@ -1,7 +1,7 @@
 import torch
 from torch import Tensor
-from src.model.logic import Logic
-from src.util import dim_size, match_shapes, recursive_binop
+from model.logic import Logic
+from util import dim_size, match_shapes, recursive_binop
 
 
 # Implementations of various Fuzzy Logic systems. Much of the derivations of sequence operations
@@ -15,6 +15,12 @@ class FuzzyLogic(Logic):
 
     def neg(self, xs: Tensor) -> Tensor:
         return 1 - xs
+
+    def encode(self, xs: Tensor) -> Tensor:
+        return xs.float()
+
+    def decode(self, xs: Tensor) -> Tensor:
+        return xs
 
 
 # Implementations ----------------------------------------------------------------------
@@ -51,6 +57,7 @@ class LukasiewiczLogic(FuzzyLogic):
 
     def disjoin(self, xs: Tensor, dim: int = None) -> Tensor:
         return (xs.sum(dim=dim)).clamp(0, 1)
+
 
 
 class DrasticLogic(FuzzyLogic):
@@ -97,10 +104,15 @@ class SchweizerSklarLogic(FuzzyLogic):
         return torch.where(
             self.p == 0,
             xs.prod(dim=dim),
-            (
-                ((xs ** self.p).sum(dim=dim) - dim_size(xs, dim=dim) + 1)
-                ** (1 / self.p)
-            ).clamp(0, 1),
+            torch.where(
+                self.p > 0,
+                (
+                    ((xs ** self.p).sum(dim=dim) - dim_size(xs, dim=dim) + 1)
+                ).clamp(0, 1) ** (1 / self.p),
+                (
+                    ((xs ** self.p).sum(dim=dim) - dim_size(xs, dim=dim) + 1) ** (1 / self.p)
+                ).clamp(0, 1)
+            )
         )
 
 
@@ -142,4 +154,5 @@ class WNLLogic(FuzzyLogic):
 
     def disjoin(self, xs: Tensor, dim: int = None) -> Tensor:
         return (xs.sum(dim=dim) + 1 - self.beta).clamp(0, 1)
+
 

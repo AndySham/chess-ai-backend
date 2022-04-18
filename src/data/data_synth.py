@@ -1,7 +1,7 @@
 import torch
 from torch.utils.data import Dataset
-from src.logic import reduce_or, reduce_and
-from src.util import match_shapes
+from logic import reduce_or, reduce_and
+from util import match_shapes
 
 
 class OpDataset(Dataset):
