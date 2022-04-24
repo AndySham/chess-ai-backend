@@ -3,14 +3,221 @@
 
 \section{Introduction}
 
-The field of research which focuses on deriving methods of backpropagation over boolean functions is referred to as \textit{Neurosymbolic Machine Learning}. The models that are created to solve such a problem are known as \textit{Logical Neural Networks}\footnote{also \textit{Neural Logic Networks}} (LNNs)\footnote{also NLNs}. 
+We will discuss an NN architecture which attempts to learn boolean functions, instead of real functions. The restricted nature of boolean functions, and their use as a mathematical description of logic, allows a intuitive way of representating causation (e.g., if for some object $x$). The models that are created to solve such a problem are known as \textit{Logical Neural Networks}\footnote{also \textit{Neural Logic Networks, Logic Tensor Networks}} (LNNs)\footnote{also NLNs, LTNs}. The subfield of ML concerned with learning solutions to logical problems with gradient-descent based methods is called \textit{Neurosymbolic Machine Learning}.
 
-The natural solution to solving the problem of $\{0,1\}$ being a discrete space, is by embedding values $\T$, $\F$ in a continuous space (or more formally, a topological manifold), and computing derivatives in this space instead. This poses an obvious problem - what if we find that the optimal parameters are values that do not equal $\T$ or $\F$? The ways we may begin to solve this problem differ depending on the particular architecture we decide to use. First, we must provide some background information as to how we may begin to do so in the first place.
+The goal of the LNNs we discuss here will be to learn the optimal assignments for boolean variables within a statement described by the language of first order logic. This parallels the goal of MLPs to learn the optimal assignments for real variables within linear layers. LNNs achieve this through continuous optimisation using the standard approach of applying SGD methods with backpropagation. 
 
-%From now on, we will begin using the symbol $\B$ when referring to the space of boolean representations for a given architecture. Where two modes of representation are being compared, they will be differentiated with a subscript (e.g. $\B_2$, $\B_\text{f}$, etc.)
+It is interesting to note that the most widely researched approaches within the field of Artificial Intelligence (AI) until the 1990s were symbolic-based methods. There are many well studied algorithms that, given a set of logical predicates known to be true, attempt to capture the nature of the wider system in a single (ideally simple!) logical statement. These algorithms are known as Inductive Logic Programming (ILP) systems \cite{ilp}. While very useful, they were found to be computationally intractible for more complex problems, notably those in Computer Vision and Natural Language Processing. Famously, Hubert Dreyfus predicted that symbolic methods were inherently incapable of fully capturing the complexity of such problems \cite{symbolicaibad}, stating that these relied primarily on unconscious processes rather than conscious symbolic manipulations. It seems most apt, therefore, to understand the rise of Deep Learning methods in the new millenium as reliant on capturing such ``unconscious'' processes.
 
-%We will explicitly refer to the set $\{0,1\}$ used in classical logic with notation $\B_2$.
+The aim of neurosymbolic methods are thus to be able to capture the expressiveness of Deep Learning methods, without sacrificing the interpretability afforded by understanding the model in terms of symbolic manipulations. This is a difficult task! 
 
+\section{Real Logic}
+
+We run into the important issue of $\{\T, \F\}$, the space of boolean values, not being continuous. One way of solving this issue is by extending the domain of possible logical assignments from $\{0,1\}$, as above, to the closed interval $[0,1]$. This is referred to as both \textit{real logic}, (as in \cite{ltn2016}, \cite{analyzefuzzy}, and much of the literature focusing on differentiable applications), and \textit{fuzzy logic} (as in most foundational literature, namely \cite{fuzzysetbook}, \cite{fuzzylogicbook}, \cite{fuzzymetabook}). Using the name ``fuzzy logic'' emphasises the importance of properties which are not relevant to the neurosymbolic architecture we will be discussing here, so we will not be using the term widely, but many of the following constructions are drawn from literature on fuzzy logic. We will discuss approaches in extending important logical operators ($\OR$, $\AND$, $\NOT$, ...) to this new boolean space, and ways we may begin to use it to learn in an interpretable way. 
+
+To fully define a ``real logic", that is, an extension of classical logic to the space $[0,1]$, we want to define all the operators in a manner that, ideally, preserves many of the useful properties we see in the classical definition. At the very least, we want the values over the restricted domain $\{0,1\}$ to be the same as in classical logic.
+
+It is well known that given a finite number of variables $\{x_i\mid i \in 1 , \dots, N \}$, all boolean functions (that is, functions $\phi : \{\T,\F\}^N \rightarrow \{\T,\F\}$) can be expressed in terms of the operators $\lnot$ and $\land$. Explicitly,
+$$
+\begin{aligned}
+    a \lor b &= \lnot (\lnot a \land \lnot b) \\
+    a \limply b &= \lnot (a \land \lnot b) \\
+    a \lxor b &= \lnot(a \land \lnot b) \land \lnot(\lnot a \land b) \\
+    a \lxnor b &= \lnot(a \land b) \land \lnot(\lnot a \land \lnot b) \\
+    \forall x, \phi(x) &= \phi(x_1) \land \dots \land \phi(x_N) \\
+    \exists x, \phi(x) &= \lnot(\lnot \phi(x_1) \land \dots \land \lnot \phi(x_N)) \\ 
+\end{aligned}
+$$
+
+If we can extend the operators $\land$ and $\neg$ to the full domain $[0,1]$, we can therefore do so for all the above operators also. For the remainder of this section, we will specify that $\T \coloneqq 1$, and $\F \coloneqq 0$, though we will later see examples where this is not the case.
+
+\subsection{Real Conjunction and Negation}
+
+We will take a set of properties that apply to classical conjunction $\land$ and require that the extension $\land : [0,1]^2 \to [0,1]$ has them also. The properties are;
+
+$$
+\begin{aligned}
+\text{(Associativity)}&\ (a \land b) \land c = a \land (b \land c) \\
+\text{(Commutativity)}&\ a \land b = b \land a \\
+\text{(Monotonicity)}&\ a \leq b, c \leq d \implies a \land c \leq b \land d \\
+\text{(Identity)}&\ \forall a \in [0,1], a \land 1 = a
+\end{aligned}
+$$
+
+The above are known as the \textit{T-norm axioms} \cite{tnorms}. Note that they are a strict subset of the axioms required for $([0,1], \land, \lor)$ to be a boolean algebra, namely we are missing distributivity and idempotence. In fact, it is possible to construct a real logic that preserves these properties also, but there is precisely one such logic, and as we will see, it has flaws that make it less than ideal for gradient descent. The above axioms are, however, enough for $\land$ to have the correct output for the restricted domain $\{0,1\}$. 
+
+We can likewise define negation simply by $\lnot : x \mapsto 1 - x$. In the fuzzy logic literature, this is known as \textit{strong negation}, as there is an alternate formulation of negation that captures the intention of fuzzy logic more effectively.
+
+It can be shown that the axioms as we have defined them allow for an infinite family of possible real logics. Some examples are given below;
+
+\begin{center}
+\begin{tabular}{ c | c c c c }
+    Logic & $\land$ & $\lor$ & $\forall$ & $\exists$ \\    
+    \hline
+    Minimum 
+    & $\min\{a,b\}$ 
+    & $\max\{a,b\}$ 
+    & $\min\{ x_1, \dots, x_N \}$ 
+    & $\max\{ x_1, \dots, x_N \}$ \\ 
+    Product 
+    & $ab$
+    & $1 - (1 - a)(1 - b)$
+    & $\prod_ix_i$
+    & $1 - \prod_{i}(1-x_i)$ \\
+    Łukasiewicz
+    & $\max\{a+b-1, 0\}$ 
+    & $\min\{a+b, 1\}$ 
+    & $\max\{\sum_ix_i - N + 1, 0\}$ 
+    & $\min\{\sum_ix_i, 1\}$ \\
+\end{tabular}
+\end{center}
+\todo{Add more logics - Drastic, Nilpotent, Schweizer–Sklar, Hamacher, Yager}
+
+\section{General Architectures}
+
+Now that we have explicit definitions for boolean-like algebras in the domain $[0,1]$, we can begin to formulate how we may learn in this setting.
+
+We first need to consider what problems we may want to solve. A basic problem is that of \textit{satisfiability}, i.e., given a boolean function $\phi : \{0,1\}^K \rightarrow \{0,1\}$ which can be expressed in first-order logic, is there some element $\vx \in \{0,1\}^K$ such that $\phi(\vx) = 1$? If so, we want to find an example of said $\vx$.
+
+We can consider this as a continuous optimisation problem with $\vx$ as a parameter. We can extend $\phi$ to the real domain $[0,1]$ by extending each operator in $\phi$ when expressed in the language of first-order logic. Then, by performing SGD as normal, we aim to minimise the loss function $\ell(\vx) = \lnot\phi(\vx)$.
+
+To match the power of classical MLPs, we also want to be able to learn optimal \textit{functions} $\phi$. Suppose we have a dataset $\{(\vx_i, y_i)\}_{i=1}^N$ where $\forall i, \phi(\vx_i) = y_i$ for some formula $\phi : \{0,1\}^K  \rightarrow \{0,1\}$ which need not have a known representation in classical first-order logic. Further suppose we have a function $\psi : \{0,1\}^{K+P} \rightarrow \{0,1\}$ expressed in first-order logic such that for some $\vw \in \{0,1\}^P$, $\phi(\vx) = \psi(\vx, \vw)$. We consider $\vw$ a parameter here, and optimise for loss $\ell(\vx, y; \vw) = y \lxnor \psi(\vx, \vw)$. Extending $\psi$ to real logic as standard allows us to use continuous optimisation methods to do so. $\bbE_{\vx}[\ell(\vx, \phi(\vx); \vw)] = 0 \iff \psi(\vx, \vw) = \phi(\vx)$ for all $\vx \in \{0,1\}^K$, so the above algorithm is correct.
+
+It is very feasible to find expressive enough $\psi$, as it can be shown that every boolean function $\phi$ can be expressed in a number of standard forms - Disjunctive Normal Form (DNF), and Conjunctive Normal Form (CNF), being two notable ones. To fit these two representations into the framework we have described, we need to be able to express how every variable $x$ is represented in each normal form by appending appropriate parameter variables $w$.
+
+In DNF, $\phi$ is expressed as a disjunction of conjunctions, with each conjunction described by a subset of input variables $\subseteq \{x_1,\dots,x_K\}$, each variable being optionally negated. We can capture membership by boolean variables $m_i \in \{0,1\}$, and negation by $s_i \in \{0,1\}$. This allows us to represent a formula in DNF by
+
+$$
+\begin{aligned}
+\phi(\vx) &= \exists j,\ 1 \leq j \leq W,\ \phi_j(\vx) \\
+\text{where } \phi_j(\vx) &= \forall i,\ m_{ij} \limply (x_i \lxor s_{ij})
+\end{aligned}
+$$
+
+for some assignment to the $M = (m_{ij}), S = (s_{ij})$. A similar form for CNF is,
+
+$$
+\begin{aligned}
+\phi(\vx) &= \forall j,\ 1 \leq j \leq W,\ \phi_j(\vx) \\
+\text{where } \phi_j(\vx) &= \exists i,\ m_{ij} \land (x_i \lxor s_{ij})
+\end{aligned}
+$$
+
+In both cases, we can construct a function $\psi$ with $M$ and $S$ as parameters, and optimise over these parameters as before. Here $W \in\bbN$ is a hyperparameter which specifies the number of conjunctions (or disjunctions) in the function family $\psi$. Naturally, the larger $W$ is, the more expressive $\psi$ can be, and we know that $W = 2^K$ is enough to capture all possible functions $\phi$. This very closely parallels the Universal Approximation Theorem (UAT) of MLPs with one hidden layer.
+
+\section{Analysis of a Toy Problem}
+
+The framework we have given is very general, and does not specify what real logic we are required to use. Indeed it does not even require that every operation need be from the same logic, only that they are correct on classical boolean values $0,1$. It is valuable, therefore, to compare each logic and analyse which logics are useful for which learning tasks.
+
+In \cite{analyzefuzzy}, the problem of satisfiability over $\phi(a,b,c) = (a \land b) \lor (c \land \lnot a)$ is considered. We compare the convergence of $a, b, c$ \footnote{In practice, we actually consider satisfiability over parameters $a, b, c \in \bbR$ mapped into $[0,1]$ with a sigmoid function, as we want to converge to parameters in the appropriate bounds.} over each logic, given randomly initialised starting parameters.
+
+The following graphs show the convergence of loss for \todo{?} randomly generated initialisations of the parameters $a, b, c$. Convergence to $0$ represents finding a satisfying assignment, whereas anything else represents a failure to do so.
+
+\todo{Add reproduction of \cite{analyzefuzzy} for many logics}
+
+We see that the choice of logic has a very profound impact on the convergence. \todo{Add description of results}
+
+\subsection{Incorrect Gradients}
+
+It is notable that some initialisations fail to converge at all. This was also observed in \cite{analyzefuzzy}, and is very much a cause for concern. We would expect all initialisations to work, even if some converge slower than others. To investigate further, we explicitly sample observations for the gradient estimator of each parameter, to see if this can help us diagnose the issue.
+
+\todo{Add gradient sampling tests}
+
+\todo{Add gradient sampling analysis - ``leaky'' gradients}
+
+By explicitly deriving the gradients for a given logic, we may begin to diagnose why this may be the case.
+
+\todo{Derivation of gradients for product logic}
+
+We see that this problem may be resolved by choosing a distribution of inputs that necessarily has the right sign for the expected gradient estimator. This, however, is not ideal. We would like to have a framework which provably converges in \textit{all} cases, regardless of the distribution of inputs. 
+
+\subsection{Vanishing Gradients}
+
+The tests further show that a majority of gradient samples are precisely $0$. It is natural that some observations would not allow us to make any meaningful inferences about the optimal values of each variable, especially in cases where the proportion of satisfying inputs is incredibly small. We observe however, that different choices of logic result in different proportions of vanishing gradient observations.
+
+To explain this, we must discuss the nature of conjunction in each logic. The most apt example is that of Łukasiewicz logic, as for $a, b \in [0,1]$ such that $a + b - 1 < 0$, the pointwise gradient of binary conjugation $\land$ is precisely $0$. This means that a full $\frac{1}{2}$ of all possible input arguments (uniformly distributed) give no meaningful inference. Aggregating over $K$ variables, this generalises to a proportion of $1 - \frac{1}{K!}$ inputs having vanishing gradients, which is very obviously not ideal.
+
+Therefore, in this framework, we prefer to use logics such that $\land$ has non-vanishing gradient almost everywhere. Minimum and Product logics satisfy this condition, along with certain parameterisations of the Schweizer–Sklar, Hamacher and Yager logics.
+
+\subsection{Other Gradient Concerns}
+
+Another consideration when comparing different logics is the phenomenon of ``partial'' vanishing gradients. The minimum logic is the best example of such - as over the entire domain, the partial derivative of conjugation is non-zero for precisely one input. This means that convergence is very \textit{binarized}, meaning only one parameter is optimised at each step. This may also have an effect on convergence, as optimisation potentially only occurs for a small subset of parameters at each step, but this may also help to remedy some of the causes of the ``leaky'' gradient problem.
+
+\subsection{Possible Resolutions}
+
+\todo{SGD vs Adam analysis}
+
+\section{Comparison with Traditional Methods}
+
+There are many well known algorithms for efficiently learning classical boolean functions $\phi : \{0,1\}^K \to \{0,1\}$ given prior knowledge of about $\phi$ restricting it to a given family. Such algorithms often make logical inferences to determine the proper state of boolean parameters $\vw$, with complexity guarantees that can be described within the Probably Approximately Correct (PAC) learning framework \cite{clt}. We will compare such algorithms to their equivalents in differentiable real logic, and hope for results as good, if not better, given an ideal optimisation regime. 
+
+Generalising these methods to real logic would have considerable benefits. For one, given gradient descent is by nature stochastic and (aside from current parameterisation) stateless, these methods would be inherently robust to noisy data and distribution shift in the learning dataset. A possible drawback is that correctness may only be guaranteed for data drawn similarly to the training dataset, introducing a potentially unavoidable bias.
+
+In each test, we also train a traditional MLP model on the same data. Prior to the test, we could make the assumption that the inductive bias introduced by our model could improve the rate of convergence, but an equally convincing sentiment is that this same bias could be too restrictive on the learning process, slowing down convergence.
+
+\subsection{Learning Conjunctions}
+
+The problem of learning conjunctions is a classical one in Computational Learning Theory (CLT). It is well known that determining conjunctions can be done PAC-efficiently \cite{clt} and is robust to noisy data \cite{noisyclt}. The goal of this comparison, therefore, is simply to prove the viability of real logic for this application.
+
+The classical algorithm relies on one important observation. Suppose $\phi$ is a conjunction, that is - it is a function of the form 
+$$\phi(x_1, \dots, x_K) = y_1 \land \dots \land y_N$$
+
+for $y_i \in \{x_1, \dots, x_K, \lnot x_1, \dots, \lnot x_K\}$. If for some $j$, we have $\lnot x_j$ but $\phi$ returns true, then $x_j$ is not one of the terms $y_i$. Similarly $x_j \land \phi$ implies $\lnot x_j$ is not one of the terms. If we begin with $\phi$ a conjunction over all possible such terms, and remove terms where possible, we are eventually left only with the terms actually present in the conjunction.
+
+As discussed previously, we can model the same thing in real logic by introducing weight and sign parameters $\vm$ and $\vs$, 
+$$\psi(\vx; \vm, \vs) = \forall i,\ 1 \leq i \leq K,\ m_i \limply (x_i \lxor s_i)$$
+
+and optimising $\vm$ and $\vs$.
+
+\todo{Add test results here}
+
+\todo{Add analysis, e.g. gradient stuff}
+
+\subsection{Learning Arbitrary Functions}
+
+An important result from CLT is that with the assumption that $\textsc{RP} \neq \textsc{NP}$, it can be shown that learning boolean functions in DNF is not PAC-efficient \textit{in general} \cite{clt}. Hopefully, relaxing boolean constraints from the discrete to the real domain allows us to overcome this issue.
+
+\todo{Add test results here}
+
+\todo{Add analysis}
+
+It is important to note that 
+
+- Suddenly not convex (much like MLP)
+- Suffers greatly
+
+
+\section{Alternative Frameworks}
+
+The toy problems above show that the framework we have introduced is not adept at learning boolean functions in general. The appeal instead is that it is simple, and \textit{extensible}. A neurosymbolic layer as we have described can be embedded within a larger model, that may also contain traditional perceptron layers. These mixed models could lend their correctness to traditional NN theory, and their interpretability to their neurosymbolic aspect. In this section, we will discuss other existing neurosymbolic methods, and judge them based on the possibility of use in this application.
+
+One common feature of many of the architectures we have not yet discussed is that logical variables $\vx$ explicitly describe some parent object. In the language of our real logic architecture, there exists some universe of objects $O$ such that boolean inputs to $\phi$ describe an object $o \in O$ in the form of a \textit{unary atom}, e.g. $\textsc{isGreen}(o), \textsc{isBig}(o)$. The output of $\phi$ can be interpreted as the valuation of a further unary predicate. Learning $\phi$ is equivalent to learning some ``if and only if" relationship between different properties of the object $o\in O$, if such a relationship exists. 
+
+\subsection{Alternative Applications of Real Logic}
+
+As mentioned previously, classical symbolic approaches to AI research involve the use of ILP systems. A formal description of an ILP system is one which can solve problems of the following form. Given some background knowledge $B$ of the world of objects $O$ in the form of a logical statement, and new observations of \textit{positive and negative examples} $E^+$ and $E^-$, expressed as conjugations of \textit{ground literals} (e.g. $\textsc{isGreen}(o), \lnot \textsc{areFriends}(a,b)$), we aim to find some hypothesis statement $h$ such that $B \land h$ satisfies all new observations. Formally, we require \textit{sufficiency} $B \land h \lentails E^+$, and \textit{consistency} $B \land h \land E^- \lnentails \F$ of the constructed $h$.
+
+Our current real logic framework solves a real relaxation of the ILP problem where $E^+$ and $E^-$ are all instances of the same unary predicate. There exist differentiable real logic solvers for general ILP problems \cite{diffilp}, \cite{diffilpGT}. Such implementations improve on classical ILP methods as they are robust to noisy data while still being adept at pattern finding.
+
+Other implementations relax real logic further by removing the requirement for all T-norm axioms to be satisfied. \cite{lnnibm} introduces \textit{Weighted Non-Linear Logic}, which is conceptually similar to Łukasiewicz logic with the addition of a bias parameter $\beta$ which is also optimised during learning. The source paper promotes this reformulation as it removes constraints from the problem of optimisation, though the algorithm introduced in the paper as stated cannot be embedded into a mixed model.
+
+\subsection{Embedded Logic and Relations}
+
+Many developments is neurosymbolic learning involve embedding objects into $n$-dimensional real vector spaces to exploit properties of this space. Word2vec \cite{word2vec} is a model for learning optimal embeddings of natural language atoms in a high-dimensional vector space. Such embeddings were found to preserve relationships between words through vector arithmetic \cite{word2vecrelations} (e.g. Father $-$ Man $+$ Woman $\approx$ Mother). This can be interpreted as a (relaxed) ILP system which learns over the space of \textit{binary} atoms. Learning embeddings of objects $o \in O$ in this manner will aid in extending our current real logic model to mixed models.
+
+In \cite{ltn2016}, the notion of a \textit{grounding} is introduced - before applying any real logic operators, objects $o \in O$ are mapped into $\R^n$ through some canonical function $\calG : O \to \R^n$. An $m$-ary predicate $P$ is then interpreted as a function $\R^{n\times m} \to [0,1]$. The value of $\calG$ may then be learnt in a manner which best evaluates predicates $P$ for elements of the test dataset. 
+
+Further, \cite{embeddedgoogle} suggests that not only should objects be embedded into a real vector space, but that boolean values should be as well. In this system, boolean values are encoded over an $n$-dimensional unit sphere $S_{n-1}$, and logical operators are required to map the encodings of $\T$ and $\F$ appropriately in this space. Introducing new dimensions may aid in improving model quality, without sacrificing interpretability as activations can be collapsed back into ``real logic'' through a similarity metric $\textsc{Sim}:S_{n-1}^2 \to [0,1]$. Cosine similarity (which corresponds to minimum distance travelling along the unit sphere) is generally used. \cite{embeddedlogicreg} improves upon this by also learning core operators $\land, \lor, \lnot$ as DNNs, with correctness ensured through regularisation rather than the architecture itself. This model has been used to develop high quality collaborative filtering algorithms \cite{embeddedcollabreasoning}.
+
+\subsection{Bayesian Models and Probabilistic Logic}
+
+Another approach which could be considered a continuous relaxation of classical logic is in modelling boolean values as distributions over deterministic values $\{\T, \F\}$. Bayesian methods are well studied for this application, with many efficient methods existing for learning the distributions of random variables expressed in terms of a random field. Probabilistic programming languages \cite{gordon2014probabilistic} are able to describe such problems over Bayesian Networks in an highly interpretable manner. Learning probability distributions over the parameter space $\vw$ may prove a more interpretable solution, and further may solve some of the convergence issues seen due to many problems being non-convex. If we interpret real booleans $[0,1]$ as parameters of a Bernoulli distribution over values $\{\T, \F\}$, we can analogize real logic models using the product logic to modelling a random field such that all parameters $\vw$ are independent of each other. In this interpretation, we see that using general Bayesian models increases the expressivity of our model by introducing dependencies between parameters $\vw$. Arbitrary dependencies can be modelled using Normalizing Flows \cite{normalizingflows}.
+
+Bayesian methods are very general, and many approaches exist which are specialised for uses in logic. Bayesian networks are restrictive as they model variable dependencies as a Directed Acyclic Graph (DAG), whereas many dependencies in logic are cyclic (most notably the relation $\iff$). Markov Networks describe dependencies between random variables as edges in a graph, meaning that any two variables that are not adjacant are conditionally independent. These are used to capture logical inferences in the popular Markov Logic Network (MLN) model \cite{markovlogicnetworks}, which corresponds logical atoms to vertices, and formulae to cliques in the graph. Probabilistic Soft Logic \cite{probsoftlogic} further develops on this by introducing a PPL to describe instances of a model similar to MLNs, which can be used to better interpret the results of learning using such methods.
+
+
+
+\begin{comment}
 \section{A Useful Logical System}
 
 \subsection{Notation}
@@ -372,3 +579,4 @@ The parameters of $\XOR$ are hidden in this representation, as they need not be 
 \subsection{Measuring Similarity}
  
 \section{Overview of Different Architectures}
+\end{comment}

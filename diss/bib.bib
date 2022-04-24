@@ -1,7 +1,282 @@
+@inbook{gradientattribute,
+  abstract   = {The problem of explaining complex machine learning models, including Deep Neural Networks, has gained increasing attention over the last few years. While several methods have been proposed to explain network predictions, the definition itself of explanation is still debated. Moreover, only a few attempts to compare explanation methods from a theoretical perspective has been done. In this chapter, we discuss the theoretical properties of several attribution methods and show how they share the same idea of using the gradient information as a descriptive factor for the functioning of a model. Finally, we discuss the strengths and limitations of these methods and compare them with available alternatives.},
+  address    = {Cham},
+  author     = {Ancona, Marco and Ceolini, Enea and {\"O}ztireli, Cengiz and Gross, Markus},
+  booktitle  = {Explainable AI: Interpreting, Explaining and Visualizing Deep Learning},
+  doi        = {10.1007/978-3-030-28954-6_9},
+  editor     = {Samek, Wojciech and Montavon, Gr{\'e}goire and Vedaldi, Andrea and Hansen, Lars Kai and M{\"u}ller, Klaus-Robert},
+  isbn       = {978-3-030-28954-6},
+  pages      = {169--191},
+  publisher  = {Springer International Publishing},
+  title      = {Gradient-Based Attribution Methods},
+  url        = {https://doi.org/10.1007/978-3-030-28954-6_9},
+  year       = {2019},
+  bdsk-url-1 = {https://doi.org/10.1007/978-3-030-28954-6_9}
+}
+
+@inproceedings{interpretdeepmodels,
+  author    = {Chakraborty, Supriyo and Tomsett, Richard and Raghavendra, Ramya and Harborne, Daniel and Alzantot, Moustafa and Cerutti, Federico and Srivastava, Mani and Preece, Alun and Julier, Simon and Rao, Raghuveer M. and Kelley, Troy D. and Braines, Dave and Sensoy, Murat and Willis, Christopher J. and Gurram, Prudhvi},
+  booktitle = {Interpretability of deep learning models: A survey of results},
+  year      = {2017},
+  doi       = {10.1109/UIC-ATC.2017.8397411}
+}
+
+
+@incollection{interpretbook,
+  booktitle = {Interpretable Machine Learning -- A Brief History, State-of-the-Art and Challenges},
+  doi       = {10.1007/978-3-030-65965-3_28},
+  url       = {https://doi.org/10.1007%2F978-3-030-65965-3_28},
+  year      = 2020,
+  publisher = {Springer International Publishing},
+  author    = {Christoph Molnar and Giuseppe Casalicchio and Bernd Bischl}
+}
+
 @article{neuraladditive,
   title   = {Neural additive models: Interpretable machine learning with neural nets},
   author  = {Agarwal, Rishabh and Melnick, Levi and Frosst, Nicholas and Zhang, Xuezhou and Lengerich, Ben and Caruana, Rich and Hinton, Geoffrey E},
   journal = {Advances in Neural Information Processing Systems},
   volume  = {34},
   year    = {2021}
+}
+
+@misc{xnn,
+  doi       = {10.48550/ARXIV.1806.01933},
+  url       = {https://arxiv.org/abs/1806.01933},
+  author    = {Vaughan, Joel and Sudjianto, Agus and Brahimi, Erind and Chen, Jie and Nair, Vijayan N.},
+  keywords  = {Machine Learning (stat.ML), Machine Learning (cs.LG), FOS: Computer and information sciences, FOS: Computer and information sciences},
+  title     = {Explainable Neural Networks based on Additive Index Models},
+  publisher = {arXiv},
+  year      = {2018},
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+
+@book{symbolicaibad,
+  title     = {What computers still can't do: A critique of artificial reason},
+  author    = {Dreyfus, Hubert L},
+  year      = {1992},
+  publisher = {MIT press}
+}
+
+@book{ilp,
+  title        = {Inductive Logic Programming.},
+  author       = {Lavrac, Nada and Dzeroski, Saso},
+  year         = {1994},
+  organization = {Springer}
+}
+
+@book{fuzzysetbook,
+  author    = {Zadeh, Lotfi A},
+  title     = {Fuzzy sets, fuzzy logic, and fuzzy systems: selected papers},
+  year      = {1996},
+  publisher = {World Scientific}
+}
+
+@book{fuzzylogicbook,
+  title     = {Fuzzy Sets and Fuzzy Logic},
+  author    = {Klir, George and Yuan, Bo},
+  volume    = {4},
+  year      = {1995},
+  publisher = {Prentice hall New Jersey}
+}
+
+@book{tnorms,
+  title     = {Triangular norms},
+  author    = {Klement, Erich Peter and Mesiar, Radko and Pap, Endre},
+  volume    = {8},
+  year      = {2013},
+  publisher = {Springer Science \& Business Media}
+}
+
+@book{fuzzymetabook,
+  title     = {Metamathematics of fuzzy logic},
+  author    = {H{\'a}jek, Petr},
+  volume    = {4},
+  year      = {2013},
+  publisher = {Springer Science \& Business Media}
+}
+
+
+@misc{ltn2016,
+  doi       = {10.48550/ARXIV.1606.04422},
+  url       = {https://arxiv.org/abs/1606.04422},
+  author    = {Serafini, Luciano and Garcez, Artur d'Avila},
+  keywords  = {Artificial Intelligence (cs.AI), Machine Learning (cs.LG), Logic in Computer Science (cs.LO), Neural and Evolutionary Computing (cs.NE), FOS: Computer and information sciences, FOS: Computer and information sciences},
+  title     = {Logic Tensor Networks: Deep Learning and Logical Reasoning from Data and Knowledge},
+  publisher = {arXiv},
+  year      = {2016},
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+
+
+@article{analyzefuzzy,
+  abstract   = {The AI community is increasingly putting its attention towards combining symbolic and neural approaches, as it is often argued that the strengths and weaknesses of these approaches are complementary. One recent trend in the literature is weakly supervised learning techniques that employ operators from fuzzy logics. In particular, these use prior background knowledge described in such logics to help the training of a neural network from unlabeled and noisy data. By interpreting logical symbols using neural networks, this background knowledge can be added to regular loss functions, hence making reasoning a part of learning. We study, both formally and empirically, how a large collection of logical operators from the fuzzy logic literature behave in a differentiable learning setting. We find that many of these operators, including some of the most well-known, are highly unsuitable in this setting. A further finding concerns the treatment of implication in these fuzzy logics, and shows a strong imbalance between gradients driven by the antecedent and the consequent of the implication. Furthermore, we introduce a new family of fuzzy implications (called sigmoidal implications) to tackle this phenomenon. Finally, we empirically show that it is possible to use Differentiable Fuzzy Logics for semi-supervised learning, and compare how different operators behave in practice. We find that, to achieve the largest performance improvement over a supervised baseline, we have to resort to non-standard combinations of logical operators which perform well in learning, but no longer satisfy the usual logical laws.},
+  author     = {Emile {van Krieken} and Erman Acar and Frank {van Harmelen}},
+  doi        = {https://doi.org/10.1016/j.artint.2021.103602},
+  issn       = {0004-3702},
+  journal    = {Artificial Intelligence},
+  keywords   = {Fuzzy logic, Neural-symbolic AI, Learning with constraints},
+  pages      = {103602},
+  title      = {Analyzing Differentiable Fuzzy Logic Operators},
+  url        = {https://www.sciencedirect.com/science/article/pii/S0004370221001533},
+  volume     = {302},
+  year       = {2022},
+  bdsk-url-1 = {https://www.sciencedirect.com/science/article/pii/S0004370221001533},
+  bdsk-url-2 = {https://doi.org/10.1016/j.artint.2021.103602}
+}
+
+@book{clt,
+  title     = {An introduction to computational learning theory},
+  author    = {Kearns, Michael J and Vazirani, Umesh},
+  year      = {1994},
+  publisher = {MIT press}
+}
+
+@article{noisyclt,
+  title     = {Learning from noisy examples},
+  author    = {Angluin, Dana and Laird, Philip},
+  journal   = {Machine Learning},
+  volume    = {2},
+  number    = {4},
+  pages     = {343--370},
+  year      = {1988},
+  publisher = {Springer}
+}
+
+@misc{diffilp,
+  doi       = {10.48550/ARXIV.1711.04574},
+  url       = {https://arxiv.org/abs/1711.04574},
+  author    = {Evans, Richard and Grefenstette, Edward},
+  keywords  = {Neural and Evolutionary Computing (cs.NE), Logic (math.LO), FOS: Computer and information sciences, FOS: Computer and information sciences, FOS: Mathematics, FOS: Mathematics},
+  title     = {Learning Explanatory Rules from Noisy Data},
+  publisher = {arXiv},
+  year      = {2017},
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+
+@misc{diffilpGT,
+  doi       = {10.48550/ARXIV.1906.03523},
+  url       = {https://arxiv.org/abs/1906.03523},
+  author    = {Payani, Ali and Fekri, Faramarz},
+  keywords  = {Artificial Intelligence (cs.AI), Logic in Computer Science (cs.LO), FOS: Computer and information sciences, FOS: Computer and information sciences},
+  title     = {Inductive Logic Programming via Differentiable Deep Neural Logic Networks},
+  publisher = {arXiv},
+  year      = {2019},
+  copyright = {Creative Commons Zero v1.0 Universal}
+}
+
+@article{lnnibm,
+  title   = {Logical neural networks},
+  author  = {Riegel, Ryan and Gray, Alexander and Luus, Francois and Khan, Naweed and Makondo, Ndivhuwo and Akhalwaya, Ismail Yunus and Qian, Haifeng and Fagin, Ronald and Barahona, Francisco and Sharma, Udit and others},
+  journal = {arXiv preprint arXiv:2006.13155},
+  year    = {2020}
+}
+
+@article{word2vec,
+  title   = {Efficient estimation of word representations in vector space},
+  author  = {Mikolov, Tomas and Chen, Kai and Corrado, Greg and Dean, Jeffrey},
+  journal = {arXiv preprint arXiv:1301.3781},
+  year    = {2013}
+}
+
+@inproceedings{word2vecrelations,
+  title     = {Linguistic regularities in continuous space word representations},
+  author    = {Mikolov, Tom{\'a}{\v{s}} and Yih, Wen-tau and Zweig, Geoffrey},
+  booktitle = {Proceedings of the 2013 conference of the north american chapter of the association for computational linguistics: Human language technologies},
+  pages     = {746--751},
+  year      = {2013}
+}
+
+@misc{embeddedgoogle,
+  doi       = {10.48550/ARXIV.1410.5859},
+  url       = {https://arxiv.org/abs/1410.5859},
+  author    = {Guha, Ramanathan},
+  keywords  = {Artificial Intelligence (cs.AI), FOS: Computer and information sciences, FOS: Computer and information sciences},
+  title     = {Towards a Model Theory for Distributed Representations},
+  publisher = {arXiv},
+  year      = {2014},
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+
+@misc{embeddedlogicreg,
+  doi       = {10.48550/ARXIV.2008.09514},
+  url       = {https://arxiv.org/abs/2008.09514},
+  author    = {Shi, Shaoyun and Chen, Hanxiong and Ma, Weizhi and Mao, Jiaxin and Zhang, Min and Zhang, Yongfeng},
+  keywords  = {Machine Learning (cs.LG), Artificial Intelligence (cs.AI), Information Retrieval (cs.IR), Logic in Computer Science (cs.LO), Machine Learning (stat.ML), FOS: Computer and information sciences, FOS: Computer and information sciences},
+  title     = {Neural Logic Reasoning},
+  publisher = {arXiv},
+  year      = {2020},
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+
+@inproceedings{embeddedcollabreasoning,
+  doi       = {10.1145/3442381.3449973},
+  url       = {https://doi.org/10.1145%2F3442381.3449973},
+  year      = 2021,
+  month     = {apr},
+  publisher = {{ACM}
+               },
+  author    = {Hanxiong Chen and Shaoyun Shi and Yunqi Li and Yongfeng Zhang},
+  title     = {Neural Collaborative Reasoning},
+  booktitle = {Proceedings of the Web Conference 2021}
+}
+
+@article{bayesiannet,
+  title     = {Bayesian network classifiers},
+  author    = {Friedman, Nir and Geiger, Dan and Goldszmidt, Moises},
+  journal   = {Machine learning},
+  volume    = {29},
+  number    = {2},
+  pages     = {131--163},
+  year      = {1997},
+  publisher = {Springer}
+}
+
+@incollection{gordon2014probabilistic,
+  title     = {Probabilistic programming},
+  author    = {Gordon, Andrew D and Henzinger, Thomas A and Nori, Aditya V and Rajamani, Sriram K},
+  booktitle = {Future of Software Engineering Proceedings},
+  pages     = {167--181},
+  year      = {2014}
+}
+
+@article{variational,
+  title     = {Variational inference: A review for statisticians},
+  author    = {Blei, David M and Kucukelbir, Alp and McAuliffe, Jon D},
+  journal   = {Journal of the American statistical Association},
+  volume    = {112},
+  number    = {518},
+  pages     = {859--877},
+  year      = {2017},
+  publisher = {Taylor \& Francis}
+}
+
+@inproceedings{normalizingflows,
+  title        = {Variational inference with normalizing flows},
+  author       = {Rezende, Danilo and Mohamed, Shakir},
+  booktitle    = {International conference on machine learning},
+  pages        = {1530--1538},
+  year         = {2015},
+  organization = {PMLR}
+}
+
+@article{markovlogicnetworks,
+  title     = {Markov logic networks},
+  author    = {Richardson, Matthew and Domingos, Pedro},
+  journal   = {Machine learning},
+  volume    = {62},
+  number    = {1},
+  pages     = {107--136},
+  year      = {2006},
+  publisher = {Springer}
+}
+
+@article{probsoftlogic,
+  doi       = {10.48550/ARXIV.1505.04406},
+  url       = {https://arxiv.org/abs/1505.04406},
+  author    = {Bach, Stephen H. and Broecheler, Matthias and Huang, Bert and Getoor, Lise},
+  keywords  = {Machine Learning (cs.LG), Artificial Intelligence (cs.AI), Machine Learning (stat.ML), FOS: Computer and information sciences, FOS: Computer and information sciences},
+  title     = {Hinge-Loss Markov Random Fields and Probabilistic Soft Logic},
+  publisher = {arXiv},
+  year      = {2015},
+  copyright = {arXiv.org perpetual, non-exclusive license}
 }

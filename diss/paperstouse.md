@@ -1,14 +1,26 @@
+Logic Tensor Networks: Deep Learning and Logical
+Reasoning from Data and Knowledge
+https://arxiv.org/pdf/1606.04422.pdf
+
 Inductive Logic Programming via Deep Differentiable Neural Logic Networks
 https://arxiv.org/pdf/1906.03523.pdf
+
+Analyzing Differentiable Fuzzy Logic Operators
+https://www.sciencedirect.com/science/article/pii/S0004370221001533
 
 Logical Neural Networks
 https://arxiv.org/pdf/2006.13155.pdf
 
 Probablistic Soft Logic
-https://arxiv.org/pdf/1505.04406.pdf
+
+- Details interpretation of DNF form
+- https://arxiv.org/pdf/1505.04406.pdf
 
 Harnessing Deep Neural Networks with Logic Rules
 https://arxiv.org/pdf/1603.06318.pdf
+
+Towards A Model Theory for Distributed Representations
+https://arxiv.org/pdf/1410.5859.pdf
 
 Neural Logic Reasoning
 https://arxiv.org/pdf/2008.09514.pdf

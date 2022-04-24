@@ -1,49 +1,56 @@
 This is BibTeX, Version 0.99d (TeX Live 2021)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: output/diss.aux
+The style file: plain.bst
 A level-1 auxiliary file: c1.aux
 A level-1 auxiliary file: c2.aux
 A level-1 auxiliary file: c3.aux
-I found no \bibstyle command---while reading file output/diss.aux
-You've used 3 entries,
-            0 wiz_defined-function locations,
-            90 strings with 555 characters,
-and the built_in function-call counts, 0 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 0
-:= -- 0
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
+Database file #1: bib.bib
+Warning--can't use both author and editor fields in gradientattribute
+Warning--empty journal in probsoftlogic
+Warning--empty title in interpretdeepmodels
+Warning--empty publisher in gordon2014probabilistic
+Warning--empty publisher in ilp
+Warning--empty title in interpretbook
+You've used 27 entries,
+            2118 wiz_defined-function locations,
+            631 strings with 8279 characters,
+and the built_in function-call counts, 9195 in all, are:
+= -- 829
+> -- 567
+< -- 7
++ -- 224
+- -- 196
+* -- 622
+:= -- 1548
+add.period$ -- 77
+call.type$ -- 27
+change.case$ -- 168
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 0
-format.name$ -- 0
-if$ -- 0
+cite$ -- 33
+duplicate$ -- 336
+empty$ -- 682
+format.name$ -- 196
+if$ -- 1904
 int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 0
-num.names$ -- 0
-pop$ -- 0
-preamble$ -- 0
-purify$ -- 0
+int.to.str$ -- 27
+missing$ -- 29
+newline$ -- 130
+num.names$ -- 54
+pop$ -- 256
+preamble$ -- 1
+purify$ -- 151
 quote$ -- 0
-skip$ -- 0
+skip$ -- 245
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 340
+swap$ -- 72
+text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
-warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 0
-(There was 1 error message)
+type$ -- 92
+warning$ -- 6
+while$ -- 71
+width$ -- 29
+write$ -- 269
+(There were 6 warnings)

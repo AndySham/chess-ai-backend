@@ -1,0 +1,268 @@
+%% LATEX PREAMBLE
+%%\newif\iflecnotes
+%% Mathematic Packages
+\usepackage{amsmath,amsfonts, amssymb, amsthm}
+\usepackage{commath}
+\usepackage{dsfont} % required for indicator
+\usepackage{bm} % for bold symbols
+\usepackage{bbm}
+\usepackage{amssymb}
+\usepackage{verbatim}
+%\usepackage{amsthm}
+
+
+%% Algorithms
+\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+
+
+%% Graphics
+%\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage[margin=2cm]{geometry}
+
+%% Footnote
+\usepackage{footmisc} % same footnote may times
+
+%% Links
+%\usepackage{hyperref}
+
+%% Code
+% \usepackage{listings}
+% \lstset{
+%          basicstyle=\small\ttfamily, 
+%          %numbers=left,               % linenumbers
+%          numberstyle=\tiny,
+%          %stepnumber=2,
+%          numbersep=5pt,              % between number and text
+%          tabsize=2,                  
+%          extendedchars=true,         
+%          breaklines=true,            
+%          keywordstyle=\color{black},
+%          frame=single,         
+%          % fillcolor=\color{shadecolor},
+%          rulecolor=\color{black},
+%          % backgroundcolor=\color{shadecolor},
+%          stringstyle=\color{black}\ttfamily, % string literals
+%          showspaces=false,           % spaces shown?
+%          showtabs=false,             % tabs shown?
+%          xleftmargin=4pt,
+%          framexleftmargin=4pt,
+%          framexrightmargin=5pt,
+%          framexbottommargin=3pt,
+%          showstringspaces=false
+% }
+% \lstloadlanguages{% see docs
+%          %C
+%          %C++
+% }
+
+%% Formatting
+\usepackage{fancyhdr}
+\usepackage{xspace}
+\usepackage{enumitem} % Good enum and item 
+\usepackage{parskip} % Useful for having no parindent
+
+%% Bibliography
+\usepackage{url}
+\usepackage[authoryear]{natbib}
+
+%% Colors
+\usepackage{color}
+\usepackage{xcolor}
+
+%% Vectors and Matrices
+\newcommand{\va}{\mathbf{a}}
+\newcommand{\vb}{\mathbf{b}}
+\newcommand{\vc}{\mathbf{c}}
+\newcommand{\vd}{\mathbf{d}}
+\newcommand{\ve}{\mathbf{e}}
+\newcommand{\vf}{\mathbf{f}}
+\newcommand{\vg}{\mathbf{g}}
+\newcommand{\vh}{\mathbf{h}}
+\newcommand{\vi}{\mathbf{i}}
+\newcommand{\vj}{\mathbf{j}}
+\newcommand{\vk}{\mathbf{k}}
+\newcommand{\vl}{\mathbf{l}}
+\newcommand{\vm}{\mathbf{m}}
+\newcommand{\vn}{\mathbf{n}}
+\newcommand{\vo}{\mathbf{o}}
+\newcommand{\vp}{\mathbf{p}}
+\newcommand{\vq}{\mathbf{q}}
+\newcommand{\vr}{\mathbf{r}}
+\newcommand{\vs}{\mathbf{s}}
+\newcommand{\vt}{\mathbf{t}}
+\newcommand{\vu}{\mathbf{u}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\vw}{\mathbf{w}}
+\newcommand{\vx}{\mathbf{x}}
+\newcommand{\vy}{\mathbf{y}}
+\newcommand{\vz}{\mathbf{z}}
+\newcommand{\vA}{\mathbf{A}}
+\newcommand{\vB}{\mathbf{B}}
+\newcommand{\vC}{\mathbf{C}}
+\newcommand{\vD}{\mathbf{D}}
+\newcommand{\vE}{\mathbf{E}}
+\newcommand{\vF}{\mathbf{F}}
+\newcommand{\vG}{\mathbf{G}}
+\newcommand{\vH}{\mathbf{H}}
+\newcommand{\vI}{\mathbf{I}}
+\newcommand{\vJ}{\mathbf{J}}
+\newcommand{\vK}{\mathbf{K}}
+\newcommand{\vL}{\mathbf{L}}
+\newcommand{\vM}{\mathbf{M}}
+\newcommand{\vN}{\mathbf{N}}
+\newcommand{\vO}{\mathbf{O}}
+\newcommand{\vP}{\mathbf{P}}
+\newcommand{\vQ}{\mathbf{Q}}
+\newcommand{\vR}{\mathbf{R}}
+\newcommand{\vS}{\mathbf{S}}
+\newcommand{\vT}{\mathbf{T}}
+\newcommand{\vU}{\mathbf{U}}
+\newcommand{\vV}{\mathbf{V}}
+\newcommand{\vW}{\mathbf{W}}
+\newcommand{\vX}{\mathbf{X}}
+\newcommand{\vY}{\mathbf{Y}}
+\newcommand{\vZ}{\mathbf{Z}}
+
+% Greek
+\newcommand{\valpha}{\boldsymbol{\alpha}}
+\newcommand{\vbeta}{\boldsymbol{\beta}}
+\newcommand{\vgamma}{\boldsymbol{\gamma}}
+\newcommand{\vdelta}{\boldsymbol{\delta}}
+\newcommand{\vepsilon}{\boldsymbol{\epsilon}}
+\newcommand{\vzeta}{\boldsymbol{\zeta}}
+\newcommand{\veta}{\boldsymbol{\eta}}
+\newcommand{\vtheta}{\boldsymbol{\theta}}
+\newcommand{\viota}{\boldsymbol{\iota}}
+\newcommand{\vkappa}{\boldsymbol{\kappa}}
+\newcommand{\vlambda}{\boldsymbol{\lambda}}
+\newcommand{\vmu}{{\boldsymbol\mu}}
+\newcommand{\vnu}{\boldsymbol{\nu}}
+\newcommand{\vxi}{\boldsymbol{\xi}}
+\newcommand{\vomicron}{\boldsymbol{\omicron}}
+\newcommand{\vpi}{\boldsymbol{\pi}}
+\newcommand{\vrho}{\boldsymbol{\rho}}
+\newcommand{\vsigma}{\boldsymbol{\sigma}}
+\newcommand{\vtau}{\boldsymbol{\tau}}
+\newcommand{\vupsilon}{\boldsymbol{\upsilon}}
+\newcommand{\vphi}{\boldsymbol{\phi}}
+\newcommand{\vchi}{\boldsymbol{\chi}}
+\newcommand{\vpsi}{\boldsymbol{\psi}}
+\newcommand{\vomega}{\boldsymbol{\omega}}
+\newcommand{\vAlpha}{\boldsymbol{\Alpha}}
+\newcommand{\vBeta}{\boldsymbol{\Beta}}
+\newcommand{\vGamma}{\boldsymbol{\Gamma}}
+\newcommand{\vDelta}{\boldsymbol{\Delta}}
+\newcommand{\vEpsilon}{\boldsymbol{\Epsilon}}
+\newcommand{\vZeta}{\boldsymbol{\Zeta}}
+\newcommand{\vEta}{\boldsymbol{\Eta}}
+\newcommand{\vTheta}{\boldsymbol{\Theta}}
+\newcommand{\vIota}{\boldsymbol{\Iota}}
+\newcommand{\vKappa}{\boldsymbol{\Kappa}}
+\newcommand{\vLambda}{\boldsymbol{\Lambda}}
+\newcommand{\vMu}{{\boldsymbol\Mu}}
+\newcommand{\vNu}{\boldsymbol{\Nu}}
+\newcommand{\vXi}{\boldsymbol{\Xi}}
+\newcommand{\vOmicron}{\boldsymbol{\Omicron}}
+\newcommand{\vPi}{\boldsymbol{\Pi}}
+\newcommand{\vRho}{\boldsymbol{\Rho}}
+\newcommand{\vSigma}{\boldsymbol{\Sigma}}
+\newcommand{\vTau}{\boldsymbol{\Tau}}
+\newcommand{\vUpsilon}{\boldsymbol{\Upsilon}}
+\newcommand{\vPhi}{\boldsymbol{\Phi}}
+\newcommand{\vChi}{\boldsymbol{\Chi}}
+\newcommand{\vPsi}{\boldsymbol{\Psi}}
+\newcommand{\vOmega}{\boldsymbol{\Omega}}
+
+%% Special Vectors
+\newcommand{\vzero}{\mathbf{0}}
+\newcommand{\vone}{\mathbf{1}}
+
+%% Special Matrices
+\newcommand{\eye}{\mathbf{I}}
+
+%% Matrix ops
+\newcommand{\transpose}{\mathsf{T}}
+\newcommand{\sign}{\mathrm{sign}}
+
+%% Mathcals
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calQ}{\mathcal{Q}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calU}{\mathcal{U}}
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calW}{\mathcal{W}}
+\newcommand{\calX}{\mathcal{X}}
+\newcommand{\calY}{\mathcal{Y}}
+\newcommand{\calZ}{\mathcal{Z}}
+
+%% Blackboard bolds
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+
+\def\T{\textbf{T}}
+\def\F{\textbf{F}}
+\def\NOT{\texttt{NOT}}
+\def\AND{\texttt{AND}}
+\def\OR{\texttt{OR}}
+\def\XOR{\texttt{XOR}}
+\def\XNOR{\texttt{XNOR}}
+
+\def\limply{\Rightarrow}
+\def\lxor{\ \texttt{XOR}\ }
+\def\lxnor{\ \texttt{XNOR}\ }
+\def\lentails{\vDash}
+\def\lnentails{\nvDash}
+
+\def\R{\mathbb{R}}
+\def\B{\mathbb{B}}
+\def\N{\mathbb{N}}
+
+% TODOs -----------------------------
+
+\newcommand\todo[1]{\textcolor{red}{#1}}
