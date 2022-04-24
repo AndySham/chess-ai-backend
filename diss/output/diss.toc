@@ -15,7 +15,7 @@
 \contentsline {subsection}{\numberline {2.5.1}Learning Conjunctions}{8}{subsection.2.5.1}%
 \contentsline {subsection}{\numberline {2.5.2}Learning Arbitrary Functions}{8}{subsection.2.5.2}%
 \contentsline {section}{\numberline {2.6}Alternative Frameworks}{8}{section.2.6}%
-\contentsline {subsection}{\numberline {2.6.1}Alternative Applications of Real Logic}{8}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.1}Alternative Applications of Real Logic}{9}{subsection.2.6.1}%
 \contentsline {subsection}{\numberline {2.6.2}Embedded Logic and Relations}{9}{subsection.2.6.2}%
 \contentsline {subsection}{\numberline {2.6.3}Bayesian Models and Probabilistic Logic}{9}{subsection.2.6.3}%
 \contentsline {chapter}{\numberline {3}Application to Complex Problems}{11}{chapter.3}%

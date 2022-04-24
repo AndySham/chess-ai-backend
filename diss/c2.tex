@@ -147,6 +147,8 @@ Another consideration when comparing different logics is the phenomenon of ``par
 
 \todo{SGD vs Adam analysis}
 
+\todo{Logical Dropout? In training, to regularise such that parameters are as crisp as possible, we randomly alter activations with some probability $p$ to $0$ or $1$ depending on proximity.}
+
 \section{Comparison with Traditional Methods}
 
 There are many well known algorithms for efficiently learning classical boolean functions $\phi : \{0,1\}^K \to \{0,1\}$ given prior knowledge of about $\phi$ restricting it to a given family. Such algorithms often make logical inferences to determine the proper state of boolean parameters $\vw$, with complexity guarantees that can be described within the Probably Approximately Correct (PAC) learning framework \cite{clt}. We will compare such algorithms to their equivalents in differentiable real logic, and hope for results as good, if not better, given an ideal optimisation regime. 
