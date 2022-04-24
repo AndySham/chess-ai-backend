@@ -1,25 +1,50 @@
-\chapter{A Chess Architecture}
+\documentclass[conference]{report}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bbm, dsfont}
+\usepackage{centernot}
+\usepackage{basic}
+\begin{document}
 
-Now that we have shown that real logic methods are adept at learning more complex problems when paired with classical MLP methods in mixed models, we want to begin tackling the problem of learning Chess. 
+\bibliographystyle{plain}
 
-Chess is a famous problem within AI research, often used to demonstrate the effectiveness of new methods in learning adversarial games. Classical methods iteratively descend through a game tree, applying some heuristic evaluation to the state of a game's board when computation resources no longer allow for further descent. These heuristic evaluations are then composed back up using the min-max algorithm to form more refined evaluations of the states immediately following the current, allowing the AI to take the path which it has calculated has the best future result. Stockfish \cite{stockfish} uses such a method with heuristics defined by expert domain knowledge. Forks also exist where the heuristic is a pre-trained neural network with an exceedingly large feature space \cite{nnue}. State-of-the-art methods \cite{alphazero}, \cite{leela} instead perform Monte Carlo Tree Search (MCTS), where random paths through game states are traversed, and the excepted result of all paths starting from a given state represents it's evaluation. Paths are weighted based on a heuristic representing the policy of both the current and opposing player, and the learning process involves altering this heuristic to maximise the expected result of the current state. 
+\def\custop#1{{\mspace{4mu}#1\mspace{4mu}}}
+\def\concat{\custop{@}}
 
-All the above methods have developed far beyond human capabilities, so any algorithm we derive in this chapter need not attempt to match this quality. The aim is to develop an algorithm which is superior to a substantial proportion of human players, built in a real logic architecture to allow for model interpretation. 
+\title{\LARGE Designing Interpretable Chess Engines Using Neurosymbolic Methods}
 
-\section{Learning Procedure}
+\maketitle
+\thispagestyle{plain}
+\pagestyle{plain}
 
-We will use a mixed model similar to that of MNIST. The difference in this model will be that rather than treating the output features of $\psi$ as a probability distribution of categories, we will simply take a weighted linear combination of said features. The overall model will look like so;
-$$M(\vx) = \sigma \circ m_2 \circ \psi \circ \sigma \circ m_1(\vx)$$
-where $m_2$ has no hidden layers. Chess states will be encoded as a series of bitboards \cite{bitboard}, appended with all other relevant information to game state. Notably we do not include a history of moves, which are required to determine any loss by repetition, so this may affect the quality of play in certain scenarios.
+\begin{abstract}
+The problem of interpretability in DNNs is classically a hard one, as the parameterisation of perceptron layers is hard to intuit. This paper uses neurosymbolic methods, namely Logical Neural Networks (LNNs), which encode boolean values using Real Logic, to construct an interpretable model for use cases which are easily modelled by logical statements, and applies this architecture to the problem of learning Chess.  
+\end{abstract}
 
-The process we use to learn Chess will not involve any kind of tree search. We instead simplify the problem by sampling evaluations from an existing model, namely Stockfish \cite{stockfish}, and performing supervised learning over input-output pairs. It is therefore unlikely that our model will outperform Stockfish, but our goal is to relearn the output of Stockfish in an interpretable manner. Input board states are sampled from human games taken from the lichess.org open database \cite{lichess}. 
+\tableofcontents
 
-Stockfish evaluations are not elements of $\bbR$. If the process can determine that with optimal decisions, the current player can guarantee a win (known as ``mate-in-$N$'', if the longest winning path one may have to take has length $N$), then evaluations are given as strings ``M$N$". We map such strings to elements of $\bbR$ with large absolute value, so that comparisons between board states can be preserved. This proves to be problematic, however, as the distribution of outputs reflects a mixed gaussian distribution with vastly different variances. Any noise in the learnt output may overpower values from the tighter distribution, resulting in a low signal-to-noise ratio. This is not ideal, as we will measure the effectiveness of our model by it's learnt policy, and decreased SNR may often result in move choices that do not reflect optimal strategies. To resolve this, we map the Stockfish evaluations through a sigmoid layer $\sigma$.
+\pagebreak
 
-\section{Results}
+\include{c1.tex}
+\include{c2.tex} 
+\include{c3.tex}
+\include{c4.tex}
 
-\todo{Implement, show loss convergence}
+\chapter{Conclusions}
+ 
 
-\todo{Attempt to describe learnt policy}
+\bibliography{bib}
 
-\todo{If there is time, connect with Lichess.org and show final ELO}
+
+%\begin{thebibliography}{1}
+%\bibitem {gradientattribute}
+%\href{run:https://link.springer.com/chapter/10.1007/978-3-030-28954-6_9}{Ancona M., Ceolini E., Öztireli C., Gross M. (2019) Gradient-Based Attribution Methods. \emph{Explainable AI: Interpreting, Explaining and Visualizing Deep Learning.} Lecture Notes in Computer Science, vol 11700. Springer, Cham. https://doi.org/10.1007/978-3-030-28954-6\_9}
+
+%\bibitem {xnn}
+%\href{run:https://link.springer.com/chapter/10.1007/978-3-030-28954-6_9}{J. Vaughan, A. Sudjianto, E. Brahimi, J. Chen, V. Nair. Explainable Neural Networks based on Additive Index Models. arXiv:1806.01933}
+
+%\end{thebibliography}
+\end{document}
