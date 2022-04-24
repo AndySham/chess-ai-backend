@@ -1,5 +1,15 @@
 \begin{thebibliography}{10}
 
+\bibitem{lichess}
+lichess.org open database.
+\newblock \url{https://database.lichess.org/}.
+\newblock Accessed: 2022-04-24.
+
+\bibitem{stockfish}
+Stockfish - open source chess engine.
+\newblock \url{https://stockfishchess.org/blog/2022/stockfish-15/}.
+\newblock Accessed: 2022-04-24.
+
 \bibitem{neuraladditive}
 Rishabh Agarwal, Levi Melnick, Nicholas Frosst, Xuezhou Zhang, Ben Lengerich,
   Rich Caruana, and Geoffrey~E Hinton.
@@ -34,6 +44,12 @@ Supriyo Chakraborty, Richard Tomsett, Ramya Raghavendra, Daniel Harborne,
 Hanxiong Chen, Shaoyun Shi, Yunqi Li, and Yongfeng Zhang.
 \newblock Neural collaborative reasoning.
 \newblock In {\em Proceedings of the Web Conference 2021}. {ACM}, apr 2021.
+
+\bibitem{mnist}
+Li~Deng.
+\newblock The mnist database of handwritten digit images for machine learning
+  research.
+\newblock {\em IEEE Signal Processing Magazine}, 29(6):141--142, 2012.
 
 \bibitem{symbolicaibad}
 Hubert~L Dreyfus.
@@ -96,6 +112,17 @@ Christoph Molnar, Giuseppe Casalicchio, and Bernd Bischl.
 \newblock In {\em Interpretable Machine Learning -- A Brief History,
   State-of-the-Art and Challenges}. Springer International Publishing, 2020.
 
+\bibitem{nnue}
+Yu~Nasu.
+\newblock Efficiently updatable neural-network-based evaluation functions for
+  computer shogi.
+\newblock {\em The 28th World Computer Shogi Championship Appeal Document},
+  2018.
+
+\bibitem{leela}
+{Pascutto, Gian-Carlo and Linscott, Gary}.
+\newblock Leela chess zero.
+
 \bibitem{diffilpGT}
 Ali Payani and Faramarz Fekri.
 \newblock Inductive logic programming via differentiable deep neural logic
@@ -119,6 +146,13 @@ Ryan Riegel, Alexander Gray, Francois Luus, Naweed Khan, Ndivhuwo Makondo,
 \newblock Logical neural networks.
 \newblock {\em arXiv preprint arXiv:2006.13155}, 2020.
 
+\bibitem{bitboard}
+Pablo~San Segundo, Ramon Galan, Fernando Matia, Diego Rodriguez-Losada, and
+  Agustin Jimenez.
+\newblock Efficient search using bitboard models.
+\newblock In {\em 2006 18th IEEE International Conference on Tools with
+  Artificial Intelligence (ICTAI'06)}, pages 132--138, 2006.
+
 \bibitem{ltn2016}
 Luciano Serafini and Artur~d'Avila Garcez.
 \newblock Logic tensor networks: Deep learning and logical reasoning from data
@@ -128,6 +162,13 @@ Luciano Serafini and Artur~d'Avila Garcez.
 Shaoyun Shi, Hanxiong Chen, Weizhi Ma, Jiaxin Mao, Min Zhang, and Yongfeng
   Zhang.
 \newblock Neural logic reasoning, 2020.
+
+\bibitem{alphazero}
+David Silver, Thomas Hubert, Julian Schrittwieser, Ioannis Antonoglou, Matthew
+  Lai, Arthur Guez, Marc Lanctot, Laurent Sifre, Dharshan Kumaran, Thore
+  Graepel, Timothy Lillicrap, Karen Simonyan, and Demis Hassabis.
+\newblock Mastering chess and shogi by self-play with a general reinforcement
+  learning algorithm, 2017.
 
 \bibitem{analyzefuzzy}
 Emile {van Krieken}, Erman Acar, and Frank {van Harmelen}.
