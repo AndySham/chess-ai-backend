@@ -1,6 +1,6 @@
-This is BibTeX, Version 0.99d (TeX Live 2021)
+This is BibTeX, Version 0.99d (TeX Live 2022)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
-The top-level auxiliary file: output/diss.aux
+The top-level auxiliary file: __latexindent_temp.aux
 The style file: plain.bst
 A level-1 auxiliary file: c1.aux
 A level-1 auxiliary file: c2.aux
@@ -8,7 +8,7 @@ A level-1 auxiliary file: c3.aux
 A level-1 auxiliary file: c4.aux
 Database file #1: bib.bib
 Warning--entry type for "leela" isn't style-file defined
---line 319 of file bib.bib
+--line 326 of file bib.bib
 Warning--to sort, need author or key in stockfish
 Warning--to sort, need author or key in lichess
 Warning--can't use both author and editor fields in gradientattribute
@@ -17,45 +17,45 @@ Warning--empty title in interpretdeepmodels
 Warning--empty publisher in gordon2014probabilistic
 Warning--empty publisher in ilp
 Warning--empty title in interpretbook
-You've used 34 entries,
+You've used 35 entries,
             2118 wiz_defined-function locations,
-            663 strings with 9423 characters,
-and the built_in function-call counts, 11335 in all, are:
-= -- 1023
-> -- 686
+            667 strings with 9545 characters,
+and the built_in function-call counts, 11575 in all, are:
+= -- 1046
+> -- 699
 < -- 8
-+ -- 274
-- -- 238
-* -- 758
-:= -- 1887
-add.period$ -- 96
-call.type$ -- 34
-change.case$ -- 210
++ -- 279
+- -- 242
+* -- 770
+:= -- 1932
+add.period$ -- 99
+call.type$ -- 35
+change.case$ -- 215
 chr.to.int$ -- 0
-cite$ -- 42
-duplicate$ -- 408
-empty$ -- 857
-format.name$ -- 238
-if$ -- 2358
+cite$ -- 43
+duplicate$ -- 418
+empty$ -- 874
+format.name$ -- 242
+if$ -- 2406
 int.to.chr$ -- 0
-int.to.str$ -- 34
-missing$ -- 32
-newline$ -- 163
-num.names$ -- 64
-pop$ -- 322
+int.to.str$ -- 35
+missing$ -- 33
+newline$ -- 168
+num.names$ -- 66
+pop$ -- 327
 preamble$ -- 1
-purify$ -- 186
+purify$ -- 190
 quote$ -- 0
-skip$ -- 307
+skip$ -- 315
 stack$ -- 0
-substring$ -- 429
-swap$ -- 89
+substring$ -- 434
+swap$ -- 90
 text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 120
+type$ -- 124
 warning$ -- 8
-while$ -- 85
-width$ -- 36
-write$ -- 334
+while$ -- 87
+width$ -- 37
+write$ -- 344
 (There were 9 warnings)

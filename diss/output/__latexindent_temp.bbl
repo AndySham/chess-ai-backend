@@ -80,6 +80,11 @@ Michael~J Kearns and Umesh Vazirani.
 \newblock {\em An introduction to computational learning theory}.
 \newblock MIT press, 1994.
 
+\bibitem{adam}
+Diederik~P Kingma and Jimmy Ba.
+\newblock Adam: A method for stochastic optimization.
+\newblock {\em arXiv preprint arXiv:1412.6980}, 2014.
+
 \bibitem{tnorms}
 Erich~Peter Klement, Radko Mesiar, and Endre Pap.
 \newblock {\em Triangular norms}, volume~8.

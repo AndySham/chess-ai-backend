@@ -73,6 +73,38 @@ It can be shown that the axioms as we have defined them allow for an infinite fa
 \end{center}
 \todo{Add more logics - Drastic, Nilpotent, Schweizer–Sklar, Hamacher, Yager}
 
+Figures \ref{fig:conjplots} shows more visually how some of these logics behave.
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/fuzzy_min_and.png}
+        \caption{Minimum}
+        \label{fig:minconj}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/fuzzy_prod_and.png}
+        \caption{Product}
+        \label{fig:prodconj}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/fuzzy_luk_and.png}
+        \caption{Łukasiewicz}
+        \label{fig:lukconj}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.2\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/fuzzy_dra_and.png}
+        \caption{Drastic}
+        \label{fig:draconj}
+    \end{subfigure}
+       \caption{Conjunction over various fuzzy logics. Note how pointwise gradients differ.}
+       \label{fig:conjplots}
+\end{figure}
+
 \section{General Architectures}
 
 Now that we have explicit definitions for boolean-like algebras in the domain $[0,1]$, we can begin to formulate how we may learn in this setting.
@@ -111,11 +143,39 @@ The framework we have given is very general, and does not specify what real logi
 
 In \cite{analyzefuzzy}, the problem of satisfiability over $\phi(a,b,c) = (a \land b) \lor (c \land \lnot a)$ is considered. We compare the convergence of $a, b, c$ \footnote{In practice, we actually consider satisfiability over parameters $a, b, c \in \bbR$ mapped into $[0,1]$ with a sigmoid function, as we want to converge to parameters in the appropriate bounds.} over each logic, given randomly initialised starting parameters.
 
-The following graphs show the convergence of loss for \todo{?} randomly generated initialisations of the parameters $a, b, c$. Convergence to $0$ represents finding a satisfying assignment, whereas anything else represents a failure to do so.
+Figure \ref{fig:toyconv} show convergence for 1000 uniformly sampled random initialisations of the parameters $a, b, c$, using Adam optimisation \cite{adam} with a learning rate of $10^{-1}$. Convergence to $1$ represents finding a satisfying assignment, whereas anything else represents a failure to do so.
 
-\todo{Add reproduction of \cite{analyzefuzzy} for many logics}
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/toyconv_min.png}
+        \caption{Minimum}
+        \label{fig:toymin}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/toyconv_prod.png}
+        \caption{Product}
+        \label{fig:toyprod}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/toyconv_luk.png}
+        \caption{Łukasiewicz}
+        \label{fig:toyluk}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/toyconv_dra.png}
+        \caption{Drastic}
+        \label{fig:toydra}
+    \end{subfigure}
+       \caption{Convergence of toy problem $\phi(a,b,c) = (a \land b) \lor (c \land \lnot a)$ for various fuzzy logics.}
+       \label{fig:toyconv}
+\end{figure}
 
-We see that the choice of logic has a very profound impact on the convergence. \todo{Add description of results}
+We see that the choice of logic has a profound impact on the convergence. \todo{Add description of results}
 
 \subsection{Incorrect Gradients}
 
