@@ -456,4 +456,198 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/local/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: 
+Package hyperref Info: Link coloring OFF on input line 10.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count313
+)
+LaTeX Info: Redefining \ref on input line 10.
+LaTeX Info: Redefining \pageref on input line 10.
+LaTeX Info: Redefining \nameref on input line 10.
+ (output/__latexindent_temp.out) (output/__latexindent_temp.out)
+\@outlinefile=\write3
+\openout3 = `__latexindent_temp.out'.
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 500.484pt, 56.9055pt)
+* v-part:(T,H,B)=(56.9055pt, 681.15898pt, 56.9055pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=500.484pt
+* \textheight=681.15898pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-52.36449pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 20.
+(/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 20.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+
+LaTeX Warning: No \author given.
+
+[1
+
+{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.25 \end{abstract}
+                    [1] (output/__latexindent_temp.toc)
+\tf@toc=\write4
+\openout4 = `__latexindent_temp.toc'.
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.30 
+      [1
+
+]
+\openout2 = `c1.aux'.
+
+ (./c1.tex
+Chapter 1.
+[2
+
+
+]) [3]
+\openout2 = `c2.aux'.
+
+ (./c2.tex
+Chapter 2.
+[4
+
+
+
+
+]
+<imgs/fuzzy_min_and.png, id=201, 341.275pt x 341.275pt>
+File: imgs/fuzzy_min_and.png Graphic file (type png)
+<use imgs/fuzzy_min_and.png>
+Package pdftex.def Info: imgs/fuzzy_min_and.png  used on input line 82.
+(pdftex.def)             Requested size: 100.09526pt x 100.09201pt.
+<imgs/fuzzy_prod_and.png, id=203, 341.275pt x 341.275pt>
+File: imgs/fuzzy_prod_and.png Graphic file (type png)
+<use imgs/fuzzy_prod_and.png>
+Package pdftex.def Info: imgs/fuzzy_prod_and.png  used on input line 88.
+(pdftex.def)             Requested size: 100.09526pt x 100.09201pt.
+<imgs/fuzzy_luk_and.png, id=204, 341.275pt x 341.275pt>
+File: imgs/fuzzy_luk_and.png Graphic file (type png)
+<use imgs/fuzzy_luk_and.png>
+Package pdftex.def Info: imgs/fuzzy_luk_and.png  used on input line 94.
+(pdftex.def)             Requested size: 100.09526pt x 100.09201pt.
+<imgs/fuzzy_dra_and.png, id=205, 341.275pt x 341.275pt>
+File: imgs/fuzzy_dra_and.png Graphic file (type png)
+<use imgs/fuzzy_dra_and.png>
+Package pdftex.def Info: imgs/fuzzy_dra_and.png  used on input line 100.
+(pdftex.def)             Requested size: 100.09526pt x 100.09201pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[5] [6 <./imgs/fuzzy_min_and.png> <./imgs/fuzzy_prod_and.png> <./imgs/fuzzy_luk_and.png> <./imgs/fuzzy_dra_and.png>]
+<imgs/toyconv_min.png, id=227, 387.4475pt x 262.9825pt>
+File: imgs/toyconv_min.png Graphic file (type png)
+<use imgs/toyconv_min.png>
+Package pdftex.def Info: imgs/toyconv_min.png  used on input line 152.
+(pdftex.def)             Requested size: 225.21626pt x 152.86702pt.
+<imgs/toyconv_prod.png, id=228, 387.4475pt x 262.9825pt>
+File: imgs/toyconv_prod.png Graphic file (type png)
+<use imgs/toyconv_prod.png>
+Package pdftex.def Info: imgs/toyconv_prod.png  used on input line 158.
+(pdftex.def)             Requested size: 225.21626pt x 152.86702pt.
+<imgs/toyconv_luk.png, id=229, 387.4475pt x 262.9825pt>
+File: imgs/toyconv_luk.png Graphic file (type png)
+<use imgs/toyconv_luk.png>
+Package pdftex.def Info: imgs/toyconv_luk.png  used on input line 164.
+(pdftex.def)             Requested size: 225.21626pt x 152.86702pt.
+<imgs/toyconv_dra.png, id=230, 401.5pt x 262.9825pt>
+File: imgs/toyconv_dra.png Graphic file (type png)
+<use imgs/toyconv_dra.png>
+Package pdftex.def Info: imgs/toyconv_dra.png  used on input line 170.
+(pdftex.def)             Requested size: 225.21626pt x 147.52199pt.
+ [7 <./imgs/toyconv_min.png> <./imgs/toyconv_prod.png> <./imgs/toyconv_luk.png> <./imgs/toyconv_dra.png>] [8] [9]) [10]
+\openout2 = `c3.aux'.
+
+ (./c3.tex
+Chapter 3.
+) [11
+
+
+
+
+]
+\openout2 = `c4.aux'.
+
+ (./c4.tex
+Chapter 4.
+[12
+
+
+
+
+]) [13]
+Chapter 5.
+(output/__latexindent_temp.bbl [14
+
+
+
+] [15
+
+]) [16] (output/__latexindent_temp.aux (output/c1.aux) (output/c2.aux) (output/c3.aux) (output/c4.aux))
+Package rerunfilecheck Info: File `__latexindent_temp.out' has not changed.
+(rerunfilecheck)             Checksum: 0C5798FBC440A487BCFC0302DD533166;4249.
+ ) 
+Here is how much of TeX's memory you used:
+ 15374 strings out of 478233
+ 245405 string characters out of 5843844
+ 553470 words of memory out of 5000000
+ 33255 multiletter control sequences out of 15000+600000
+ 485649 words of font info for 88 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 82i,9n,91p,1359b,527s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on output/__latexindent_temp.pdf (18 pages, 758560 bytes).
+PDF statistics:
+ 452 PDF objects out of 1000 (max. 8388607)
+ 366 compressed objects within 4 object streams
+ 84 named destinations out of 1000 (max. 500000)
+ 241 words of extra memory for PDF output out of 10000 (max. 10000000)
+
