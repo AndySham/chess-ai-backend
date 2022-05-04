@@ -63,7 +63,7 @@ def take_rand_n(xs, n, dim=-1):
     xs = xs.transpose(dim, -1)
     idxs = keepidx(xs.shape, n=n, dim=-1)
     vals = xs[idxs]
-    vals = vals.reshape(*xs.shape[:-1], n)
+    vals = vals.reshape(*xs.shape[:-1], -1)
     return vals.transpose(dim, -1)
 
 
@@ -136,7 +136,10 @@ class FuzzySignedAxisOp(nn.Module):
         self._logic = logic
         self.weights = FuzzyParam((in_features, out_features))
         self.signs = FuzzyParam((in_features, out_features))
-        self.keepn = keepn
+        self._keepn = keepn
+
+    def keepn(self):
+        return self._keepn if self.training else None
 
 
 class FuzzySignedConjunction(FuzzySignedAxisOp):
@@ -146,8 +149,8 @@ class FuzzySignedConjunction(FuzzySignedAxisOp):
         signs = self.signs.value()
         pre_drop = self._logic.implies(weights, self._logic.bin_xnor(input, signs))
         post_drop = (
-            take_rand_n(pre_drop, self.keepn, dim=-2)
-            if self.keepn is not None
+            take_rand_n(pre_drop, self.keepn(), dim=-2)
+            if self.keepn() is not None
             else pre_drop
         )
         return self._logic.conjoin(post_drop, dim=1)
@@ -160,8 +163,8 @@ class FuzzySignedDisjunction(FuzzySignedAxisOp):
         signs = self.signs.value()
         pre_drop = self._logic.bin_conjoin(weights, self._logic.bin_xnor(input, signs))
         post_drop = (
-            take_rand_n(pre_drop, self.keepn, dim=-2)
-            if self.keepn is not None
+            take_rand_n(pre_drop, self.keepn(), dim=-2)
+            if self.keepn() is not None
             else pre_drop
         )
         return self._logic.disjoin(post_drop, dim=1)
@@ -174,7 +177,10 @@ class FuzzyUnsignedAxisOp(nn.Module):
         super().__init__()
         self._logic = logic
         self.weights = FuzzyParam((in_features, out_features))
-        self.keepn = keepn
+        self._keepn = keepn
+
+    def keepn(self):
+        return self._keepn if self.training else None
 
 
 class FuzzyUnsignedConjunction(FuzzyUnsignedAxisOp):
@@ -183,8 +189,8 @@ class FuzzyUnsignedConjunction(FuzzyUnsignedAxisOp):
         weights = self.weights.value()
         pre_drop = self._logic.implies(weights, input)
         post_drop = (
-            take_rand_n(pre_drop, self.keepn, dim=-2)
-            if self.keepn is not None
+            take_rand_n(pre_drop, self.keepn(), dim=-2)
+            if self.keepn() is not None
             else pre_drop
         )
         return self._logic.conjoin(post_drop, dim=1)
@@ -196,8 +202,8 @@ class FuzzyUnsignedDisjunction(FuzzyUnsignedAxisOp):
         weights = self.weights.value()
         pre_drop = self._logic.bin_conjoin(weights, input)
         post_drop = (
-            take_rand_n(pre_drop, self.keepn, dim=-2)
-            if self.keepn is not None
+            take_rand_n(pre_drop, self.keepn(), dim=-2)
+            if self.keepn() is not None
             else pre_drop
         )
         return self._logic.disjoin(post_drop, dim=1)

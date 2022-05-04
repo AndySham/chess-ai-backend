@@ -1,6 +1,6 @@
-This is BibTeX, Version 0.99d (TeX Live 2021)
+This is BibTeX, Version 0.99d (TeX Live 2022)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
-The top-level auxiliary file: output/diss.aux
+The top-level auxiliary file: diss.aux
 The style file: plain.bst
 A level-1 auxiliary file: c1.aux
 A level-1 auxiliary file: c2.aux
@@ -19,7 +19,7 @@ Warning--empty publisher in ilp
 Warning--empty title in interpretbook
 You've used 35 entries,
             2118 wiz_defined-function locations,
-            667 strings with 9531 characters,
+            667 strings with 9517 characters,
 and the built_in function-call counts, 11575 in all, are:
 = -- 1046
 > -- 699

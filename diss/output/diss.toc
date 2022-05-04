@@ -15,11 +15,11 @@
 \contentsline {subsection}{\numberline {2.5.1}Learning Conjunctions}{8}{subsection.2.5.1}%
 \contentsline {subsection}{\numberline {2.5.2}Learning Arbitrary Functions}{9}{subsection.2.5.2}%
 \contentsline {section}{\numberline {2.6}Alternative Frameworks}{9}{section.2.6}%
-\contentsline {subsection}{\numberline {2.6.1}Alternative Applications of Real Logic}{9}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.1}Alternative Applications of Real Logic}{10}{subsection.2.6.1}%
 \contentsline {subsection}{\numberline {2.6.2}Embedded Logic and Relations}{10}{subsection.2.6.2}%
 \contentsline {subsection}{\numberline {2.6.3}Bayesian Models and Probabilistic Logic}{10}{subsection.2.6.3}%
-\contentsline {chapter}{\numberline {3}Application to Complex Problems}{11}{chapter.3}%
-\contentsline {chapter}{\numberline {4}A Chess Architecture}{12}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Learning Procedure}{12}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Results}{13}{section.4.2}%
-\contentsline {chapter}{\numberline {5}Conclusions}{14}{chapter.5}%
+\contentsline {chapter}{\numberline {3}Application to Complex Problems}{12}{chapter.3}%
+\contentsline {chapter}{\numberline {4}A Chess Architecture}{13}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Learning Procedure}{13}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Results}{14}{section.4.2}%
+\contentsline {chapter}{\numberline {5}Conclusions}{15}{chapter.5}%
