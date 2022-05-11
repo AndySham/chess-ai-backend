@@ -75,6 +75,12 @@ Petr H{\'a}jek.
 \newblock {\em Metamathematics of fuzzy logic}, volume~4.
 \newblock Springer Science \& Business Media, 2013.
 
+\bibitem{dropout}
+Geoffrey~E. Hinton, Nitish Srivastava, Alex Krizhevsky, Ilya Sutskever, and
+  Ruslan~R. Salakhutdinov.
+\newblock Improving neural networks by preventing co-adaptation of feature
+  detectors, 2012.
+
 \bibitem{clt}
 Michael~J Kearns and Umesh Vazirani.
 \newblock {\em An introduction to computational learning theory}.

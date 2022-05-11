@@ -7,6 +7,7 @@
 \usepackage{bbm, dsfont}
 \usepackage{centernot}
 \usepackage{basic}
+\usepackage{titlesec}
 \begin{document}
 
 \bibliographystyle{plain}
@@ -33,7 +34,17 @@ The problem of interpretability in DNNs is classically a hard one, as the parame
 \include{c3.tex}
 \include{c4.tex}
 
+
 \chapter{Conclusions}
+
+\appendix
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}% <- font for label "Appendix A", default \huge
+  {\chaptertitlename\ \thechapter}
+  {20pt}
+  {\Large}
+
+\include{a1.tex}
  
 
 \bibliography{bib}

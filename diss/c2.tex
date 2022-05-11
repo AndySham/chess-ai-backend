@@ -51,29 +51,28 @@ We can likewise define negation simply by $\lnot : x \mapsto 1 - x$. In the fuzz
 It can be shown that the axioms as we have defined them allow for an infinite family of possible real logics. Some examples are given below;
 
 \begin{center}
-\begin{tabular}{ c | c c c c }
-    Logic & $\land$ & $\lor$ & $\forall$ & $\exists$ \\    
+\begin{tabular}{ c | c c }
+    Logic & $\forall$ & $\exists$ \\    
     \hline
     Minimum 
-    & $\min\{a,b\}$ 
-    & $\max\{a,b\}$ 
     & $\min\{ x_1, \dots, x_N \}$ 
     & $\max\{ x_1, \dots, x_N \}$ \\ 
     Product 
-    & $ab$
-    & $1 - (1 - a)(1 - b)$
     & $\prod_ix_i$
     & $1 - \prod_{i}(1-x_i)$ \\
     Łukasiewicz
-    & $\max\{a+b-1, 0\}$ 
-    & $\min\{a+b, 1\}$ 
     & $\max\{\sum_ix_i - N + 1, 0\}$ 
     & $\min\{\sum_ix_i, 1\}$ \\
+    Schweizer-Sklar
+    & $\max\{\sum_ix^p_i - N + 1, 0\}^\frac{1}{p}$ 
+    & $\min\{N-\sum_i(1-x_i)^p, 1\}^\frac{1}{p}$ \\
+    Yager
+    & $\max\{1 - (\sum_i(1-x_i)^p)^\frac{1}{p}, 0\}$ 
+    & $\min\{(\sum_ix^p_i)^\frac{1}{p}$, 1\} \\
 \end{tabular}
 \end{center}
-\todo{Add more logics - Drastic, Nilpotent, Schweizer–Sklar, Hamacher, Yager}
 
-Figures \ref{fig:conjplots} shows more visually how some of these logics behave.
+The examples are expressed as conjunctions of $N$ variables, not just 2. $p$ in the table above is a hyperparameter. Figures \ref{fig:conjplots} shows more visually how some of these logics behave.
 
 \begin{figure}[h]
     \centering
@@ -106,6 +105,7 @@ Figures \ref{fig:conjplots} shows more visually how some of these logics behave.
 \end{figure}
 
 \section{General Architectures}
+\label{section:fuzzyloss}
 
 Now that we have explicit definitions for boolean-like algebras in the domain $[0,1]$, we can begin to formulate how we may learn in this setting.
 
@@ -113,7 +113,7 @@ We first need to consider what problems we may want to solve. A basic problem is
 
 We can consider this as a continuous optimisation problem with $\vx$ as a parameter. We can extend $\phi$ to the real domain $[0,1]$ by extending each operator in $\phi$ when expressed in the language of first-order logic. Then, by performing SGD as normal, we aim to minimise the loss function $\ell(\vx) = \lnot\phi(\vx)$.
 
-To match the power of classical MLPs, we also want to be able to learn optimal \textit{functions} $\phi$. Suppose we have a dataset $\{(\vx_i, y_i)\}_{i=1}^N$ where $\forall i, \phi(\vx_i) = y_i$ for some formula $\phi : \{0,1\}^K  \rightarrow \{0,1\}$ which need not have a known representation in classical first-order logic. Further suppose we have a function $\psi : \{0,1\}^{K+P} \rightarrow \{0,1\}$ expressed in first-order logic such that for some $\vw \in \{0,1\}^P$, $\phi(\vx) = \psi(\vx, \vw)$. We consider $\vw$ a parameter here, and optimise for loss $\ell(\vx, y; \vw) = y \lxnor \psi(\vx, \vw)$. Extending $\psi$ to real logic as standard allows us to use continuous optimisation methods to do so. $\bbE_{\vx}[\ell(\vx, \phi(\vx); \vw)] = 0 \iff \psi(\vx, \vw) = \phi(\vx)$ for all $\vx \in \{0,1\}^K$, so the above algorithm is correct.
+To match the power of classical MLPs, we also want to be able to learn optimal \textit{functions} $\phi$. Suppose we have a dataset $\{(\vx_i, y_i)\}_{i=1}^N$ where $\forall i, \phi(\vx_i) = y_i$ for some formula $\phi : \{0,1\}^K  \rightarrow \{0,1\}$ which need not have a known representation in classical first-order logic. Further suppose we have a function $\psi : \{0,1\}^{K+P} \rightarrow \{0,1\}$ expressed in first-order logic such that for some $\vw \in \{0,1\}^P$, $\phi(\vx) = \psi(\vx, \vw)$. We consider $\vw$ a parameter here, and optimise for loss $\ell(\vx, y; \vw) = y \lxor \psi(\vx, \vw)$. In practice, we optimise for loss $\ell(\vx, y; \vw) = (y \lxor \psi(\vx, \vw))^a$, for some exponent $a \in [2,\infty)$, to aid in convergence, as will be shown later. Extending $\psi$ to real logic as standard allows us to use continuous optimisation methods to do so. $\bbE_{\vx}[\ell(\vx, \phi(\vx); \vw)] = 0 \iff \psi(\vx, \vw) = \phi(\vx)$ for all $\vx \in \{0,1\}^K$, so the above algorithm is correct.
 
 It is very feasible to find expressive enough $\psi$, as it can be shown that every boolean function $\phi$ can be expressed in a number of standard forms - Disjunctive Normal Form (DNF), and Conjunctive Normal Form (CNF), being two notable ones. To fit these two representations into the framework we have described, we need to be able to express how every variable $x$ is represented in each normal form by appending appropriate parameter variables $w$.
 
@@ -135,7 +135,7 @@ $$
 \end{aligned}
 $$
 
-In both cases, we can construct a function $\psi$ with $M$ and $S$ as parameters, and optimise over these parameters as before. Here $W \in\bbN$ is a hyperparameter which specifies the number of conjunctions (or disjunctions) in the function family $\psi$. Naturally, the larger $W$ is, the more expressive $\psi$ can be, and we know that $W = 2^K$ is enough to capture all possible functions $\phi$. This very closely parallels the Universal Approximation Theorem (UAT) of MLPs with one hidden layer.
+In both cases, we can construct a function $\psi$ with $M$ and $S$ as parameters, and optimise over these parameters as before. Here $W \in\bbN$ is a hyperparameter which specifies the number of conjunctions (or disjunctions) in the function family $\psi$. Naturally, the larger $W$ is, the more expressive $\psi$ can be, and we know that $W = 2^K$ is enough to capture all possible functions $\phi$. This very closely parallels the Universal Approximation Theorem (UAT) of MLPs with one hidden layer. It also very closely mirrors the concept of ``reducing induction to satisfiability'' seen in many ILP systems \cite{diffilp}.
 
 \section{Analysis of a Toy Problem}
 
@@ -143,7 +143,7 @@ The framework we have given is very general, and does not specify what real logi
 
 In \cite{analyzefuzzy}, the problem of satisfiability over $\phi(a,b,c) = (a \land b) \lor (c \land \lnot a)$ is considered. We compare the convergence of $a, b, c$ \footnote{In practice, we actually consider satisfiability over parameters $a, b, c \in \bbR$ mapped into $[0,1]$ with a sigmoid function, as we want to converge to parameters in the appropriate bounds.} over each logic, given randomly initialised starting parameters.
 
-Figure \ref{fig:toyconv} show convergence for 1000 uniformly sampled random initialisations of the parameters $a, b, c$, using Adam optimisation \cite{adam} with a learning rate of $10^{-1}$. Convergence to $1$ represents finding a satisfying assignment, whereas anything else represents a failure to do so.
+Figure \ref{fig:toyconv} show convergence of the output of $\phi$ for 1000 uniformly sampled random initialisations of the parameters $a, b, c$ in the interval $(0,1)$, using Adam optimisation \cite{adam} with a learning rate of $10^{-1}$. Convergence to $1$ represents finding a satisfying assignment, whereas anything else represents a failure to do so.
 
 \begin{figure}[h]
     \centering
@@ -175,33 +175,16 @@ Figure \ref{fig:toyconv} show convergence for 1000 uniformly sampled random init
        \label{fig:toyconv}
 \end{figure}
 
-We see that the choice of logic has a profound impact on the convergence. \todo{Add description of results}
-
-\subsection{Incorrect Gradients}
-
-It is notable that some initialisations fail to converge at all. This was also observed in \cite{analyzefuzzy}, and is very much a cause for concern. We would expect all initialisations to work, even if some converge slower than others. To investigate further, we explicitly sample observations for the gradient estimator of each parameter, to see if this can help us diagnose the issue.
-
-\todo{Add gradient sampling tests}
-
-\todo{Add gradient sampling analysis - ``leaky'' gradients}
-
-By explicitly deriving the gradients for a given logic, we may begin to diagnose why this may be the case.
-
-\todo{Derivation of gradients for product logic}
-
-We see that this problem may be resolved by choosing a distribution of inputs that necessarily has the right sign for the expected gradient estimator. This, however, is not ideal. We would like to have a framework which provably converges in \textit{all} cases, regardless of the distribution of inputs. 
+We see that the choice of logic has a profound impact on the convergence. Minimum and Product logic both reliably find a satisfying assignment of $\phi$ regardless of initialisation. Łukasiewicz logic finds a satisfying assignment in many instances, but very often fails to optimise at all. Drastic logic (somewhat obviously) never finds a satisfying assignment, regardless of initialisation.
 
 \subsection{Vanishing Gradients}
+\label{section:tnormzerograd}
 
-The tests further show that a majority of gradient samples are precisely $0$. It is natural that some observations would not allow us to make any meaningful inferences about the optimal values of each variable, especially in cases where the proportion of satisfying inputs is incredibly small. We observe however, that different choices of logic result in different proportions of vanishing gradient observations.
+The tests show that a majority of gradient samples are precisely $0$. It is natural that some observations would not allow us to make any meaningful inferences about the optimal values of each variable, especially in cases where the proportion of satisfying inputs is incredibly small. We observe however, that different choices of logic result in different proportions of vanishing gradient observations.
 
-To explain this, we must discuss the nature of conjunction in each logic. The most apt example is that of Łukasiewicz logic, as for $a, b \in [0,1]$ such that $a + b - 1 < 0$, the pointwise gradient of binary conjugation $\land$ is precisely $0$. This means that a full $\frac{1}{2}$ of all possible input arguments (uniformly distributed) give no meaningful inference. Aggregating over $K$ variables, this generalises to a proportion of $1 - \frac{1}{K!}$ inputs having vanishing gradients, which is very obviously not ideal.
+To explain this, we must discuss the nature of conjunction in each logic. The most apt example is that of Łukasiewicz logic, as for $a, b \in [0,1]$ such that $a + b - 1 < 0$, the pointwise gradient of binary conjunction $\land$ is precisely $0$. This means that a full $\frac{1}{2}$ of all possible input arguments (uniformly distributed) give no meaningful inference. Aggregating over $K$ variables, this generalises to a proportion of $1 - \frac{1}{K!}$ inputs having vanishing gradients, which is very obviously not ideal.
 
-Therefore, in this framework, we prefer to use logics such that $\land$ has non-vanishing gradient almost everywhere. Minimum and Product logics satisfy this condition, along with certain parameterisations of the Schweizer–Sklar, Hamacher and Yager logics.
-
-\subsection{Other Gradient Concerns}
-
-Another consideration when comparing different logics is the phenomenon of ``partial'' vanishing gradients. The minimum logic is the best example of such - as over the entire domain, the partial derivative of conjugation is non-zero for precisely one input. This means that convergence is very \textit{binarized}, meaning only one parameter is optimised at each step. This may also have an effect on convergence, as optimisation potentially only occurs for a small subset of parameters at each step, but this may also help to remedy some of the causes of the ``leaky'' gradient problem.
+Therefore, in this framework, we prefer to use logics such that $\land$ has non-vanishing gradient almost everywhere. Minimum and Product logics satisfy this condition, along with certain parameterisations of the Schweizer–Sklar and Yager logics.
 
 \subsection{Possible Resolutions}
 
@@ -209,7 +192,7 @@ Another consideration when comparing different logics is the phenomenon of ``par
 
 \todo{Logical Dropout? In training, to regularise such that parameters are as crisp as possible, we randomly alter activations with some probability $p$ to $0$ or $1$ depending on proximity.}
 
-\section{Comparison with Traditional Methods}
+\section{Learning Functions}
 
 There are many well known algorithms for efficiently learning classical boolean functions $\phi : \{0,1\}^K \to \{0,1\}$ given prior knowledge of about $\phi$ restricting it to a given family. Such algorithms often make logical inferences to determine the proper state of boolean parameters $\vw$, with complexity guarantees that can be described within the Probably Approximately Correct (PAC) learning framework \cite{clt}. We will compare such algorithms to their equivalents in differentiable real logic, and hope for results as good, if not better, given an ideal optimisation regime. 
 
@@ -229,31 +212,219 @@ for $y_i \in \{x_1, \dots, x_K, \lnot x_1, \dots, \lnot x_K\}$. If for some $j$,
 As discussed previously, we can model the same thing in real logic by introducing weight and sign parameters $\vm$ and $\vs$, 
 $$\psi(\vx; \vm, \vs) = \forall i,\ 1 \leq i \leq K,\ m_i \limply (x_i \lxor s_i)$$
 
-and optimising $\vm$ and $\vs$.
+and optimising $\vm$ and $\vs$. In the following, for initial simplicity, we set $\vs = 0$ (i.e. we assume no signs $\lnot$.) 
 
-Results using this architecture are not promising.
+We aim to learn conjunctions by randomly initialising values $\vm$, before minimising the loss given in Section \ref{section:fuzzyloss}. We vary many aspects of this model, including conjunction size $D$, number of present terms $N$, choice of fuzzy logic, optimiser and learning rate.
+
+Results using this architecture are not promising.  Figure \ref{fig:conjconvnokeepn} shows convergence of the average distance of a parameter from it's optimal (i.e. correct) value, using an Adam optimiser with a learning rate of $10^{-2}$, when learning unsigned conjunctions. Each test is run several times, with the convergence of each run plotted on the graph. We see that for low dimensionality, convergence is quite fast, whereas minimal changes occur with dimensionality any higher than 100. This is of course an issue.
 
 \begin{figure}[h]
     \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{imgs/conj-pmd-prod-nokeepn-1t.png}
-        \caption{1-term conjugation}
+        \caption{1-term conjunction}
         \label{fig:conjconvnokeepn1}
     \end{subfigure}
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{imgs/conj-pmd-prod-nokeepn-5t.png}
-        \caption{5-term conjugation}
+        \caption{5-term conjunction}
         \label{fig:conjconvnokeepn5}
     \end{subfigure}
-       \caption{Convergence of mean distance from optimal parameters in learning conjugations using Product logics.}
+       \caption{Convergence of mean distance from optimal parameters when learning conjunctions in the Product logic. Each test is run 10 times.}
        \label{fig:conjconvnokeepn}
 \end{figure}
 
+\subsection{Vanishing Gradients}
+\label{section:prodvanishgradient}
+
+To determine why this happens, we need only observe the induced gradient of the network. It is well known that a large family of T-norms can be constructed using what is known as an \textit{additive generator}, that is, a function $f$ associated with a given logic, such that $a \land b = f^{-1}(\min\{f(a) + f(b),f(0)\})$. This definition allows us to also say $\forall i, x_i = f^{-1}(\min\{\sum_i f(x_i),f(0)\})$. Some additive generators have $f(x) \rightarrow \infty$ as $x \rightarrow 0$, and in these cases $a \land b = f^{-1}(f(a) + f(b))$ for $a, b \neq 0$.
+
+Suppose $\sum_i f(x_i) \leq f(0)$ (which is trivially satisfied if $\lim_{x\rightarrow 0}f(x) = \infty$). Then;
+
+$$
+\begin{aligned}
+\forall i, x_i 
+&= f^{-1}(\sum_i f(x_i)) \text{, so} \\
+\frac{\partial}{\partial x_j} \forall i, x_i 
+&= \frac{
+f'(x_j)
+}{
+f'(f^{-1}(\sum_i f(x_i)))
+} \\
+&= \frac{
+f'(x_j)
+}{
+f'(\forall i, x_i )
+}
+\end{aligned}
+$$
+
+Some examples of additive generators, as well as explicit values for the derivative above, are given in the following table. Note that if $\sum_i f(x_i) > f(0)$, all gradients are vanishing.
+
+\begin{center}
+    \begin{tabular}{ c | c c }
+        Logic & $f(x)$ & $\frac{\partial}{\partial x_j} \forall i, x_i$ \\    
+        \hline
+        Product 
+        & $-\log x$
+        & $\prod_{i \neq j} x_i$ \\
+        Łukasiewicz
+        & $1 - x$ 
+        & $1$ \\
+        Schweizer-Sklar
+        & $\frac{1-x^p}{p}$ 
+        & $\left(\frac{x_j}{\forall i, x_i}\right)^{p-1}$ \\
+        Yager
+        & $(1-x)^p$ 
+        & $\left(\frac{1-x_j}{1-\forall i, x_i}\right)^{p-1}$ \\
+    \end{tabular}
+\end{center}
+
+The Minimum logic has no additive generator. From the table, the influence of dimensionality now becomes apparent. 
+
+Suppose each aggregate conjunction $\forall i, x_i$ is over $D$ variables. In the product logic, if the $x_i$ are independently uniformly distributed in $[0,1]$, $\bbE\left[\frac{\partial}{\partial x_j} \forall i, x_i\right] = \bbE\left[\prod_{i \neq j} x_i \right] = 2^{D-1}$. Thus the total derivative $\nabla_\forall$ has expected magnitude $\bbE\left[\lVert \nabla_\forall \rVert_2\right] \leq \bbE\left[\sum_j \frac{\partial}{\partial x_j} \forall i, x_i \right] = D2^{D-1}$. With high dimensionality $D$, the gradients quickly degrade.
+
+Other T-norms do not suffer this same issue. For example, Łukasiewicz logic has a gradient of $1$ in every dimension when the function is non-vanishing, however we have shown previously in Section \ref{section:tnormzerograd} that the proportion of vanishing inputs is it's own curse of dimensionality. Minimum logic has constant $\left[\lVert \nabla_\forall \rVert_2\right] = 1$, however we will see later that there are still issues with the gradient. In Appendix \ref{section:ssbounds}, we derive explicit bounds that show that Schweizer-Sklar logic is a good comprimise between all these problems.
+
+\subsection{Architectural Improvements}
+
+To fix the problem described in the previous section, in \cite{analyzefuzzy}, the authors propose a method whereby only a subset of dimensions are conjoined during training passes. Fixing the size of this subset to a number less than 100 should allow for the mitigation of any dimensionality effects on convergence, as we are only optimising this subset of parameters at any one time. This does result in a biased gradient estimator, as we are ignoring many inputs, but in practice this shows to broaden the space of problems that can be solved using this method. This method can be seen as analogous to the common ``dropout" method in traditional neural networks, used to reduce overfitting during training \cite{dropout}. 
+
+We will refer to this method as the \textit{subset optimisation}. Results for conjoining only 50 inputs at a time, chosen at random, are shown in Figure \ref{fig:conjconvkeepn}. We see that this extends the viability of this method to much larger dimensionalities than was previously possible, even when using the Product logic, which we know to not be ideal.
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.30\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/conj-pmd-prod-keep50-1t.png}
+        \caption{1-term conjunction}
+        \label{fig:conjconvkeepn1}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.30\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/conj-pmd-prod-keep50-5t.png}
+        \caption{5-term conjunction}
+        \label{fig:conjconvkeepn5}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.30\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/conj-pmd-prod-keep50-20t.png}
+        \caption{20-term conjunction}
+        \label{fig:conjconvkeepn20}
+    \end{subfigure}
+       \caption{Convergence of mean distance from optimal parameters when learning conjunctions in the Product logic, with the size-50 subset optimisation.}
+       \label{fig:conjconvkeepn}
+\end{figure}
+
+\subsection{Class Imbalance and Parameter Crispness}
+
+In Figure \ref{fig:conjconvkeepn}, we notably see that, whilst applying the subset optimisation makes scaling the dimension of a conjunction viable, what is not viable is increasing the size of the number of terms in the conjunction. If a boolean function is a conjunction of $N$ terms, only a fraction of $2^{-N}$ of all possible inputs will be satisfying. Thus, our learning becomes exponentially worse with increasing $N$. There is not much we can do to resolve this in the case of learning conjunctions, as this problem affects even classical algorithms. This does mean, however, that this architecture could still be considered viable for other problems.
+
+\subsection{Optimising for Interpretability}
+
+An interesting finding is that the model is actually a very inaccurate output predictor, regardless of optimisation. Figure \ref{fig:conjconvcorr} shows the convergence of the proportion of outputs and parameters respectively, that when mapped to either 0 or 1 (by closest distance), are the correct classical boolean values. We see that while the proportion of correct outputs converges quite quickly, the proportion of correct outputs suffer. Of note is that, for $N \geq 100$, the proportion of correct outputs does not meaningfully differ through optimisation. The stagnant proportion is also somewhat around $1 - 2^{-5} \approx 0.968$, which suggests that the output only ever evaluates to false, as this $2^{-5}$ represents the proportion of true outputs for conjunctions of 5 terms. 
+
+This is not surprising, as we have just discussed how this model poorly approximates the true crisp parameterisations $0,1$ - suppose that we have correct parameterisations for every term, but with a distance of 0.25 from crisp values $0, 1$. In product logic, $0.25 \limply 0 = 0.75$, whereas in classical logic this would round to $0 \limply 0 = 1$. taking the product over a number of such terms that increases linearly with $N$ gives us an upper bound of $O(0.75^N)$ for the actual output. Since randomly sampled input bits generally have a proportion of bits with value $0$ close to $\frac{N}{2}$, most outputs are guaranteed to be $0$. 
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/conj-co-prod-keep50-5t.png}
+        \caption{Proportion of Correct Outputs}
+        \label{fig:conjconvcorrout}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/conj-cp-prod-keep50-5t.png}
+        \caption{Proportion of Correct Parameters}
+        \label{fig:conjconvcorrparam}
+    \end{subfigure}
+       \caption{Convergence of proportion of correct outputs and parameters, for conjunctions of 5 terms.}
+       \label{fig:conjconvcorr}
+\end{figure}
+
+We can thus interpret this optimisation regime as optimising not for necessarily for output correctness, but for parameter interpretability. Collapsing the fuzzy booleans to crisp values give us a correct and interpretable solution to the problem.
+
+\subsection{Empiric Comparison of Logics}
+
+In the above tests, we focus only on variations of the architecture using a fixed product logic. We also see that the choice of logic, again, has a profound affect on convergence. Figure \ref{fig:conjconvlogics} shows the convergence plots for various metrics over various logics.
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/conj-cp-100dim-keep50-5t.png}
+        \caption{Proportion of correct parameters for $D=100$}
+        \label{fig:conjconvcpd100}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/conj-pmd-100dim-keep50-5t.png}
+        \caption{Mean distance of parameters from optimum for ${D=100}$}
+        \label{fig:conjconvpmdd100}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/conj-cp-10000dim-keep50-5t.png}
+        \caption{Proportion of correct parameters for $D=10000$}
+        \label{fig:conjconvcpd10000}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/conj-pmd-10000dim-keep50-5t.png}
+        \caption{Mean distance of parameters from optimum for ${D=10000}$}
+        \label{fig:conjconvpmdd10000}
+    \end{subfigure}
+       \caption{Convergence over various logics.}
+       \label{fig:conjconvlogics}
+\end{figure}
+
+\begin{wrapfigure}[12]{r}{0.45\linewidth}
+    \centering
+    \vspace{-35.0pt}
+    \includegraphics[width=0.30\textwidth, height=0.30\textwidth]{imgs/fuzzy_ss-2_and.png}
+    \vspace{-10.0pt}
+    \caption[width=0.3\textwidth]{Schweizer-Sklar T-norm ($b=-2$)}
+    \label{fig:ssand}
+\end{wrapfigure}
+
+The plots show that, as in \ref{fig:toyconv}, Lukasiewicz logic fails even with the discussed optimisations. 
+
+Minimum logic is not far behind - while Figure \ref{fig:conjconvcpd100} shows the proportion of correct parameters increasing gradually for $D=100$, this proportion does not improve whatsoever for $D=10000$. This may be due to the fact that in Minimum logic, only one input variable to a conjunction has non-zero gradient at a time, as can be seen in Figure \ref{fig:minconj}. This restriction does not allow the optimisation regime to traverse the parameter space in an efficient manner. \cite{analyzefuzzy} refers to this problem as the \textit{binarization} of gradients.
+
+We have already mentioned in \ref{section:prodvanishgradient} that Product logic suffers it's own curse of dimensionality, and we can see this in how it initially has poor convergence in Figure \ref{fig:conjconvcpd10000}. However, as parameters are optimised, the all inputs to the conjunction approach 1, and thus the gradients increase in value. This results in a quickening in convergence rate around 40 epochs, before finally plateauing.
+
+We also see the Schweizer-Sklar logic performs very efficiently, as the bounds derived in Appendix \ref{section:ssbounds} predict. What is interesting to note is that, for $p=0$, Schweizer-Sklar logic is precisely the Product logic, and for $p=-\infty$, it is precisely the Minimum logic. We can therefore also interpret Schweizer-Sklar (with a parameter $p=-2$ as used in the tests) as being a ``middle ground'' between the two logics. 
+
+Of note is that, as we can see in Figure \ref{fig:conjconvpmdd10000}, Product logic still outperforms Schweizer-Sklar logic in the ``crispness'' of it's learnt real parameters, as the former converges to an average distance considerably lower than that of the latter. 
+
+\subsection{Biased Gradient Estimation}
+
+Optimal values for any such conjunction problem are always within crisp values $\{0,1\}$. The results of \ref{fig:conjconvpmdd100} and \ref{fig:conjconvpmdd10000} are therefore surprising, as they show that the mean distance from optimal parameters are not 0, but a small non-zero value, regardless of initial parameters or choice of logic. This suggests a bias in the gradient estimator produced through backpropagating our model. Further evidence to this claim is given when comparing the convergence of any metric when using an Adam optimiser, compared with using standard SGD optimisation. Figure \ref{fig:conjsgdvsadam} shows that much of the power of the above techniques relies on Adam optimisation - SGD, regardless of any architectural improvements, cannot replicate the same results. No improvement is observed whatsoever for dimensions $D=100$ or above.
 
 
-\todo{Add analysis, e.g. gradient stuff}
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/conj-pmd-prod-keep50-5t.png}
+        \caption{Adam optimisation}
+        \label{fig:conjadam}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/conj-pmd-prod-keep50-5t-sgd.png}
+        \caption{Standard stochastic gradient descent}
+        \label{fig:conjsgd}
+    \end{subfigure}
+       \caption{Convergence of mean distance from optimal parameters when learning conjunctions under differing optimisation regimes, using the Product logic with the subset conjunction architecture improvement.}
+       \label{fig:conjsgdvsadam}
+\end{figure}
+
+This compels us to sample the gradient estimator, to determine the source of this error.
 
 \subsection{Learning Arbitrary Functions}
 
@@ -277,7 +448,7 @@ One common feature of many of the architectures we have not yet discussed is tha
 
 \subsection{Alternative Applications of Real Logic}
 
-As mentioned previously, classical symbolic approaches to AI research involve the use of ILP systems. A formal description of an ILP system is one which can solve problems of the following form. Given some background knowledge $B$ of the world of objects $O$ in the form of a logical statement, and new observations of \textit{positive and negative examples} $E^+$ and $E^-$, expressed as conjugations of \textit{ground literals} (e.g. $\textsc{isGreen}(o), \lnot \textsc{areFriends}(a,b)$), we aim to find some hypothesis statement $h$ such that $B \land h$ satisfies all new observations. Formally, we require \textit{sufficiency} $B \land h \lentails E^+$, and \textit{consistency} $B \land h \land E^- \lnentails \F$ of the constructed $h$.
+As mentioned previously, classical symbolic approaches to AI research involve the use of ILP systems. A formal description of an ILP system is one which can solve problems of the following form. Given some background knowledge $B$ of the world of objects $O$ in the form of a logical statement, and new observations of \textit{positive and negative examples} $E^+$ and $E^-$, expressed as conjunctions of \textit{ground literals} (e.g. $\textsc{isGreen}(o), \lnot \textsc{areFriends}(a,b)$), we aim to find some hypothesis statement $h$ such that $B \land h$ satisfies all new observations. Formally, we require \textit{sufficiency} $B \land h \lentails E^+$, and \textit{consistency} $B \land h \land E^- \lnentails \F$ of the constructed $h$.
 
 Our current real logic framework solves a real relaxation of the ILP problem where $E^+$ and $E^-$ are all instances of the same unary predicate. There exist differentiable real logic solvers for general ILP problems \cite{diffilp}, \cite{diffilpGT}. Such implementations improve on classical ILP methods as they are robust to noisy data while still being adept at pattern finding.
 
@@ -295,7 +466,7 @@ Further, \cite{embeddedgoogle} suggests that not only should objects be embedded
 
 Another approach which could be considered a continuous relaxation of classical logic is in modelling boolean values as distributions over deterministic values $\{\T, \F\}$. Bayesian methods are well studied for this application, with many efficient methods existing for learning the distributions of random variables expressed in terms of a random field. Probabilistic programming languages \cite{gordon2014probabilistic} are able to describe such problems over Bayesian Networks in an highly interpretable manner. Learning probability distributions over the parameter space $\vw$ may prove a more interpretable solution, and further may solve some of the convergence issues seen due to many problems being non-convex. If we interpret real booleans $[0,1]$ as parameters of a Bernoulli distribution over values $\{\T, \F\}$, we can analogize real logic models using the product logic to modelling a random field such that all parameters $\vw$ are independent of each other. In this interpretation, we see that using general Bayesian models increases the expressivity of our model by introducing dependencies between parameters $\vw$. Arbitrary dependencies can be modelled using Normalizing Flows \cite{normalizingflows}.
 
-Bayesian methods are very general, and many approaches exist which are specialised for uses in logic. Bayesian networks are restrictive as they model variable dependencies as a Directed Acyclic Graph (DAG), whereas many dependencies in logic are cyclic (most notably the relation $\iff$). Markov Networks describe dependencies between random variables as edges in a graph, meaning that any two variables that are not adjacant are conditionally independent. These are used to capture logical inferences in the popular Markov Logic Network (MLN) model \cite{markovlogicnetworks}, which corresponds logical atoms to vertices, and formulae to cliques in the graph. Probabilistic Soft Logic \cite{probsoftlogic} further develops on this by introducing a PPL to describe instances of a model similar to MLNs, which can be used to better interpret the results of learning using such methods.
+Bayesian methods are very general, and many approaches exist which are specialised for uses in logic. Bayesian networks are restrictive as they model variable dependencies as a Directed Acyclic Graph (DAG), whereas many dependencies in logic are cyclic (most notably the relation $\iff$). Markov Networks describe dependencies between random variables as edges in a graph, meaning that any two variables that are not adjacent are conditionally independent. These are used to capture logical inferences in the popular Markov Logic Network (MLN) model \cite{markovlogicnetworks}, which corresponds logical atoms to vertices, and formulae to cliques in the graph. Probabilistic Soft Logic \cite{probsoftlogic} further develops on this by introducing a PPL to describe instances of a model similar to MLNs, which can be used to better interpret the results of learning using such methods.
 
 
 

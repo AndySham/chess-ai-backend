@@ -1,5 +1,6 @@
 import torch
 from torch import nn, Tensor
+import torch.nn.functional as F
 from model.logic import Logic
 
 from util import match_shapes, recursive_binop, shuffle
@@ -14,7 +15,7 @@ def cosine_similarity(a, b, alpha=3):
 
 
 class EmbedLogic(Logic):
-    def __init__(self, embed_dims: int):
+    def __init__(self, embed_dims: int, calculate_reg=True):
         super().__init__()
         self.embed_dims = embed_dims
 
@@ -22,26 +23,36 @@ class EmbedLogic(Logic):
         self._and = EmbedAND(self)
         self._or = EmbedOR(self)
 
+        self.calculate_reg = calculate_reg
         self._reg = torch.tensor(0.0)
         self.zero_reg()
 
-    def T(self):
+    @property
+    def device(self):
+        return self._reg.device
+
+    def T(self, device='cpu'):
         t = torch.zeros(self.embed_dims)
         t[0] = 1.0
-        return t
+        return t.to(device)
 
-    def F(self):
-        return self.neg_no_reg(self.T())
+    def F(self, device='cpu'):
+        return self.neg_no_reg(self.T(device=device))
 
     def encode(self, input: Tensor):
-        return torch.where(input.bool().unsqueeze(-1), self.T(), self.F())
+        return torch.where(
+            input.bool().unsqueeze(-1), 
+            self.T(device=input.device), 
+            self.F(device=input.device)
+        )
 
     def decode(self, output: Tensor):
-        ws = torch.stack(
-            (cosine_similarity(output, self.T()), cosine_similarity(output, self.F()))
-        )
-        ws = torch.softmax(ws, dim=0)
-        return ws[0]
+        ws = torch.cat((
+            cosine_similarity(output, self.T(device=output.device)).unsqueeze(-1), 
+            cosine_similarity(output, self.F(device=output.device)).unsqueeze(-1)
+        ), dim=-1)
+        ws = torch.softmax(ws, dim=-1)
+        return ws[..., 0]
 
     def _matrix_shape(self, input: Tensor):
         matrix_shape = [1 for _ in range(len(input.shape) + 1)]
@@ -58,7 +69,8 @@ class EmbedLogic(Logic):
         last_dim = len(input.shape) - 1
         if dim == last_dim:
             raise IndexError("Cannot apply binary operation over embedding dimension.")
-        shuffled = shuffle(input, dim, fix_dim=(last_dim,))
+        #shuffled = shuffle(input, dim, fix_dim=(last_dim,))
+        shuffled = input[(*((slice(None),)*dim), torch.randperm(input.size(dim)))]
         return recursive_binop(shuffled, binop, dim)
 
     def conjoin(self, xs: Tensor, dim: int) -> Tensor:
@@ -86,10 +98,12 @@ class EmbedLogic(Logic):
         return self._reg
 
     def add_reg(self, reg):
+        self._reg = self._reg.to(reg.device)
         self._reg += reg
 
     def zero_reg(self):
-        self._reg = torch.tensor(0.0)
+        with torch.no_grad():
+            self._reg = torch.tensor(0.0).to(self._reg.device)
 
 
 class EmbedOp(nn.Module):
@@ -110,13 +124,14 @@ class EmbedUnaryOp(EmbedOp):
         super().__init__(logic)
         embed_dims = logic.embed_dims
 
-        self.w_1 = nn.Parameter(
-            torch.rand((embed_dims, embed_dims)), requires_grad=True
+        self.model = nn.Sequential(
+            nn.Linear(embed_dims, embed_dims),
+            nn.Linear(embed_dims, embed_dims, bias=False)
         )
-        self.w_2 = nn.Parameter(
-            torch.rand((embed_dims, embed_dims)), requires_grad=True
-        )
-        self.b_1 = nn.Parameter(torch.rand((embed_dims)), requires_grad=True)
+
+    @property
+    def device(self):
+        return self.w_1.device
 
     def f(self, a_0):
         if a_0.shape[-1] != self.logic.embed_dims:
@@ -125,29 +140,18 @@ class EmbedUnaryOp(EmbedOp):
                 % self.logic.embed_dims
             )
 
-        matrix_shape = self.logic._matrix_shape(a_0)
-        w_1 = self.w_1.view(*matrix_shape)
-        w_2 = self.w_2.view(*matrix_shape)
-
-        bias_shape = self.logic._bias_shape(a_0)
-        b_1 = self.b_1.view(*bias_shape)
-
-        a_0 = a_0.unsqueeze(-1)
-        z_1 = (a_0 * w_1).sum(-2) + b_1
-        a_1 = torch.relu(z_1)
-        a_1 = a_1.unsqueeze(-1)
-        z_2 = (a_1 * w_2).sum(-2)
-        return z_2
+        return self.model(a_0)
 
     def forward(self, a_0):
         output = self.f(a_0)
-        self.logic.add_reg(self.logic_reg(a_0))
+        if self.logic.calculate_reg:
+            self.logic.add_reg(self.logic_reg(a_0))
         return output
 
 
 class EmbedNOT(EmbedUnaryOp):
     def logic_reg(self, a_0):
-        T = self.logic.T()
+        T = self.logic.T(a_0.device)
         r_1 = cosine_similarity(a_0, self.f(a_0))
         r_1_ = cosine_similarity(T, self.f(T))
         r_2 = 1 - cosine_similarity(a_0, self.f(self.f(a_0)))
@@ -159,16 +163,10 @@ class EmbedBinaryOp(EmbedOp):
         super().__init__(logic)
         embed_dims = logic.embed_dims
 
-        self.w_1_1 = nn.Parameter(
-            torch.rand((embed_dims, embed_dims)), requires_grad=True
-        )
-        self.w_1_2 = nn.Parameter(
-            torch.rand((embed_dims, embed_dims)), requires_grad=True
-        )
-        self.w_2 = nn.Parameter(
-            torch.rand((embed_dims, embed_dims)), requires_grad=True
-        )
-        self.b_1 = nn.Parameter(torch.rand((embed_dims)), requires_grad=True)
+        self.l1_1 = nn.Linear(embed_dims, embed_dims)
+        self.l1_2 = nn.Linear(embed_dims, embed_dims)
+        self.l2 = nn.Linear(embed_dims, embed_dims, bias=False)
+
 
     def f(self, a_0_1, a_0_2):
         if (
@@ -180,40 +178,22 @@ class EmbedBinaryOp(EmbedOp):
                 % self.logic.embed_dims
             )
 
-        if len(a_0_1.shape) == 1:
-            a_0_1 = a_0_1.view(*[1 for _ in range(len(a_0_2.shape) - 1)], -1)
-        elif len(a_0_2.shape) == 1:
-            a_0_2 = a_0_2.view(*[1 for _ in range(len(a_0_1.shape) - 1)], -1)
-
-        a_0_1, a_0_2 = match_shapes(a_0_1, a_0_2)
-
-        matrix_shape = self.logic._matrix_shape(a_0_1)
-        w_1_1 = self.w_1_1.view(*matrix_shape)
-        w_1_2 = self.w_1_2.view(*matrix_shape)
-        w_2 = self.w_2.view(*matrix_shape)
-
-        bias_shape = self.logic._bias_shape(a_0_1)
-        b_1 = self.b_1.view(*bias_shape)
-
-        a_0_1 = a_0_1.unsqueeze(-1)
-        a_0_2 = a_0_2.unsqueeze(-1)
-        z_1 = (a_0_1 * w_1_1).sum(-2) + (a_0_2 * w_1_2).sum(-2) + b_1
-        a_1 = torch.relu(z_1)
-        a_1 = a_1.unsqueeze(-1)
-        z_2 = (a_1 * w_2).sum(-2)
-        return z_2
+        z_1 = self.l1_1(a_0_1) + self.l1_2(a_0_2)
+        z_2 = self.l2(z_1)
+        return z_2#F.normalize(z_2, dim=-1) 
 
     def forward(self, a_0_1, a_0_2):
         output = self.f(a_0_1, a_0_2)
-        self.logic.add_reg(self.logic_reg(a_0_1))
-        self.logic.add_reg(self.logic_reg(a_0_2))
+        if self.logic.calculate_reg:
+            self.logic.add_reg(self.logic_reg(a_0_1))
+            self.logic.add_reg(self.logic_reg(a_0_2))
         return output
 
 
 class EmbedAND(EmbedBinaryOp):
     def logic_reg(self, a_0):
-        T = self.logic.T()
-        F = self.logic.F()
+        T = self.logic.T(a_0.device)
+        F = self.logic.F(a_0.device)
         r_3 = 1 - cosine_similarity(self.f(a_0, T), a_0)
         r_4 = 1 - cosine_similarity(self.f(a_0, F), F)
         r_5 = 1 - cosine_similarity(self.f(a_0, a_0), a_0)
@@ -223,8 +203,8 @@ class EmbedAND(EmbedBinaryOp):
 
 class EmbedOR(EmbedBinaryOp):
     def logic_reg(self, a_0):
-        T = self.logic.T()
-        F = self.logic.F()
+        T = self.logic.T(a_0.device)
+        F = self.logic.F(a_0.device)
         r_7 = 1 - cosine_similarity(self.f(a_0, T), T)
         r_8 = 1 - cosine_similarity(self.f(a_0, F), a_0)
         r_9 = 1 - cosine_similarity(self.f(a_0, a_0), a_0)

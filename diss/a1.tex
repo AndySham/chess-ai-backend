@@ -1,0 +1,34 @@
+\chapter{Bounds on the gradient of Schweizer-Sklar conjunction}
+\label{section:ssbounds}
+
+In Section \ref{section:prodvanishgradient}, we observe that conjunctions in the Product logic heavily suffer from the curse of dimensionality, as the gradient estimator quickly vanishes with large $D$. The following are lower bounds on the magnitude of conjunction gradients in Schweizer-Sklar logic, to demonstrate that the use of such logic improves upon that of the Product logic.
+
+As mentioned in \ref{section:prodvanishgradient}, the partial derivative of conjunction in this logic (wherever $\forall i, x_i$ is non-vanishing) is given by;
+$$\frac{\partial}{\partial x_j} \forall i, x_i = \left(\frac{x_j}{\forall i, x_i}\right)^{p-1}$$
+
+We focus on logics where $p < -1$. In this region, Schweizer-Sklar logic never vanishes, as the additive generator $f$ is unbounded.
+$$
+\begin{aligned}
+\lVert \nabla_\forall \rVert_1
+&= \sum_{i=1}^n \left(\frac{x_j}{\forall i, x_i}\right)^{p-1} \\
+&= (\forall i, x_i)^{1-p}\sum_{i=1}^nx_j^{p-1} \\
+&= \left[\sum_ix_i^p-D+1\right]^\frac{1-p}{p}\sum_{i=1}^nx_j^{p-1} \text{, as Schweizer-Sklar logic is not vanishing for } p < 0 \\
+&\geq \left[\sum_ix_i^p\right]^\frac{1-p}{p}\sum_{i=1}^nx_j^{p-1} \text{, as } p < 0 \\
+&= \left(\frac{\left[\sum_ix_i^p\right]^\frac{1}{p}}{\left[\sum_ix_i^{p-1}\right]^\frac{1}{p-1}}\right)^{1-p} \\
+&= \left(\frac{\left[\sum_i(x_i^{-1})^{1-p}\right]^\frac{1}{1-p}}{\left[\sum_i(x_i^{-1})^{-p}\right]^\frac{1}{-p}}\right)^{1-p} \\
+&= \left(\frac{\lVert \vx^{-1} \rVert_{1-p}}{\lVert \vx^{-1} \rVert_{-p}}\right)^{1-p} \\
+\end{aligned}
+$$
+
+As $p < -1$, both $1-p, p > 1$, thus both terms above are valid $p$-norms.
+
+Since $1 - p > -p$, by a consequence of Hölder's inequality, we have that $\lVert \vx \rVert_{1-p} \leq \lVert \vx \rVert_{-p} \leq D^{\frac{1}{-p} - \frac{1}{1-p}} \lVert \vx \rVert_{1-p}$.
+
+So $D^{\frac{1}{p}-\frac{1}{p-1}} \leq \frac{\lVert \vx^{-1} \rVert_{1-p}}{\lVert \vx^{-1} \rVert_{-p}}$.
+
+So $D^\frac{1}{p} \leq \left(\frac{\lVert \vx^{-1} \rVert_{1-p}}{\lVert \vx^{-1} \rVert_{-p}}\right)^{1-p} \leq \lVert \nabla_\forall \rVert_1$.
+
+Finally, a consquence of the Cauchy-Schwarz Lemma is that $\lVert \nabla_\forall \rVert_1 \leq \sqrt{D}\lVert \nabla_\forall \rVert_2$, so $D^{\frac{1}{p}-\frac{1}{2}} \leq \lVert \nabla_\forall \rVert_2$.
+
+
+

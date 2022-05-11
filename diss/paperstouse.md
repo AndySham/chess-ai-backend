@@ -3,7 +3,7 @@ Reasoning from Data and Knowledge
 https://arxiv.org/pdf/1606.04422.pdf
 
 Inductive Logic Programming via Deep Differentiable Neural Logic Networks
-https://arxiv.org/pdf/1906.03523.pdf
+https://arxiv.org/pdf/1906.0352 3.pdf
 
 Analyzing Differentiable Fuzzy Logic Operators
 https://www.sciencedirect.com/science/article/pii/S0004370221001533

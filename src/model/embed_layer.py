@@ -1,5 +1,6 @@
 import torch
 from torch import nn, Tensor
+import torch.nn.functional as F
 
 from model.embed_logic import EmbedLogic
 
@@ -76,3 +77,17 @@ class EmbedDNF(nn.Module):
 
     def forward(self, input: Tensor) -> Tensor:
         return self.layers(input)
+
+class EmbedEncode(nn.Module):
+    def __init__(self, embed_dims: int):
+        super().__init__()
+        self.dims = embed_dims
+
+    def forward(self, input: Tensor) -> Tensor:
+        if input.size(-1) != self.dims:
+            raise 
+        return F.normalize(input, dim=-1)
+
+class EmbedDecode(EmbedLayer):
+    def forward(self, input: Tensor) -> Tensor:
+        return self.logic.decode(input)

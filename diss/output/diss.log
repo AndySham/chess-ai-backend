@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.25)  4 MAY 2022 17:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.25)  11 MAY 2022 20:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -272,31 +272,38 @@ Package: verbatim 2020-07-07 v1.5u LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks28
 \verbatim@line=\toks29
 \verbatim@in@stream=\read2
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen164
+\WF@size=\dimen165
+\c@WF@wrappedlines=\count286
+\WF@box=\box53
+\WF@everypar=\toks30
+Package: wrapfig 2003/01/31  v 3.6
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/algorithms/algorithm.sty
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
  (/usr/local/texlive/2022/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count286
-\float@exts=\toks30
-\float@box=\box53
-\@float@everytoks=\toks31
-\@floatcapt=\box54
+\c@float@type=\count287
+\float@exts=\toks31
+\float@box=\box54
+\@float@everytoks=\toks32
+\@floatcapt=\box55
 )
-\@float@every@algorithm=\toks32
-\c@algorithm=\count287
+\@float@every@algorithm=\toks33
+\c@algorithm=\count288
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count288
-\c@ALG@rem=\count289
-\c@ALG@nested=\count290
+\c@ALG@line=\count289
+\c@ALG@rem=\count290
+\c@ALG@nested=\count291
 \ALG@tlm=\skip60
 \ALG@thistlm=\skip61
-\c@ALG@Lnr=\count291
-\c@ALG@blocknr=\count292
-\c@ALG@storecount=\count293
-\c@ALG@tmpcounter=\count294
+\c@ALG@Lnr=\count292
+\c@ALG@blocknr=\count293
+\c@ALG@storecount=\count294
+\c@ALG@tmpcounter=\count295
 \ALG@tmplength=\skip62
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
 Package: algpseudocode 
@@ -308,45 +315,46 @@ Package: subcaption 2022/01/07 v1.5 Sub-captions (AR)
 Package: caption 2022/03/01 v3.6b Customizing captions (AR)
  (/usr/local/texlive/2022/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2022/03/17 v2.3b caption3 kernel (AR)
-\caption@tempdima=\dimen164
-\captionmargin=\dimen165
-\caption@leftmargin=\dimen166
-\caption@rightmargin=\dimen167
-\caption@width=\dimen168
-\caption@indent=\dimen169
-\caption@parindent=\dimen170
-\caption@hangindent=\dimen171
+\caption@tempdima=\dimen166
+\captionmargin=\dimen167
+\caption@leftmargin=\dimen168
+\caption@rightmargin=\dimen169
+\caption@width=\dimen170
+\caption@indent=\dimen171
+\caption@parindent=\dimen172
+\caption@hangindent=\dimen173
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count295
-\c@continuedfloat=\count296
+\c@caption@flags=\count296
+\c@continuedfloat=\count297
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
+Package caption Info: wrapfig package is loaded.
 )
-\c@subfigure=\count297
-\c@subtable=\count298
+\c@subfigure=\count298
+\c@subtable=\count299
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
  (/usr/local/texlive/2022/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count299
-\Gm@cntv=\count300
-\c@Gm@tempcnt=\count301
-\Gm@bindingoffset=\dimen172
-\Gm@wd@mp=\dimen173
-\Gm@odd@mp=\dimen174
-\Gm@even@mp=\dimen175
-\Gm@layoutwidth=\dimen176
-\Gm@layoutheight=\dimen177
-\Gm@layouthoffset=\dimen178
-\Gm@layoutvoffset=\dimen179
-\Gm@dimlist=\toks33
+\Gm@cnth=\count300
+\Gm@cntv=\count301
+\c@Gm@tempcnt=\count302
+\Gm@bindingoffset=\dimen174
+\Gm@wd@mp=\dimen175
+\Gm@odd@mp=\dimen176
+\Gm@even@mp=\dimen177
+\Gm@layoutwidth=\dimen178
+\Gm@layoutheight=\dimen179
+\Gm@layouthoffset=\dimen180
+\Gm@layoutvoffset=\dimen181
+\Gm@dimlist=\toks34
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/footmisc/footmisc.sty
 Package: footmisc 2022/03/08 v6.0d a miscellany of footnote facilities
-\FN@temptoken=\toks34
-\footnotemargin=\dimen180
-\@outputbox@depth=\dimen181
+\FN@temptoken=\toks35
+\footnotemargin=\dimen182
+\@outputbox@depth=\dimen183
 Package footmisc Info: Declaring symbol style bringhurst on input line 695.
 Package footmisc Info: Declaring symbol style chicago on input line 703.
 Package footmisc Info: Declaring symbol style wiley on input line 712.
@@ -369,22 +377,22 @@ Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
 \labelindent=\skip72
-\enit@outerparindent=\dimen182
-\enit@toks=\toks35
-\enit@inbox=\box55
-\enit@count@id=\count302
-\enitdp@description=\count303
+\enit@outerparindent=\dimen184
+\enit@toks=\toks36
+\enit@inbox=\box56
+\enit@count@id=\count303
+\enitdp@description=\count304
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
  (/usr/local/texlive/2022/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count304
+\etb@tempcnta=\count305
 )) (/usr/local/texlive/2022/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip73
 \bibsep=\skip74
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count305
+\c@NAT@ctr=\count306
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2021/12/07 v1.3c Standard LaTeX Color (DPC)
  (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-cfg/color.cfg
@@ -407,56 +415,67 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
-)) (/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+)) (/usr/local/texlive/2022/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2021/07/05 v2.14 Sectioning titles
+\ttl@box=\box57
+\beforetitleunit=\skip75
+\aftertitleunit=\skip76
+\ttl@plus=\dimen185
+\ttl@minus=\dimen186
+\ttl@toksa=\toks37
+\titlewidth=\dimen187
+\titlewidthlast=\dimen188
+\titlewidthfirst=\dimen189
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-04-20 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count306
-\l__pdf_internal_box=\box56
+\l__color_backend_stack_int=\count307
+\l__pdf_internal_box=\box58
 )
 
 LaTeX Warning: Unused global option(s):
     [conference].
 
-(output/diss.aux (output/c1.aux) (output/c2.aux) (output/c3.aux) (output/c4.aux))
+(output/diss.aux (output/c1.aux) (output/c2.aux) (output/c3.aux) (output/c4.aux) (output/a1.aux))
 \openout1 = `diss.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
  (/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count307
-\scratchdimen=\dimen183
-\scratchbox=\box57
-\nofMPsegments=\count308
-\nofMParguments=\count309
-\everyMPshowfont=\toks36
-\MPscratchCnt=\count310
-\MPscratchDim=\dimen184
-\MPnumerator=\count311
-\makeMPintoPDFobject=\count312
-\everyMPtoPDFconversion=\toks37
+\scratchcounter=\count308
+\scratchdimen=\dimen190
+\scratchbox=\box59
+\nofMPsegments=\count309
+\nofMParguments=\count310
+\everyMPshowfont=\toks38
+\MPscratchCnt=\count311
+\MPscratchDim=\dimen191
+\MPnumerator=\count312
+\makeMPintoPDFobject=\count313
+\everyMPtoPDFconversion=\toks39
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 10.
+Package hyperref Info: Link coloring OFF on input line 11.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/usr/local/texlive/2022/texmf-dist/tex/latex/refcount/refcount.sty
@@ -464,11 +483,11 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/usr/local/texlive/2022/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count313
+\c@section@level=\count314
 )
-LaTeX Info: Redefining \ref on input line 10.
-LaTeX Info: Redefining \pageref on input line 10.
-LaTeX Info: Redefining \nameref on input line 10.
+LaTeX Info: Redefining \ref on input line 11.
+LaTeX Info: Redefining \pageref on input line 11.
+LaTeX Info: Redefining \nameref on input line 11.
  (output/diss.out) (output/diss.out)
 \@outlinefile=\write3
 \openout3 = `diss.out'.
@@ -510,11 +529,11 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 20.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 21.
 (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 20.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 21.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
@@ -527,7 +546,7 @@ LaTeX Warning: No \author given.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.25 \end{abstract}
+l.26 \end{abstract}
                     [1] (output/diss.toc)
 \tf@toc=\write4
 \openout4 = `diss.toc'.
@@ -536,7 +555,7 @@ l.25 \end{abstract}
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.30 
+l.31 
       [1
 
 ]
@@ -558,68 +577,144 @@ Chapter 2.
 
 
 ]
-<imgs/fuzzy_min_and.png, id=201, 341.275pt x 341.275pt>
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 71.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 71.
+<imgs/fuzzy_min_and.png, id=226, 341.275pt x 341.275pt>
 File: imgs/fuzzy_min_and.png Graphic file (type png)
 <use imgs/fuzzy_min_and.png>
-Package pdftex.def Info: imgs/fuzzy_min_and.png  used on input line 82.
+Package pdftex.def Info: imgs/fuzzy_min_and.png  used on input line 81.
 (pdftex.def)             Requested size: 100.09526pt x 100.09201pt.
-<imgs/fuzzy_prod_and.png, id=203, 341.275pt x 341.275pt>
+<imgs/fuzzy_prod_and.png, id=228, 341.275pt x 341.275pt>
 File: imgs/fuzzy_prod_and.png Graphic file (type png)
 <use imgs/fuzzy_prod_and.png>
-Package pdftex.def Info: imgs/fuzzy_prod_and.png  used on input line 88.
+Package pdftex.def Info: imgs/fuzzy_prod_and.png  used on input line 87.
 (pdftex.def)             Requested size: 100.09526pt x 100.09201pt.
-<imgs/fuzzy_luk_and.png, id=204, 341.275pt x 341.275pt>
+<imgs/fuzzy_luk_and.png, id=229, 341.275pt x 341.275pt>
 File: imgs/fuzzy_luk_and.png Graphic file (type png)
 <use imgs/fuzzy_luk_and.png>
-Package pdftex.def Info: imgs/fuzzy_luk_and.png  used on input line 94.
+Package pdftex.def Info: imgs/fuzzy_luk_and.png  used on input line 93.
 (pdftex.def)             Requested size: 100.09526pt x 100.09201pt.
-<imgs/fuzzy_dra_and.png, id=205, 341.275pt x 341.275pt>
+<imgs/fuzzy_dra_and.png, id=230, 341.275pt x 341.275pt>
 File: imgs/fuzzy_dra_and.png Graphic file (type png)
 <use imgs/fuzzy_dra_and.png>
-Package pdftex.def Info: imgs/fuzzy_dra_and.png  used on input line 100.
+Package pdftex.def Info: imgs/fuzzy_dra_and.png  used on input line 99.
 (pdftex.def)             Requested size: 100.09526pt x 100.09201pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [5] [6 <./imgs/fuzzy_min_and.png> <./imgs/fuzzy_prod_and.png> <./imgs/fuzzy_luk_and.png> <./imgs/fuzzy_dra_and.png>]
-<imgs/toyconv_min.png, id=227, 387.4475pt x 262.9825pt>
+<imgs/toyconv_min.png, id=256, 387.4475pt x 262.9825pt>
 File: imgs/toyconv_min.png Graphic file (type png)
 <use imgs/toyconv_min.png>
 Package pdftex.def Info: imgs/toyconv_min.png  used on input line 152.
 (pdftex.def)             Requested size: 225.21626pt x 152.86702pt.
-<imgs/toyconv_prod.png, id=228, 387.4475pt x 262.9825pt>
+<imgs/toyconv_prod.png, id=257, 387.4475pt x 262.9825pt>
 File: imgs/toyconv_prod.png Graphic file (type png)
 <use imgs/toyconv_prod.png>
 Package pdftex.def Info: imgs/toyconv_prod.png  used on input line 158.
 (pdftex.def)             Requested size: 225.21626pt x 152.86702pt.
-<imgs/toyconv_luk.png, id=229, 387.4475pt x 262.9825pt>
+<imgs/toyconv_luk.png, id=258, 387.4475pt x 262.9825pt>
 File: imgs/toyconv_luk.png Graphic file (type png)
 <use imgs/toyconv_luk.png>
 Package pdftex.def Info: imgs/toyconv_luk.png  used on input line 164.
 (pdftex.def)             Requested size: 225.21626pt x 152.86702pt.
-<imgs/toyconv_dra.png, id=230, 401.5pt x 262.9825pt>
+<imgs/toyconv_dra.png, id=259, 401.5pt x 262.9825pt>
 File: imgs/toyconv_dra.png Graphic file (type png)
 <use imgs/toyconv_dra.png>
 Package pdftex.def Info: imgs/toyconv_dra.png  used on input line 170.
 (pdftex.def)             Requested size: 225.21626pt x 147.52199pt.
  [7 <./imgs/toyconv_min.png> <./imgs/toyconv_prod.png> <./imgs/toyconv_luk.png> <./imgs/toyconv_dra.png>] [8]
-<imgs/conj-pmd-prod-nokeepn-1t.png, id=255, 396.48125pt x 262.9825pt>
+<imgs/conj-pmd-prod-nokeepn-1t.png, id=285, 396.48125pt x 262.9825pt>
 File: imgs/conj-pmd-prod-nokeepn-1t.png Graphic file (type png)
 <use imgs/conj-pmd-prod-nokeepn-1t.png>
-Package pdftex.def Info: imgs/conj-pmd-prod-nokeepn-1t.png  used on input line 240.
+Package pdftex.def Info: imgs/conj-pmd-prod-nokeepn-1t.png  used on input line 225.
 (pdftex.def)             Requested size: 240.23016pt x 159.34364pt.
-<imgs/conj-pmd-prod-nokeepn-5t.png, id=256, 396.48125pt x 262.9825pt>
+<imgs/conj-pmd-prod-nokeepn-5t.png, id=286, 396.48125pt x 262.9825pt>
 File: imgs/conj-pmd-prod-nokeepn-5t.png Graphic file (type png)
 <use imgs/conj-pmd-prod-nokeepn-5t.png>
-Package pdftex.def Info: imgs/conj-pmd-prod-nokeepn-5t.png  used on input line 246.
+Package pdftex.def Info: imgs/conj-pmd-prod-nokeepn-5t.png  used on input line 231.
 (pdftex.def)             Requested size: 240.23016pt x 159.34364pt.
- [9 <./imgs/conj-pmd-prod-nokeepn-1t.png> <./imgs/conj-pmd-prod-nokeepn-5t.png>] [10]) [11]
+ [9 <./imgs/conj-pmd-prod-nokeepn-1t.png> <./imgs/conj-pmd-prod-nokeepn-5t.png>]
+<imgs/conj-pmd-prod-keep50-1t.png, id=299, 425.59pt x 281.05pt>
+File: imgs/conj-pmd-prod-keep50-1t.png Graphic file (type png)
+<use imgs/conj-pmd-prod-keep50-1t.png>
+Package pdftex.def Info: imgs/conj-pmd-prod-keep50-1t.png  used on input line 301.
+(pdftex.def)             Requested size: 150.14671pt x 99.15375pt.
+<imgs/conj-pmd-prod-keep50-5t.png, id=300, 425.59pt x 281.05pt>
+File: imgs/conj-pmd-prod-keep50-5t.png Graphic file (type png)
+<use imgs/conj-pmd-prod-keep50-5t.png>
+Package pdftex.def Info: imgs/conj-pmd-prod-keep50-5t.png  used on input line 307.
+(pdftex.def)             Requested size: 150.14671pt x 99.15375pt.
+<imgs/conj-pmd-prod-keep50-20t.png, id=301, 425.59pt x 281.05pt>
+File: imgs/conj-pmd-prod-keep50-20t.png Graphic file (type png)
+<use imgs/conj-pmd-prod-keep50-20t.png>
+Package pdftex.def Info: imgs/conj-pmd-prod-keep50-20t.png  used on input line 313.
+(pdftex.def)             Requested size: 150.14671pt x 99.15375pt.
+ [10 <./imgs/conj-pmd-prod-keep50-1t.png> <./imgs/conj-pmd-prod-keep50-5t.png> <./imgs/conj-pmd-prod-keep50-20t.png>]
+<imgs/conj-co-prod-keep50-5t.png, id=314, 425.59pt x 281.05pt>
+File: imgs/conj-co-prod-keep50-5t.png Graphic file (type png)
+<use imgs/conj-co-prod-keep50-5t.png>
+Package pdftex.def Info: imgs/conj-co-prod-keep50-5t.png  used on input line 335.
+(pdftex.def)             Requested size: 225.21626pt x 148.72849pt.
+<imgs/conj-cp-prod-keep50-5t.png, id=315, 425.59pt x 281.05pt>
+File: imgs/conj-cp-prod-keep50-5t.png Graphic file (type png)
+<use imgs/conj-cp-prod-keep50-5t.png>
+Package pdftex.def Info: imgs/conj-cp-prod-keep50-5t.png  used on input line 341.
+(pdftex.def)             Requested size: 225.21626pt x 148.72849pt.
+<imgs/conj-cp-100dim-keep50-5t.png, id=317, 396.48125pt x 262.9825pt>
+File: imgs/conj-cp-100dim-keep50-5t.png Graphic file (type png)
+<use imgs/conj-cp-100dim-keep50-5t.png>
+Package pdftex.def Info: imgs/conj-cp-100dim-keep50-5t.png  used on input line 359.
+(pdftex.def)             Requested size: 225.21626pt x 149.38794pt.
+<imgs/conj-pmd-100dim-keep50-5t.png, id=318, 396.48125pt x 262.9825pt>
+File: imgs/conj-pmd-100dim-keep50-5t.png Graphic file (type png)
+<use imgs/conj-pmd-100dim-keep50-5t.png>
+Package pdftex.def Info: imgs/conj-pmd-100dim-keep50-5t.png  used on input line 365.
+(pdftex.def)             Requested size: 225.21626pt x 149.38794pt.
+<imgs/conj-cp-10000dim-keep50-5t.png, id=319, 396.48125pt x 262.9825pt>
+File: imgs/conj-cp-10000dim-keep50-5t.png Graphic file (type png)
+<use imgs/conj-cp-10000dim-keep50-5t.png>
+Package pdftex.def Info: imgs/conj-cp-10000dim-keep50-5t.png  used on input line 371.
+(pdftex.def)             Requested size: 225.21626pt x 149.38794pt.
+<imgs/conj-pmd-10000dim-keep50-5t.png, id=320, 396.48125pt x 262.9825pt>
+File: imgs/conj-pmd-10000dim-keep50-5t.png Graphic file (type png)
+<use imgs/conj-pmd-10000dim-keep50-5t.png>
+Package pdftex.def Info: imgs/conj-pmd-10000dim-keep50-5t.png  used on input line 377.
+(pdftex.def)             Requested size: 225.21626pt x 149.38794pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<imgs/fuzzy_ss-2_and.png, id=321, 341.275pt x 341.275pt>
+File: imgs/fuzzy_ss-2_and.png Graphic file (type png)
+<use imgs/fuzzy_ss-2_and.png>
+Package pdftex.def Info: imgs/fuzzy_ss-2_and.png  used on input line 388.
+(pdftex.def)             Requested size: 150.14583pt x 150.14583pt.
+[11 <./imgs/conj-co-prod-keep50-5t.png> <./imgs/conj-cp-prod-keep50-5t.png> <./imgs/fuzzy_ss-2_and.png>]
+File: imgs/conj-pmd-prod-keep50-5t.png Graphic file (type png)
+<use imgs/conj-pmd-prod-keep50-5t.png>
+Package pdftex.def Info: imgs/conj-pmd-prod-keep50-5t.png  used on input line 413.
+(pdftex.def)             Requested size: 225.21626pt x 148.72849pt.
+<imgs/conj-pmd-prod-keep50-5t-sgd.png, id=344, 403.5075pt x 262.9825pt>
+File: imgs/conj-pmd-prod-keep50-5t-sgd.png Graphic file (type png)
+<use imgs/conj-pmd-prod-keep50-5t-sgd.png>
+Package pdftex.def Info: imgs/conj-pmd-prod-keep50-5t-sgd.png  used on input line 419.
+(pdftex.def)             Requested size: 225.21626pt x 146.78363pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[12 <./imgs/conj-cp-100dim-keep50-5t.png> <./imgs/conj-pmd-100dim-keep50-5t.png> <./imgs/conj-cp-10000dim-keep50-5t.png> <./imgs/conj-pmd-10000dim-keep50-5t.png>] [13 <./imgs/conj-pmd-prod-keep50-5t-sgd.png>]) [14]
 \openout2 = `c3.aux'.
 
  (./c3.tex
 Chapter 3.
-) [12
+) [15
 
 
 
@@ -629,36 +724,46 @@ Chapter 3.
 
  (./c4.tex
 Chapter 4.
-[13
+[16
 
 
 
 
-]) [14]
+]) [17]
 Chapter 5.
-(output/diss.bbl [15
+[18
 
 
 
-] [16
+]
+\openout2 = `a1.aux'.
 
-]) [17] (output/diss.aux (output/c1.aux) (output/c2.aux) (output/c3.aux) (output/c4.aux))
+ (./a1.tex
+Appendix A.
+[19
+
+
+]) [20] (output/diss.bbl [21
+
+
+
+]) [22] (output/diss.aux (output/c1.aux) (output/c2.aux) (output/c3.aux) (output/c4.aux) (output/a1.aux))
 Package rerunfilecheck Info: File `diss.out' has not changed.
-(rerunfilecheck)             Checksum: 0C5798FBC440A487BCFC0302DD533166;4249.
+(rerunfilecheck)             Checksum: 8970E5D9FC00AB66BC179B22D0D4A01D;5399.
  ) 
 Here is how much of TeX's memory you used:
- 15395 strings out of 478233
- 245709 string characters out of 5843844
- 553734 words of memory out of 5000000
- 33272 multiletter control sequences out of 15000+600000
- 485649 words of font info for 88 fonts, out of 8000000 for 9000
+ 15950 strings out of 478233
+ 255780 string characters out of 5843844
+ 565963 words of memory out of 5000000
+ 33776 multiletter control sequences out of 15000+600000
+ 487816 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 82i,9n,91p,1345b,527s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on output/diss.pdf (19 pages, 796068 bytes).
+ 82i,10n,91p,1345b,569s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on output/diss.pdf (24 pages, 1171266 bytes).
 PDF statistics:
- 463 PDF objects out of 1000 (max. 8388607)
- 372 compressed objects within 4 object streams
- 86 named destinations out of 1000 (max. 500000)
- 251 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 582 PDF objects out of 1000 (max. 8388607)
+ 455 compressed objects within 5 object streams
+ 102 named destinations out of 1000 (max. 500000)
+ 346 words of extra memory for PDF output out of 10000 (max. 10000000)
 

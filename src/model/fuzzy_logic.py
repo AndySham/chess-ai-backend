@@ -92,6 +92,32 @@ class DrasticLogic(FuzzyLogic):
                 torch.ones(xs.shape[:dim] + xs.shape[dim + 1 :]),
             )
 
+class NegSSAutograd(torch.autograd.Function):
+
+    @staticmethod
+    def forward(ctx, xs, p, dim):
+        min_x = xs.min(dim=dim).values
+        offset = 1 - dim_size(xs, dim=dim)
+        output = torch.where(
+            min_x == 0,
+            torch.tensor(0.0, device=min_x.device),
+            min_x * (
+                ((xs / min_x.unsqueeze(dim)) ** p).sum(dim=dim) 
+                + offset * (min_x ** -p)
+            ) ** (1 / p)
+        )
+        ctx.dim = dim
+        ctx.save_for_backward(xs, output, p)
+        return output
+
+    @staticmethod
+    def backward(ctx, grad_output):
+        xs, output, p = ctx.saved_tensors
+        return grad_output.unsqueeze(dim=ctx.dim) * torch.where(
+            xs == 0.0,
+            torch.tensor(1.0, device=grad_output.device),
+            (xs / output.unsqueeze(dim=ctx.dim)) ** (p - 1)
+        ), None, None
 
 class SchweizerSklarLogic(FuzzyLogic):
     """`a ⊗ b = (a**p + b**p - 1) ** (1/p)`"""
@@ -101,19 +127,14 @@ class SchweizerSklarLogic(FuzzyLogic):
         self.p = p
 
     def conjoin(self, xs: Tensor, dim: int = None) -> Tensor:
-        return torch.where(
-            self.p == 0,
-            xs.prod(dim=dim),
-            torch.where(
-                self.p > 0,
-                (
-                    ((xs ** self.p).sum(dim=dim) - dim_size(xs, dim=dim) + 1)
-                ).clamp(0, 1) ** (1 / self.p),
-                (
-                    ((xs ** self.p).sum(dim=dim) - dim_size(xs, dim=dim) + 1) ** (1 / self.p)
-                ).clamp(0, 1)
-            )
-        )
+        if self.p == 0:
+            return xs.prod(dim=dim)
+        elif self.p > 0:
+            return (
+                (xs ** self.p).sum(dim=dim) - dim_size(xs, dim=dim) + 1
+            ).clamp(0, 1) ** (1 / self.p)
+        else:
+            return NegSSAutograd.apply(xs, self.p, dim)
 
 
 class HamacherLogic(FuzzyLogic):

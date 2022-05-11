@@ -106,6 +106,7 @@ class TrainingRegime():
     # File Loading -----------------------------------------------------------------
 
     def get_files(self):
+        self.ensure_directory()
         filenames = os.listdir(self.parent_dir)
         models = [self.model_from_filename(fl) for fl in filenames]
         results = [self.results_from_filename(fl) for fl in filenames]
@@ -258,3 +259,21 @@ class TrainingRegime():
         del results["epoch"]
         filename = self.results_filename(run_no)
         pd.DataFrame(results, index=epochs).to_csv(filename, index_label="epoch")
+
+
+class FileCacher():
+    def __init__(self, parent_dir):
+        self.parent_dir = parent_dir
+
+    def ensure_directory(self):
+        os.makedirs(self.parent_dir, exist_ok=True)
+
+    def cache(self, filename, f):
+        self.ensure_directory()
+        filepath = self.parent_dir + filename + ".pt"
+        try:
+            return torch.load(filepath)
+        except FileNotFoundError:
+            data = f()
+            torch.save(data, filepath)
+            return data
