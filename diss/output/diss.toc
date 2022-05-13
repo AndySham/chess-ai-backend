@@ -6,25 +6,25 @@
 \contentsline {section}{\numberline {2.2}Real Logic}{4}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}Real Conjunction and Negation}{5}{subsection.2.2.1}%
 \contentsline {section}{\numberline {2.3}General Architectures}{5}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Analysis of a Toy Problem}{7}{section.2.4}%
+\contentsline {section}{\numberline {2.4}Analysis of a Toy Problem}{6}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}Vanishing Gradients}{7}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Possible Resolutions}{8}{subsection.2.4.2}%
 \contentsline {section}{\numberline {2.5}Learning Functions}{8}{section.2.5}%
 \contentsline {subsection}{\numberline {2.5.1}Learning Conjunctions}{8}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Vanishing Gradients}{9}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.2}Vanishing Gradients in Strict Logics}{9}{subsection.2.5.2}%
 \contentsline {subsection}{\numberline {2.5.3}Architectural Improvements}{10}{subsection.2.5.3}%
-\contentsline {subsection}{\numberline {2.5.4}Class Imbalance and Parameter Crispness}{10}{subsection.2.5.4}%
-\contentsline {subsection}{\numberline {2.5.5}Optimising for Interpretability}{10}{subsection.2.5.5}%
-\contentsline {subsection}{\numberline {2.5.6}Empiric Comparison of Logics}{11}{subsection.2.5.6}%
-\contentsline {subsection}{\numberline {2.5.7}Biased Gradient Estimation}{12}{subsection.2.5.7}%
-\contentsline {subsection}{\numberline {2.5.8}Learning Arbitrary Functions}{12}{subsection.2.5.8}%
-\contentsline {section}{\numberline {2.6}Alternative Frameworks}{13}{section.2.6}%
-\contentsline {subsection}{\numberline {2.6.1}Alternative Applications of Real Logic}{13}{subsection.2.6.1}%
-\contentsline {subsection}{\numberline {2.6.2}Embedded Logic and Relations}{13}{subsection.2.6.2}%
-\contentsline {subsection}{\numberline {2.6.3}Bayesian Models and Probabilistic Logic}{14}{subsection.2.6.3}%
-\contentsline {chapter}{\numberline {3}Application to Complex Problems}{15}{chapter.3}%
-\contentsline {chapter}{\numberline {4}A Chess Architecture}{16}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Learning Procedure}{16}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Results}{17}{section.4.2}%
-\contentsline {chapter}{\numberline {5}Conclusions}{18}{chapter.5}%
-\contentsline {chapter}{\numberline {A}Bounds on the gradient of Schweizer-Sklar conjunction}{19}{appendix.A}%
+\contentsline {subsection}{\numberline {2.5.4}Class Imbalance and Parameter Crispness}{11}{subsection.2.5.4}%
+\contentsline {subsection}{\numberline {2.5.5}Empiric Comparison of Logics}{13}{subsection.2.5.5}%
+\contentsline {subsection}{\numberline {2.5.6}Suboptimal Predictions}{15}{subsection.2.5.6}%
+\contentsline {subsection}{\numberline {2.5.7}Conclusions}{15}{subsection.2.5.7}%
+\contentsline {section}{\numberline {2.6}Learning Arbitrary Functions}{16}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Alternative Frameworks}{16}{section.2.7}%
+\contentsline {subsection}{\numberline {2.7.1}Alternative Applications of Real Logic}{16}{subsection.2.7.1}%
+\contentsline {subsection}{\numberline {2.7.2}Embedded Logic and Relations}{16}{subsection.2.7.2}%
+\contentsline {subsection}{\numberline {2.7.3}Bayesian Models and Probabilistic Logic}{17}{subsection.2.7.3}%
+\contentsline {chapter}{\numberline {3}Application to Complex Problems}{18}{chapter.3}%
+\contentsline {chapter}{\numberline {4}A Chess Architecture}{19}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Learning Procedure}{19}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Results}{20}{section.4.2}%
+\contentsline {chapter}{\numberline {5}Conclusions}{21}{chapter.5}%
+\contentsline {chapter}{\numberline {A}Bounds on the gradient of Schweizer-Sklar conjunction}{22}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Further Gradient Estimations}{24}{appendix.B}%

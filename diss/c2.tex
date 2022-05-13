@@ -113,9 +113,9 @@ We first need to consider what problems we may want to solve. A basic problem is
 
 We can consider this as a continuous optimisation problem with $\vx$ as a parameter. We can extend $\phi$ to the real domain $[0,1]$ by extending each operator in $\phi$ when expressed in the language of first-order logic. Then, by performing SGD as normal, we aim to minimise the loss function $\ell(\vx) = \lnot\phi(\vx)$.
 
-To match the power of classical MLPs, we also want to be able to learn optimal \textit{functions} $\phi$. Suppose we have a dataset $\{(\vx_i, y_i)\}_{i=1}^N$ where $\forall i, \phi(\vx_i) = y_i$ for some formula $\phi : \{0,1\}^K  \rightarrow \{0,1\}$ which need not have a known representation in classical first-order logic. Further suppose we have a function $\psi : \{0,1\}^{K+P} \rightarrow \{0,1\}$ expressed in first-order logic such that for some $\vw \in \{0,1\}^P$, $\phi(\vx) = \psi(\vx, \vw)$. We consider $\vw$ a parameter here, and optimise for loss $\ell(\vx, y; \vw) = y \lxor \psi(\vx, \vw)$. In practice, we optimise for loss $\ell(\vx, y; \vw) = (y \lxor \psi(\vx, \vw))^a$, for some exponent $a \in [2,\infty)$, to aid in convergence, as will be shown later. Extending $\psi$ to real logic as standard allows us to use continuous optimisation methods to do so. $\bbE_{\vx}[\ell(\vx, \phi(\vx); \vw)] = 0 \iff \psi(\vx, \vw) = \phi(\vx)$ for all $\vx \in \{0,1\}^K$, so the above algorithm is correct.
+To match the power of classical MLPs, we also want to be able to learn optimal \textit{functions} $\phi$. Suppose we have a dataset $\{(\vx_i, y_i)\}_{i=1}^N$ where $\forall i, \phi(\vx_i) = y_i$ for some formula $\phi : \{0,1\}^K  \rightarrow \{0,1\}$ which need not have a known representation in classical first-order logic. Further suppose we have a function $\psi : \{0,1\}^{K+P} \rightarrow \{0,1\}$ expressed in first-order logic such that for some $\vw \in \{0,1\}^P$, $\phi(\vx) = \psi(\vx, \vw)$. We consider $\vw$ a parameter here, to be optimised. We could use a variety of losses, in the following we examine $\ell(\vx, y; \vw) = (y \lxor \psi(\vx, \vw))^a$, for some exponent $a \in [1,\infty)$ (as $\bbE_{\vx}[\ell(\vx, \phi(\vx); \vw)] = 0 \iff \psi(\vx, \vw) = \phi(\vx)$), which we refer to as $\XOR$ loss, and binary cross-entropy, as is done in \cite{embeddedlogicreg}. 
 
-It is very feasible to find expressive enough $\psi$, as it can be shown that every boolean function $\phi$ can be expressed in a number of standard forms - Disjunctive Normal Form (DNF), and Conjunctive Normal Form (CNF), being two notable ones. To fit these two representations into the framework we have described, we need to be able to express how every variable $x$ is represented in each normal form by appending appropriate parameter variables $w$.
+It is very feasible to find expressive enough $\psi$, as it can be shown that every boolean function $\phi$ can be expressed in a number of standard forms - Disjunctive Normal Form (DNF), and Conjunctive Normal Form (CNF), being two notable ones. To fit these two representations into the framework we have described, we need to be able to express how every variable $x_i$ is represented in each normal form by appending appropriate parameter variables $w_i$.
 
 In DNF, $\phi$ is expressed as a disjunction of conjunctions, with each conjunction described by a subset of input variables $\subseteq \{x_1,\dots,x_K\}$, each variable being optionally negated. We can capture membership by boolean variables $m_i \in \{0,1\}$, and negation by $s_i \in \{0,1\}$. This allows us to represent a formula in DNF by
 
@@ -180,21 +180,15 @@ We see that the choice of logic has a profound impact on the convergence. Minimu
 \subsection{Vanishing Gradients}
 \label{section:tnormzerograd}
 
-The tests show that a majority of gradient samples are precisely $0$. It is natural that some observations would not allow us to make any meaningful inferences about the optimal values of each variable, especially in cases where the proportion of satisfying inputs is incredibly small. We observe however, that different choices of logic result in different proportions of vanishing gradient observations.
+The tests show that a majority of gradient samples for Łukasiewicz logic are precisely $0$. By inspection of Figure \ref{fig:lukconj}, we can see that there are large regions (i.e. regions of non-zero measure) where the function evaluates only to $0$. It is natural that some observations would not allow us to make any meaningful inferences about the optimal values of each variable, especially in cases where the proportion of satisfying inputs is incredibly small. We observe however, that different choices of logic result in different proportions of vanishing gradient observations.
 
-To explain this, we must discuss the nature of conjunction in each logic. The most apt example is that of Łukasiewicz logic, as for $a, b \in [0,1]$ such that $a + b - 1 < 0$, the pointwise gradient of binary conjunction $\land$ is precisely $0$. This means that a full $\frac{1}{2}$ of all possible input arguments (uniformly distributed) give no meaningful inference. Aggregating over $K$ variables, this generalises to a proportion of $1 - \frac{1}{K!}$ inputs having vanishing gradients, which is very obviously not ideal.
+To explain this, we must discuss the nature of conjunction in each logic. In Łukasiewicz logic, for $a, b \in [0,1]$ such that $a + b - 1 < 0$, the gradient of binary conjunction $\land$ is precisely $0$. This means that a full $\frac{1}{2}$ of all possible input arguments (uniformly distributed) give no meaningful inference. Aggregating over $K$ variables, this generalises to a proportion of $1 - \frac{1}{K!}$ inputs having vanishing gradients, which is very obviously not ideal.
 
-Therefore, in this framework, we prefer to use logics such that $\land$ has non-vanishing gradient almost everywhere. Minimum and Product logics satisfy this condition, along with certain parameterisations of the Schweizer–Sklar and Yager logics.
-
-\subsection{Possible Resolutions}
-
-\todo{SGD vs Adam analysis}
-
-\todo{Logical Dropout? In training, to regularise such that parameters are as crisp as possible, we randomly alter activations with some probability $p$ to $0$ or $1$ depending on proximity.}
+Therefore, in this framework, we prefer to use logics such that $\land$ has non-vanishing gradient almost everywhere - these logics are known as \textit{strict}. Minimum and Product logics satisfy this condition, along with certain parameterisations of the Schweizer–Sklar and Yager logics.
 
 \section{Learning Functions}
 
-There are many well known algorithms for efficiently learning classical boolean functions $\phi : \{0,1\}^K \to \{0,1\}$ given prior knowledge of about $\phi$ restricting it to a given family. Such algorithms often make logical inferences to determine the proper state of boolean parameters $\vw$, with complexity guarantees that can be described within the Probably Approximately Correct (PAC) learning framework \cite{clt}. We will compare such algorithms to their equivalents in differentiable real logic, and hope for results as good, if not better, given an ideal optimisation regime. 
+There are many well known algorithms for efficiently learning classical boolean functions $\phi : \{0,1\}^K \to \{0,1\}$ given prior knowledge of $\phi$ restricting it to a given family. Such algorithms often make logical inferences to determine the proper state of boolean parameters $\vw$, with complexity guarantees that can be described within the Probably Approximately Correct (PAC) learning framework \cite{clt}. We will compare such algorithms to their equivalents in differentiable real logic, and hope for results as good, if not better, given an ideal optimisation regime. 
 
 Generalising these methods to real logic would have considerable benefits. For one, given gradient descent is by nature stochastic and (aside from current parameterisation) stateless, these methods would be inherently robust to noisy data and distribution shift in the learning dataset. A possible drawback is that correctness may only be guaranteed for data drawn similarly to the training dataset, introducing a potentially unavoidable bias.
 
@@ -214,9 +208,9 @@ $$\psi(\vx; \vm, \vs) = \forall i,\ 1 \leq i \leq K,\ m_i \limply (x_i \lxor s_i
 
 and optimising $\vm$ and $\vs$. In the following, for initial simplicity, we set $\vs = 0$ (i.e. we assume no signs $\lnot$.) 
 
-We aim to learn conjunctions by randomly initialising values $\vm$, before minimising the loss given in Section \ref{section:fuzzyloss}. We vary many aspects of this model, including conjunction size $D$, number of present terms $N$, choice of fuzzy logic, optimiser and learning rate.
+We aim to learn conjunctions by randomly initialising values $\vm$, before minimising for some loss function, such as those given in Section \ref{section:fuzzyloss}. Data pairs are generated by randomly sampling bits $\{0,1\}^D$, and mapping them through a predefined goal conjunction with $N$ terms. We vary many aspects of this model, including conjunction size $D$, number of present terms $N$, choice of fuzzy logic, optimiser, learning rate and loss exponent $a$.
 
-Results using this architecture are not promising.  Figure \ref{fig:conjconvnokeepn} shows convergence of the average distance of a parameter from it's optimal (i.e. correct) value, using an Adam optimiser with a learning rate of $10^{-2}$, when learning unsigned conjunctions. Each test is run several times, with the convergence of each run plotted on the graph. We see that for low dimensionality, convergence is quite fast, whereas minimal changes occur with dimensionality any higher than 100. This is of course an issue.
+Some results using this architecture are not promising. Figure \ref{fig:conjconvnokeepn} shows convergence of the average distance of a parameter from it's optimal (i.e. correct) value, with the $\XOR$ loss $\ell(\vx, y; \vw) = (\psi(\vx;\vw) \lxor y)^a$ using an Adam optimiser with a learning rate of $10^{-2}$, when learning unsigned conjunctions in the Product logic. Each test is run several times, with the convergence of each run plotted on the graph. Both training and test data are uniformly sampled random bits $\{0,1\}^D$, with each epoch representing 10,000 such samples. We see that for low dimensionality, convergence is quite fast, whereas minimal changes occur with dimensionality any higher than 100. This is of course an issue.
 
 \begin{figure}[h]
     \centering
@@ -232,11 +226,31 @@ Results using this architecture are not promising.  Figure \ref{fig:conjconvnoke
         \caption{5-term conjunction}
         \label{fig:conjconvnokeepn5}
     \end{subfigure}
-       \caption{Convergence of mean distance from optimal parameters when learning conjunctions in the Product logic. Each test is run 10 times.}
+       \caption{Convergence of mean distance from optimal parameters when learning conjunctions in the Product logic. Each test is run 10 times, with $\XOR$ loss, using exponent $a=10$.}
        \label{fig:conjconvnokeepn}
 \end{figure}
 
-\subsection{Vanishing Gradients}
+We see better results when using binary cross-entropy. Figure \ref{fig:conjconvnokeepnbce} displays the results from the same test, with differing loss function. We see that dimensionality $D=100$ now can be learnt, but we still cannot go much higher.
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/conj-pmd-prod-nokeepn-1t-bce.png}
+        \caption{1-term conjunction}
+        \label{fig:conjconvnokeepn1bce}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/conj-pmd-prod-nokeepn-5t-bce.png}
+        \caption{5-term conjunction}
+        \label{fig:conjconvnokeepn5bce}
+    \end{subfigure}
+       \caption{Convergence of mean distance from optimal parameters when learning conjunctions in the Product logic, with exponent binary cross-entropy loss.}
+       \label{fig:conjconvnokeepnbce}
+\end{figure}
+
+\subsection{Vanishing Gradients in Strict Logics}
 \label{section:prodvanishgradient}
 
 To determine why this happens, we need only observe the induced gradient of the network. It is well known that a large family of T-norms can be constructed using what is known as an \textit{additive generator}, that is, a function $f$ associated with a given logic, such that $a \land b = f^{-1}(\min\{f(a) + f(b),f(0)\})$. This definition allows us to also say $\forall i, x_i = f^{-1}(\min\{\sum_i f(x_i),f(0)\})$. Some additive generators have $f(x) \rightarrow \infty$ as $x \rightarrow 0$, and in these cases $a \land b = f^{-1}(f(a) + f(b))$ for $a, b \neq 0$.
@@ -286,11 +300,13 @@ The Minimum logic has no additive generator. From the table, the influence of di
 
 Suppose each aggregate conjunction $\forall i, x_i$ is over $D$ variables. In the product logic, if the $x_i$ are independently uniformly distributed in $[0,1]$, $\bbE\left[\frac{\partial}{\partial x_j} \forall i, x_i\right] = \bbE\left[\prod_{i \neq j} x_i \right] = 2^{D-1}$. Thus the total derivative $\nabla_\forall$ has expected magnitude $\bbE\left[\lVert \nabla_\forall \rVert_2\right] \leq \bbE\left[\sum_j \frac{\partial}{\partial x_j} \forall i, x_i \right] = D2^{D-1}$. With high dimensionality $D$, the gradients quickly degrade.
 
-Other T-norms do not suffer this same issue. For example, Łukasiewicz logic has a gradient of $1$ in every dimension when the function is non-vanishing, however we have shown previously in Section \ref{section:tnormzerograd} that the proportion of vanishing inputs is it's own curse of dimensionality. Minimum logic has constant $\left[\lVert \nabla_\forall \rVert_2\right] = 1$, however we will see later that there are still issues with the gradient. In Appendix \ref{section:ssbounds}, we derive explicit bounds that show that Schweizer-Sklar logic is a good comprimise between all these problems.
+Other T-norms do not suffer this same issue. For example, Łukasiewicz logic has a gradient of $1$ in every dimension when the function is non-vanishing, however we have shown previously in Section \ref{section:tnormzerograd} that the proportion of vanishing inputs is it's own curse of dimensionality, as it is not strict. Minimum logic has constant $\lVert \nabla_\forall \rVert_2 = 1$, however we will see later that there are still issues with optimisation. In Appendix \ref{section:ssbounds}, we show that for Schweizer-Sklar logic with parameter $p$, the magnitude of $\nabla_\forall$ is lower bounded by $D^{\frac{1}{p}-\frac{1}{2}}$. In this section, we use $p = -2$, thus making the lower bound $D^{-1} \leq \lVert \nabla_\forall \rVert_2$, which is a vast improvement on an upper bound of $D2^{-D}$ seen in the Product logic. Empirical confirmations are given in Figures \ref{fig:conjgrad10100} and \ref{fig:conjgrad10ss100} in the Appendix.
+
+This can also explain why binary cross-entropy performs better than $\XOR$ loss in this domain. With this loss, outputs are mapped through a $\log$ function. If we consider the Product logic, this is equivalent to interpreting conjunctions as a log summation $\sum_i\log x_i$, which means the values of each variable no longer affect each other's gradients, which would help remedy one cause of the curse of dimensionality. 
 
 \subsection{Architectural Improvements}
 
-To fix the problem described in the previous section, in \cite{analyzefuzzy}, the authors propose a method whereby only a subset of dimensions are conjoined during training passes. Fixing the size of this subset to a number less than 100 should allow for the mitigation of any dimensionality effects on convergence, as we are only optimising this subset of parameters at any one time. This does result in a biased gradient estimator, as we are ignoring many inputs, but in practice this shows to broaden the space of problems that can be solved using this method. This method can be seen as analogous to the common ``dropout" method in traditional neural networks, used to reduce overfitting during training \cite{dropout}. 
+To fix the problem described in the previous section, in \cite{analyzefuzzy}, the authors propose a method whereby only a subset of dimensions are conjoined during training passes. Fixing the size of this subset to a number less than 100 should allow for the mitigation of any dimensionality effects on convergence, as we are only optimising this subset of parameters at any one time. This does result in a biased gradient estimator, as we are ignoring many inputs, but in practice this shows to broaden the space of problems that can be solved using this method. This optimisation can be seen as analogous to the common ``dropout" method in traditional neural networks, used to reduce overfitting during training \cite{dropout}. 
 
 We will refer to this method as the \textit{subset optimisation}. Results for conjoining only 50 inputs at a time, chosen at random, are shown in Figure \ref{fig:conjconvkeepn}. We see that this extends the viability of this method to much larger dimensionalities than was previously possible, even when using the Product logic, which we know to not be ideal.
 
@@ -314,43 +330,96 @@ We will refer to this method as the \textit{subset optimisation}. Results for co
         \caption{20-term conjunction}
         \label{fig:conjconvkeepn20}
     \end{subfigure}
-       \caption{Convergence of mean distance from optimal parameters when learning conjunctions in the Product logic, with the size-50 subset optimisation.}
+       \caption{Convergence of mean distance from optimal parameters when learning conjunctions in the Product logic, with the size-50 subset optimisation, under $\XOR$ loss with exponent $a=10$.}
        \label{fig:conjconvkeepn}
 \end{figure}
 
 \subsection{Class Imbalance and Parameter Crispness}
 
-In Figure \ref{fig:conjconvkeepn}, we notably see that, whilst applying the subset optimisation makes scaling the dimension of a conjunction viable, what is not viable is increasing the size of the number of terms in the conjunction. If a boolean function is a conjunction of $N$ terms, only a fraction of $2^{-N}$ of all possible inputs will be satisfying. Thus, our learning becomes exponentially worse with increasing $N$. There is not much we can do to resolve this in the case of learning conjunctions, as this problem affects even classical algorithms. This does mean, however, that this architecture could still be considered viable for other problems.
+In Figure \ref{fig:conjconvkeepn}, we notably see that, whilst applying the subset optimisation makes scaling the dimension of a conjunction viable, what is not viable is increasing the size of the number of terms in the conjunction. If a boolean function is a conjunction of $N$ terms, only a fraction of $2^{-N}$ of all possible inputs will be satisfying. Thus, our learning becomes exponentially worse with increasing $N$. This problem is referred to as class imbalance.
 
-\subsection{Optimising for Interpretability}
+We can explicitly sample the gradients to see how this manifests more directly. Suppose we have a proposed conjunction $\phi(\vx) = x_1 \land x_2 \land x_3$, but we learn that $x_1 = \F$ while $\phi = \T$, for some training data point. If $\phi$ were as we assumed, $\phi$ would be $\F$ in this case, but it is not. Thus $x_1$ cannot be one of the terms in $\phi$. Applying this more generally is what is used in classical algorithms for learning conjunctions given noise-free data \cite{clt}.
 
-An interesting finding is that the model is actually a very inaccurate output predictor, regardless of optimisation. Figure \ref{fig:conjconvcorr} shows the convergence of the proportion of outputs and parameters respectively, that when mapped to either 0 or 1 (by closest distance), are the correct classical boolean values. We see that while the proportion of correct outputs converges quite quickly, the proportion of correct outputs suffer. Of note is that, for $N \geq 100$, the proportion of correct outputs does not meaningfully differ through optimisation. The stagnant proportion is also somewhat around $1 - 2^{-5} \approx 0.968$, which suggests that the output only ever evaluates to false, as this $2^{-5}$ represents the proportion of true outputs for conjunctions of 5 terms. 
+We would expect to see a similar effect in the gradient estimator that we derive through backpropagation. To test for this, we uniformly sample random initialisations of a real conjunction model, and observe the gradient estimations that result from an entire epoch of training inputs. Figure \ref{fig:conjgrad1} displays the results of this procedure. A conjunction over $D=10$ variables containing $N=4$ present terms was used to best convey the issue in the empiric results.
 
-This is not surprising, as we have just discussed how this model poorly approximates the true crisp parameterisations $0,1$ - suppose that we have correct parameterisations for every term, but with a distance of 0.25 from crisp values $0, 1$. In product logic, $0.25 \limply 0 = 0.75$, whereas in classical logic this would round to $0 \limply 0 = 1$. taking the product over a number of such terms that increases linearly with $N$ gives us an upper bound of $O(0.75^N)$ for the actual output. Since randomly sampled input bits generally have a proportion of bits with value $0$ close to $\frac{N}{2}$, most outputs are guaranteed to be $0$. 
-
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{imgs/conj-co-prod-keep50-5t.png}
-        \caption{Proportion of Correct Outputs}
-        \label{fig:conjconvcorrout}
+        \includegraphics[width=\textwidth]{imgs/grad_prod_1_falseparam.png}
+        \caption{Gradient samples for correct parameter $\F$}
+        \label{fig:conjgrad1false}
     \end{subfigure}
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}[b]{0.47\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{imgs/conj-cp-prod-keep50-5t.png}
-        \caption{Proportion of Correct Parameters}
-        \label{fig:conjconvcorrparam}
+        \includegraphics[width=\textwidth]{imgs/grad_prod_1_trueparam.png}
+        \caption{Gradient samples for correct parameter $\T$}
+        \label{fig:conjgrad1true}
     \end{subfigure}
-       \caption{Convergence of proportion of correct outputs and parameters, for conjunctions of 5 terms.}
-       \label{fig:conjconvcorr}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/grad_prod_1_falseparam_avg.png}
+        \caption{Mean gradient estimator for correct parameter $\F$}
+        \label{fig:conjgrad1falseavg}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/grad_prod_1_trueparam_avg.png}
+        \caption{Mean gradient estimator for correct parameter $\T$}
+        \label{fig:conjgrad1trueavg}
+    \end{subfigure}
+       \caption{Gradient estimations over the problem of real conjunctions under $\XOR$ loss with exponent $a=1$.}
+       \label{fig:conjgrad1}
 \end{figure}
 
-We can thus interpret this optimisation regime as optimising not for necessarily for output correctness, but for parameter interpretability. Collapsing the fuzzy booleans to crisp values give us a correct and interpretable solution to the problem.
+We do see that the gradient estimator behaves differently depending on the true valuation of a given logical parameter. If the true value is $\F$, any input sample with a correct output of $\T$ results in a positive gradient estimation, thus decreasing the parameter on the next optimisation step, as can be seen in Figure \ref{fig:conjgrad1false}. This is exactly the kind of behaviour we would expect, and it represents a faithful translation of logical inference to the real domain. Whenever the output is $\F$, the model increases all parameters, as no meaningful inference can be made, which can be seen in both Figures \ref{fig:conjgrad1false} and \ref{fig:conjgrad1true}. This can be interpreted as the model aiming to be robust to noisy data. 
+
+The samples above show that it is impossible for terms which are indeed part of the true conjunction to not be represented in the learnt model, as their parameterisations can only increase. The mean gradient estimator in Figure \ref{fig:conjgrad1trueavg} reflects this, as it is firmly below 0 no matter the parameterisation. If the term is not in the true conjunction, however, Figure \ref{fig:conjgrad1falseavg} shows that we unfortunately see that the gradient estimator is still negative, meaning the term appears in the learnt conjunction, regardless of initial parameterisation. 
+
+This is the result of the class imbalance problem. Despite the gradients being in the right direction at every step, the overall result is inaccurate, because inferences are not being well capitalised if they cannot be frequently made.
+
+What is interesting is that increasing the value of the exponent $a$ appears to resolve this issue. In all our successful tests, we use a value of $a=10$. A plot of gradient samples can be found in Appendix \ref{fig:conjgrad10}. We see that as the exponent increases, the direction of the gradients become more accurate, and the magnitude of the gradients become larger for significantly incorrect values. However, for parameter values that are near to $0.5$, no significant gradient is observed. Values 0 and 1 are referred to as ``crisp'' boolean values, so one could interpret this as the regime failing to ``crispen'' values effectively, despite correctly signed gradients. Appendix \ref{section:moregradients} contains further examples of how this loss fails due to the curse of dimensionality - in all the plots in this section, we use dimensionality $D=10$, but for $D=100$ the gradients quickly vanish.
+
+A significant observation therefore, which was eluded to in the previous section, is that binary cross-entropy, with appropriate choice of logic, suffers none of these problems. 
+
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/grad_prod_bce_falseparam_10dim.png}
+        \caption{Gradient samples for correct parameter $\F$}
+        \label{fig:conjgrad1falsebce}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/grad_prod_bce_trueparam_10dim.png}
+        \caption{Gradient samples for correct parameter $\T$}
+        \label{fig:conjgrad1truebce}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/grad_prod_bce_falseparam_10dim_avg.png}
+        \caption{Mean gradient estimator for correct parameter $\F$}
+        \label{fig:conjgrad1falseavgbce}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/grad_prod_bce_trueparam_10dim_avg.png}
+        \caption{Mean gradient estimator for correct parameter $\T$}
+        \label{fig:conjgrad1trueavgbce}
+    \end{subfigure}
+       \caption{Gradient estimations over the problem of real conjunctions under binary cross-entropy loss.}
+       \label{fig:conjgrad1bce}
+\end{figure}
+
+Figure \ref{fig:conjgrad1bce} shows how binary-cross entropy loss not only has a gradient estimator with correct direction, but also of greater magnitude, regardless of current parameterisation. Later empirical results will show that this does have a profound effect on convergence.
+
+We have demonstrated that varying our choice of loss has a significant effect on not only the rate of convergence, but the correctness thereof. Appendix \ref{section:moregradients} contains more such examples, that show how varying the logic, dimension and choice of loss function have an effect on the gradient estimator.
 
 \subsection{Empiric Comparison of Logics}
 
-In the above tests, we focus only on variations of the architecture using a fixed product logic. We also see that the choice of logic, again, has a profound affect on convergence. Figure \ref{fig:conjconvlogics} shows the convergence plots for various metrics over various logics.
+We have discussed what effect varying the choice of logic has on the gradient estimator $\nabla_\forall$, but we have not seen what effect this directly has on convergence. Figure \ref{fig:conjconvlogics} shows that this effect is profound. Here, a ``correct'' parameter is one which is within $0.5$ of it's optimal value.
 
 \begin{figure}[h]
     \centering
@@ -378,7 +447,7 @@ In the above tests, we focus only on variations of the architecture using a fixe
         \caption{Mean distance of parameters from optimum for ${D=10000}$}
         \label{fig:conjconvpmdd10000}
     \end{subfigure}
-       \caption{Convergence over various logics.}
+       \caption{Convergence over various logics under $\XOR$ loss $a=10$, $N=5$ terms, subset optimisation.}
        \label{fig:conjconvlogics}
 \end{figure}
 
@@ -391,44 +460,95 @@ In the above tests, we focus only on variations of the architecture using a fixe
     \label{fig:ssand}
 \end{wrapfigure}
 
-The plots show that, as in \ref{fig:toyconv}, Lukasiewicz logic fails even with the discussed optimisations. 
+The plots show that, as in Figure \ref{fig:toyconv}, Lukasiewicz logic fails even with the discussed optimisations. 
 
-Minimum logic is not far behind - while Figure \ref{fig:conjconvcpd100} shows the proportion of correct parameters increasing gradually for $D=100$, this proportion does not improve whatsoever for $D=10000$. This may be due to the fact that in Minimum logic, only one input variable to a conjunction has non-zero gradient at a time, as can be seen in Figure \ref{fig:minconj}. This restriction does not allow the optimisation regime to traverse the parameter space in an efficient manner. \cite{analyzefuzzy} refers to this problem as the \textit{binarization} of gradients.
+Minimum logic is not far behind - while Figure \ref{fig:conjconvcpd100} shows the proportion of correct parameters increasing gradually for $D=100$, this proportion does not improve whatsoever for $D=10000$. This may be due to the fact that in Minimum logic, only one input variable to a conjunction has non-zero gradient at a time, as can be seen in Figure \ref{fig:minconj}. This restriction does not allow the optimisation regime to traverse the parameter space in an efficient manner. \cite{analyzefuzzy} refers to this problem as the \textit{binarization} of gradients. Empirical examples of this binarization can be found in Appendix \ref{fig:conjgrad10m}.
 
-We have already mentioned in \ref{section:prodvanishgradient} that Product logic suffers it's own curse of dimensionality, and we can see this in how it initially has poor convergence in Figure \ref{fig:conjconvcpd10000}. However, as parameters are optimised, the all inputs to the conjunction approach 1, and thus the gradients increase in value. This results in a quickening in convergence rate around 40 epochs, before finally plateauing.
+We have already mentioned in Section \ref{section:prodvanishgradient} that Product logic suffers it's own curse of dimensionality, and we can see this in how it initially has poor convergence in Figure \ref{fig:conjconvcpd10000}. However, as parameters are optimised, the all inputs to the conjunction approach 1, and thus the gradients increase in value. This results in a quickening in convergence rate around 40 epochs, before finally plateauing.
 
-We also see the Schweizer-Sklar logic performs very efficiently, as the bounds derived in Appendix \ref{section:ssbounds} predict. What is interesting to note is that, for $p=0$, Schweizer-Sklar logic is precisely the Product logic, and for $p=-\infty$, it is precisely the Minimum logic. We can therefore also interpret Schweizer-Sklar (with a parameter $p=-2$ as used in the tests) as being a ``middle ground'' between the two logics. 
+We also see the Schweizer-Sklar logic performs very efficiently, as the bounds derived in Appendix \ref{section:ssbounds} predict. What is interesting to note is that, for $p=0$, Schweizer-Sklar logic is precisely the Product logic, and for $p=-\infty$, it is precisely the Minimum logic. We can therefore also interpret Schweizer-Sklar (with a parameter $p=-2$ as used in the tests) as being a ``middle ground'' between the two logics, having a guaranteed significant gradient without suffering from binarization. 
 
-Of note is that, as we can see in Figure \ref{fig:conjconvpmdd10000}, Product logic still outperforms Schweizer-Sklar logic in the ``crispness'' of it's learnt real parameters, as the former converges to an average distance considerably lower than that of the latter. 
+Of note is that, as we can see in Figure \ref{fig:conjconvpmdd10000}, Product logic still outperforms Schweizer-Sklar logic in the ``crispness'' of it's learnt real parameters, as the former converges to an average distance considerably lower than that of the latter. Under binary cross-entropy loss, we see an interesting result. 
 
-\subsection{Biased Gradient Estimation}
+Figure \ref{fig:conjconvlogicsbce} shows the result of training under binary cross-entropy loss, both with and without the subset optimisation. The subset optimisation continues to work with the Product logic, albeit not as well. It however has a disasterous effect on Schweizer-Sklar logic, which not only fails to converge to optimal values, but goes in the wrong direction.
 
-Optimal values for any such conjunction problem are always within crisp values $\{0,1\}$. The results of \ref{fig:conjconvpmdd100} and \ref{fig:conjconvpmdd10000} are therefore surprising, as they show that the mean distance from optimal parameters are not 0, but a small non-zero value, regardless of initial parameters or choice of logic. This suggests a bias in the gradient estimator produced through backpropagating our model. Further evidence to this claim is given when comparing the convergence of any metric when using an Adam optimiser, compared with using standard SGD optimisation. Figure \ref{fig:conjsgdvsadam} shows that much of the power of the above techniques relies on Adam optimisation - SGD, regardless of any architectural improvements, cannot replicate the same results. No improvement is observed whatsoever for dimensions $D=100$ or above.
-
+This is not observed without the subset optimisation. As we'd expect, the curse of dimensionality results in the Product logic implementation failing to converge at all. The Schweizer-Sklar implementation performs spectacularly well. It is significantly more efficient than under $\XOR$ loss - under $\XOR$ loss, with a dimensionality $D=10000$, it takes roughly 40 epochs to achieve parameter correctness greater than 90\%. Under binary cross-entropy loss, it only takes around 5. It further improves in the crispness of it's learnt parameters. In Figure \ref{fig:conjconvlogics}, we saw that every logic failed to achieve optimal (i.e. close to 0) distance from optimal parameters. Under this regime, however, we can achieve this. 
 
 \begin{figure}[h]
     \centering
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}[t]{0.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{imgs/conj-pmd-prod-keep50-5t.png}
-        \caption{Adam optimisation}
-        \label{fig:conjadam}
+        \includegraphics[width=\textwidth]{imgs/conj-cp-10000dim-keep50-5t-bce.png}
+        \caption{Proportion of correct parameters with subset optimisation.}
+        \label{fig:conjconvcpbceso}
     \end{subfigure}
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}[t]{0.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{imgs/conj-pmd-prod-keep50-5t-sgd.png}
-        \caption{Standard stochastic gradient descent}
-        \label{fig:conjsgd}
+        \includegraphics[width=\textwidth]{imgs/conj-pmd-10000dim-keep50-5t-bce.png}
+        \caption{Mean distance of parameters from optimum with subset optimisation.}
+        \label{fig:conjconvpmdbceso}
     \end{subfigure}
-       \caption{Convergence of mean distance from optimal parameters when learning conjunctions under differing optimisation regimes, using the Product logic with the subset conjunction architecture improvement.}
-       \label{fig:conjsgdvsadam}
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/conj-cp-10000dim-5t-bce.png}
+        \caption{Proportion of correct parameters without subset optimisation.}
+        \label{fig:conjconvcpbce}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/conj-pmd-10000dim-5t-bce.png}
+        \caption{Mean distance of parameters from optimum without subset optimisation.}
+        \label{fig:conjconvpmdbce}
+    \end{subfigure}
+       \caption{Convergence over various logics under binary cross-entropy loss, $N=5$ terms, $D=10000$ dimensionality.}
+       \label{fig:conjconvlogicsbce}
 \end{figure}
 
-This compels us to sample the gradient estimator, to determine the source of this error.
+\subsection{Suboptimal Predictions}
 
-\subsection{Learning Arbitrary Functions}
+Crispness is important if we wish to use any of these models to actually predict outputs. Suppose that we have correct parameterisations for every term, but with a distance of 0.25 from crisp values $0, 1$. In product logic, $0.25 \limply 0 = 0.75$, whereas in classical logic this would round to $\F \limply \F = \T$. taking the product over a number of such terms that increases linearly with $N$ gives us an upper bound of $O(0.75^N)$ for the actual output. Since randomly sampled input bits generally have a proportion of bits with value $0$ close to $\frac{N}{2}$, most outputs are guaranteed to be near $0$. While many regimes can guarantee 100\% of parameters are ``correct'', the nature of fuzzy logic means the output isn't necessarily translated into correct outputs.
 
-An important result from CLT is that with the assumption that $\textsc{RP} \neq \textsc{NP}$, it can be shown that learning boolean functions in DNF is not PAC-efficient \textit{in general} \cite{clt}. Hopefully, relaxing boolean constraints from the discrete to the real domain allows us to overcome this issue.
+Figure \ref{fig:conjconvco} shows the convergence of the proportion of corrects outputs under various regimes. Of note is that, for $N \geq 100$ under Product logic, the proportion of correct outputs does not meaningfully differ through optimisation. The stagnant proportion is also somewhat around $1 - 2^{-5} \approx 0.968$, which suggests that the output only ever evaluates to false, as this $2^{-5}$ represents the proportion of true outputs for conjunctions of 5 terms. 
+
+This is not surprising, as we have just discussed how this model poorly approximates the true crisp parameterisations $0,1$, which would result in the output degrading to $0$, even if the parameters are all correct.
+
+However, as we have discussed, Schweizer-Sklar logic can approximate crisp values, and does not suffer the curse of dimensionality (as much). This can be observed in Figure \ref{fig:conjconvcoss}. In fact, convergence seems to suffer only linearly in $\log D$.
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[t]{0.30\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/conj-co-prod-keep50-5t.png}
+        \caption{Product logic, subset optimisation, $\XOR$, $a=10$ loss.}
+        \label{fig:conjconvcopxor}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.30\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/conj-co-prod-keep50-5t-bce.png}
+        \caption{Product logic, subset optimisation, binary cross-entropy loss.}
+        \label{fig:conjconvcopbce}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.30\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/conj-co-ss-nokeepn-5t-bce.png}
+        \caption{Schweizer-Sklar logic $p=-2$, no subset optimisation, binary cross-entropy loss.}
+        \label{fig:conjconvcoss}
+    \end{subfigure}
+       \caption{Convergence of proportion of correct outputs, $N=5$ terms.}
+       \label{fig:conjconvco}
+\end{figure}
+
+\subsection{Conclusions}
+
+In learning conjunctions, we have experimented with a variety of logics, loss functions, and additional optimisations to find solutions to the many issues experienced in relaxing classical logic to the real domain. Class imbalance results in inaccurate gradient estimators, while the curse of dimensionality results in vanishing ones. Many logics have gradient estimators which are precisely 0 in a non-negligible region of the parameter space. Even in logics where this isn't the case, for example the Minimum logic, we still suffer due to the gradients being \textit{binarized}, we can only optimise one input at a time. Finally, the lack of crispness in our learnt parameters prevents the predicted outputs from being accurate.
+
+If we learn this problem using Schweizer-Sklar logic under a binary cross-entropy loss, we can resolve all these issues to a satisfactory level. Formal lower bounds exist on the magnitude of the gradient estimator for increasing dimensionality, and class imbalance does not as significantly effect the correctness of the gradient direction under this loss. We can now experiment with more complicated problems. 
+
+\pagebreak
+
+\section{Learning Arbitrary Functions}
+
+An important result from CLT is that with the assumption that $\textsc{RP} \neq \textsc{NP}$, it can be shown that learning boolean functions in DNF is not PAC-efficient \textit{in general} \cite{clt}. Hopefully, relaxing boolean constraints from the discrete to the real domain would allow us to overcome this issue.
 
 \todo{Add test results here}
 

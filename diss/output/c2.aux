@@ -16,6 +16,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Real Conjunction and Negation}{5}{subsection.2.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2.3}General Architectures}{5}{section.2.3}\protected@file@percent }
 \newlabel{section:fuzzyloss}{{2.3}{5}{General Architectures}{section.2.3}{}}
+\citation{embeddedlogicreg}
 \citation{diffilp}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:minconj}{{2.1a}{6}{Minimum\relax }{figure.caption.2}{}}
@@ -28,9 +29,9 @@
 \newlabel{sub@fig:draconj}{{d}{6}{Drastic\relax }{figure.caption.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Conjunction over various fuzzy logics. Note how pointwise gradients differ.\relax }}{6}{figure.caption.2}\protected@file@percent }
 \newlabel{fig:conjplots}{{2.1}{6}{Conjunction over various fuzzy logics. Note how pointwise gradients differ.\relax }{figure.caption.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}Analysis of a Toy Problem}{6}{section.2.4}\protected@file@percent }
 \citation{analyzefuzzy}
 \citation{adam}
-\@writefile{toc}{\contentsline {section}{\numberline {2.4}Analysis of a Toy Problem}{7}{section.2.4}\protected@file@percent }
 \newlabel{fig:toymin}{{2.2a}{7}{Minimum\relax }{figure.caption.3}{}}
 \newlabel{sub@fig:toymin}{{a}{7}{Minimum\relax }{figure.caption.3}{}}
 \newlabel{fig:toyprod}{{2.2b}{7}{Product\relax }{figure.caption.3}{}}
@@ -46,68 +47,100 @@
 \citation{clt}
 \citation{clt}
 \citation{noisyclt}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.2}Possible Resolutions}{8}{subsection.2.4.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2.5}Learning Functions}{8}{section.2.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.5.1}Learning Conjunctions}{8}{subsection.2.5.1}\protected@file@percent }
 \newlabel{fig:conjconvnokeepn1}{{2.3a}{9}{1-term conjunction\relax }{figure.caption.4}{}}
 \newlabel{sub@fig:conjconvnokeepn1}{{a}{9}{1-term conjunction\relax }{figure.caption.4}{}}
 \newlabel{fig:conjconvnokeepn5}{{2.3b}{9}{5-term conjunction\relax }{figure.caption.4}{}}
 \newlabel{sub@fig:conjconvnokeepn5}{{b}{9}{5-term conjunction\relax }{figure.caption.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Convergence of mean distance from optimal parameters when learning conjunctions in the Product logic. Each test is run 10 times.\relax }}{9}{figure.caption.4}\protected@file@percent }
-\newlabel{fig:conjconvnokeepn}{{2.3}{9}{Convergence of mean distance from optimal parameters when learning conjunctions in the Product logic. Each test is run 10 times.\relax }{figure.caption.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.2}Vanishing Gradients}{9}{subsection.2.5.2}\protected@file@percent }
-\newlabel{section:prodvanishgradient}{{2.5.2}{9}{Vanishing Gradients}{subsection.2.5.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Convergence of mean distance from optimal parameters when learning conjunctions in the Product logic. Each test is run 10 times, with $\texttt  {XOR}$ loss, using exponent $a=10$.\relax }}{9}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:conjconvnokeepn}{{2.3}{9}{Convergence of mean distance from optimal parameters when learning conjunctions in the Product logic. Each test is run 10 times, with $\XOR $ loss, using exponent $a=10$.\relax }{figure.caption.4}{}}
+\newlabel{fig:conjconvnokeepn1bce}{{2.4a}{9}{1-term conjunction\relax }{figure.caption.5}{}}
+\newlabel{sub@fig:conjconvnokeepn1bce}{{a}{9}{1-term conjunction\relax }{figure.caption.5}{}}
+\newlabel{fig:conjconvnokeepn5bce}{{2.4b}{9}{5-term conjunction\relax }{figure.caption.5}{}}
+\newlabel{sub@fig:conjconvnokeepn5bce}{{b}{9}{5-term conjunction\relax }{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces Convergence of mean distance from optimal parameters when learning conjunctions in the Product logic, with exponent binary cross-entropy loss.\relax }}{9}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:conjconvnokeepnbce}{{2.4}{9}{Convergence of mean distance from optimal parameters when learning conjunctions in the Product logic, with exponent binary cross-entropy loss.\relax }{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.2}Vanishing Gradients in Strict Logics}{9}{subsection.2.5.2}\protected@file@percent }
+\newlabel{section:prodvanishgradient}{{2.5.2}{9}{Vanishing Gradients in Strict Logics}{subsection.2.5.2}{}}
 \citation{analyzefuzzy}
 \citation{dropout}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.5.3}Architectural Improvements}{10}{subsection.2.5.3}\protected@file@percent }
-\newlabel{fig:conjconvkeepn1}{{2.4a}{10}{1-term conjunction\relax }{figure.caption.5}{}}
-\newlabel{sub@fig:conjconvkeepn1}{{a}{10}{1-term conjunction\relax }{figure.caption.5}{}}
-\newlabel{fig:conjconvkeepn5}{{2.4b}{10}{5-term conjunction\relax }{figure.caption.5}{}}
-\newlabel{sub@fig:conjconvkeepn5}{{b}{10}{5-term conjunction\relax }{figure.caption.5}{}}
-\newlabel{fig:conjconvkeepn20}{{2.4c}{10}{20-term conjunction\relax }{figure.caption.5}{}}
-\newlabel{sub@fig:conjconvkeepn20}{{c}{10}{20-term conjunction\relax }{figure.caption.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces Convergence of mean distance from optimal parameters when learning conjunctions in the Product logic, with the size-50 subset optimisation.\relax }}{10}{figure.caption.5}\protected@file@percent }
-\newlabel{fig:conjconvkeepn}{{2.4}{10}{Convergence of mean distance from optimal parameters when learning conjunctions in the Product logic, with the size-50 subset optimisation.\relax }{figure.caption.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.4}Class Imbalance and Parameter Crispness}{10}{subsection.2.5.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.5}Optimising for Interpretability}{10}{subsection.2.5.5}\protected@file@percent }
-\citation{analyzefuzzy}
-\newlabel{fig:conjconvcorrout}{{2.5a}{11}{Proportion of Correct Outputs\relax }{figure.caption.6}{}}
-\newlabel{sub@fig:conjconvcorrout}{{a}{11}{Proportion of Correct Outputs\relax }{figure.caption.6}{}}
-\newlabel{fig:conjconvcorrparam}{{2.5b}{11}{Proportion of Correct Parameters\relax }{figure.caption.6}{}}
-\newlabel{sub@fig:conjconvcorrparam}{{b}{11}{Proportion of Correct Parameters\relax }{figure.caption.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces Convergence of proportion of correct outputs and parameters, for conjunctions of 5 terms.\relax }}{11}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:conjconvcorr}{{2.5}{11}{Convergence of proportion of correct outputs and parameters, for conjunctions of 5 terms.\relax }{figure.caption.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.6}Empiric Comparison of Logics}{11}{subsection.2.5.6}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2.7}{\ignorespaces width=0.3\textwidth }}{11}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:ssand}{{2.7}{11}{width=0.3\textwidth }{figure.caption.8}{}}
+\newlabel{fig:conjconvkeepn1}{{2.5a}{10}{1-term conjunction\relax }{figure.caption.6}{}}
+\newlabel{sub@fig:conjconvkeepn1}{{a}{10}{1-term conjunction\relax }{figure.caption.6}{}}
+\newlabel{fig:conjconvkeepn5}{{2.5b}{10}{5-term conjunction\relax }{figure.caption.6}{}}
+\newlabel{sub@fig:conjconvkeepn5}{{b}{10}{5-term conjunction\relax }{figure.caption.6}{}}
+\newlabel{fig:conjconvkeepn20}{{2.5c}{10}{20-term conjunction\relax }{figure.caption.6}{}}
+\newlabel{sub@fig:conjconvkeepn20}{{c}{10}{20-term conjunction\relax }{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces Convergence of mean distance from optimal parameters when learning conjunctions in the Product logic, with the size-50 subset optimisation, under $\texttt  {XOR}$ loss with exponent $a=10$.\relax }}{10}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:conjconvkeepn}{{2.5}{10}{Convergence of mean distance from optimal parameters when learning conjunctions in the Product logic, with the size-50 subset optimisation, under $\XOR $ loss with exponent $a=10$.\relax }{figure.caption.6}{}}
 \citation{clt}
-\newlabel{fig:conjconvcpd100}{{2.6a}{12}{Proportion of correct parameters for $D=100$\relax }{figure.caption.7}{}}
-\newlabel{sub@fig:conjconvcpd100}{{a}{12}{Proportion of correct parameters for $D=100$\relax }{figure.caption.7}{}}
-\newlabel{fig:conjconvpmdd100}{{2.6b}{12}{Mean distance of parameters from optimum for ${D=100}$\relax }{figure.caption.7}{}}
-\newlabel{sub@fig:conjconvpmdd100}{{b}{12}{Mean distance of parameters from optimum for ${D=100}$\relax }{figure.caption.7}{}}
-\newlabel{fig:conjconvcpd10000}{{2.6c}{12}{Proportion of correct parameters for $D=10000$\relax }{figure.caption.7}{}}
-\newlabel{sub@fig:conjconvcpd10000}{{c}{12}{Proportion of correct parameters for $D=10000$\relax }{figure.caption.7}{}}
-\newlabel{fig:conjconvpmdd10000}{{2.6d}{12}{Mean distance of parameters from optimum for ${D=10000}$\relax }{figure.caption.7}{}}
-\newlabel{sub@fig:conjconvpmdd10000}{{d}{12}{Mean distance of parameters from optimum for ${D=10000}$\relax }{figure.caption.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.6}{\ignorespaces Convergence over various logics.\relax }}{12}{figure.caption.7}\protected@file@percent }
-\newlabel{fig:conjconvlogics}{{2.6}{12}{Convergence over various logics.\relax }{figure.caption.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.7}Biased Gradient Estimation}{12}{subsection.2.5.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.8}Learning Arbitrary Functions}{12}{subsection.2.5.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.4}Class Imbalance and Parameter Crispness}{11}{subsection.2.5.4}\protected@file@percent }
+\newlabel{fig:conjgrad1false}{{2.6a}{11}{Gradient samples for correct parameter $\F $\relax }{figure.caption.7}{}}
+\newlabel{sub@fig:conjgrad1false}{{a}{11}{Gradient samples for correct parameter $\F $\relax }{figure.caption.7}{}}
+\newlabel{fig:conjgrad1true}{{2.6b}{11}{Gradient samples for correct parameter $\T $\relax }{figure.caption.7}{}}
+\newlabel{sub@fig:conjgrad1true}{{b}{11}{Gradient samples for correct parameter $\T $\relax }{figure.caption.7}{}}
+\newlabel{fig:conjgrad1falseavg}{{2.6c}{11}{Mean gradient estimator for correct parameter $\F $\relax }{figure.caption.7}{}}
+\newlabel{sub@fig:conjgrad1falseavg}{{c}{11}{Mean gradient estimator for correct parameter $\F $\relax }{figure.caption.7}{}}
+\newlabel{fig:conjgrad1trueavg}{{2.6d}{11}{Mean gradient estimator for correct parameter $\T $\relax }{figure.caption.7}{}}
+\newlabel{sub@fig:conjgrad1trueavg}{{d}{11}{Mean gradient estimator for correct parameter $\T $\relax }{figure.caption.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.6}{\ignorespaces Gradient estimations over the problem of real conjunctions under $\texttt  {XOR}$ loss with exponent $a=1$.\relax }}{11}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:conjgrad1}{{2.6}{11}{Gradient estimations over the problem of real conjunctions under $\XOR $ loss with exponent $a=1$.\relax }{figure.caption.7}{}}
+\newlabel{fig:conjgrad1falsebce}{{2.7a}{12}{Gradient samples for correct parameter $\F $\relax }{figure.caption.8}{}}
+\newlabel{sub@fig:conjgrad1falsebce}{{a}{12}{Gradient samples for correct parameter $\F $\relax }{figure.caption.8}{}}
+\newlabel{fig:conjgrad1truebce}{{2.7b}{12}{Gradient samples for correct parameter $\T $\relax }{figure.caption.8}{}}
+\newlabel{sub@fig:conjgrad1truebce}{{b}{12}{Gradient samples for correct parameter $\T $\relax }{figure.caption.8}{}}
+\newlabel{fig:conjgrad1falseavgbce}{{2.7c}{12}{Mean gradient estimator for correct parameter $\F $\relax }{figure.caption.8}{}}
+\newlabel{sub@fig:conjgrad1falseavgbce}{{c}{12}{Mean gradient estimator for correct parameter $\F $\relax }{figure.caption.8}{}}
+\newlabel{fig:conjgrad1trueavgbce}{{2.7d}{12}{Mean gradient estimator for correct parameter $\T $\relax }{figure.caption.8}{}}
+\newlabel{sub@fig:conjgrad1trueavgbce}{{d}{12}{Mean gradient estimator for correct parameter $\T $\relax }{figure.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.7}{\ignorespaces Gradient estimations over the problem of real conjunctions under binary cross-entropy loss.\relax }}{12}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:conjgrad1bce}{{2.7}{12}{Gradient estimations over the problem of real conjunctions under binary cross-entropy loss.\relax }{figure.caption.8}{}}
+\citation{analyzefuzzy}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.5}Empiric Comparison of Logics}{13}{subsection.2.5.5}\protected@file@percent }
+\newlabel{fig:conjconvcpd100}{{2.8a}{13}{Proportion of correct parameters for $D=100$\relax }{figure.caption.9}{}}
+\newlabel{sub@fig:conjconvcpd100}{{a}{13}{Proportion of correct parameters for $D=100$\relax }{figure.caption.9}{}}
+\newlabel{fig:conjconvpmdd100}{{2.8b}{13}{Mean distance of parameters from optimum for ${D=100}$\relax }{figure.caption.9}{}}
+\newlabel{sub@fig:conjconvpmdd100}{{b}{13}{Mean distance of parameters from optimum for ${D=100}$\relax }{figure.caption.9}{}}
+\newlabel{fig:conjconvcpd10000}{{2.8c}{13}{Proportion of correct parameters for $D=10000$\relax }{figure.caption.9}{}}
+\newlabel{sub@fig:conjconvcpd10000}{{c}{13}{Proportion of correct parameters for $D=10000$\relax }{figure.caption.9}{}}
+\newlabel{fig:conjconvpmdd10000}{{2.8d}{13}{Mean distance of parameters from optimum for ${D=10000}$\relax }{figure.caption.9}{}}
+\newlabel{sub@fig:conjconvpmdd10000}{{d}{13}{Mean distance of parameters from optimum for ${D=10000}$\relax }{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.8}{\ignorespaces Convergence over various logics under $\texttt  {XOR}$ loss $a=10$, $N=5$ terms, subset optimisation.\relax }}{13}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:conjconvlogics}{{2.8}{13}{Convergence over various logics under $\XOR $ loss $a=10$, $N=5$ terms, subset optimisation.\relax }{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.9}{\ignorespaces width=0.3\textwidth }}{13}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:ssand}{{2.9}{13}{width=0.3\textwidth }{figure.caption.10}{}}
+\newlabel{fig:conjconvcpbceso}{{2.10a}{14}{Proportion of correct parameters with subset optimisation.\relax }{figure.caption.11}{}}
+\newlabel{sub@fig:conjconvcpbceso}{{a}{14}{Proportion of correct parameters with subset optimisation.\relax }{figure.caption.11}{}}
+\newlabel{fig:conjconvpmdbceso}{{2.10b}{14}{Mean distance of parameters from optimum with subset optimisation.\relax }{figure.caption.11}{}}
+\newlabel{sub@fig:conjconvpmdbceso}{{b}{14}{Mean distance of parameters from optimum with subset optimisation.\relax }{figure.caption.11}{}}
+\newlabel{fig:conjconvcpbce}{{2.10c}{14}{Proportion of correct parameters without subset optimisation.\relax }{figure.caption.11}{}}
+\newlabel{sub@fig:conjconvcpbce}{{c}{14}{Proportion of correct parameters without subset optimisation.\relax }{figure.caption.11}{}}
+\newlabel{fig:conjconvpmdbce}{{2.10d}{14}{Mean distance of parameters from optimum without subset optimisation.\relax }{figure.caption.11}{}}
+\newlabel{sub@fig:conjconvpmdbce}{{d}{14}{Mean distance of parameters from optimum without subset optimisation.\relax }{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.10}{\ignorespaces Convergence over various logics under binary cross-entropy loss, $N=5$ terms, $D=10000$ dimensionality.\relax }}{14}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:conjconvlogicsbce}{{2.10}{14}{Convergence over various logics under binary cross-entropy loss, $N=5$ terms, $D=10000$ dimensionality.\relax }{figure.caption.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.6}Suboptimal Predictions}{15}{subsection.2.5.6}\protected@file@percent }
+\newlabel{fig:conjconvcopxor}{{2.11a}{15}{Product logic, subset optimisation, $\XOR $, $a=10$ loss.\relax }{figure.caption.12}{}}
+\newlabel{sub@fig:conjconvcopxor}{{a}{15}{Product logic, subset optimisation, $\XOR $, $a=10$ loss.\relax }{figure.caption.12}{}}
+\newlabel{fig:conjconvcopbce}{{2.11b}{15}{Product logic, subset optimisation, binary cross-entropy loss.\relax }{figure.caption.12}{}}
+\newlabel{sub@fig:conjconvcopbce}{{b}{15}{Product logic, subset optimisation, binary cross-entropy loss.\relax }{figure.caption.12}{}}
+\newlabel{fig:conjconvcoss}{{2.11c}{15}{Schweizer-Sklar logic $p=-2$, no subset optimisation, binary cross-entropy loss.\relax }{figure.caption.12}{}}
+\newlabel{sub@fig:conjconvcoss}{{c}{15}{Schweizer-Sklar logic $p=-2$, no subset optimisation, binary cross-entropy loss.\relax }{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.11}{\ignorespaces Convergence of proportion of correct outputs, $N=5$ terms.\relax }}{15}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:conjconvco}{{2.11}{15}{Convergence of proportion of correct outputs, $N=5$ terms.\relax }{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5.7}Conclusions}{15}{subsection.2.5.7}\protected@file@percent }
+\citation{clt}
 \citation{diffilp}
 \citation{diffilpGT}
 \citation{lnnibm}
 \citation{word2vec}
 \citation{word2vecrelations}
-\newlabel{fig:conjadam}{{2.8a}{13}{Adam optimisation\relax }{figure.caption.9}{}}
-\newlabel{sub@fig:conjadam}{{a}{13}{Adam optimisation\relax }{figure.caption.9}{}}
-\newlabel{fig:conjsgd}{{2.8b}{13}{Standard stochastic gradient descent\relax }{figure.caption.9}{}}
-\newlabel{sub@fig:conjsgd}{{b}{13}{Standard stochastic gradient descent\relax }{figure.caption.9}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.8}{\ignorespaces Convergence of mean distance from optimal parameters when learning conjunctions under differing optimisation regimes, using the Product logic with the subset conjunction architecture improvement.\relax }}{13}{figure.caption.9}\protected@file@percent }
-\newlabel{fig:conjsgdvsadam}{{2.8}{13}{Convergence of mean distance from optimal parameters when learning conjunctions under differing optimisation regimes, using the Product logic with the subset conjunction architecture improvement.\relax }{figure.caption.9}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.6}Alternative Frameworks}{13}{section.2.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.6.1}Alternative Applications of Real Logic}{13}{subsection.2.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.6.2}Embedded Logic and Relations}{13}{subsection.2.6.2}\protected@file@percent }
 \citation{ltn2016}
+\@writefile{toc}{\contentsline {section}{\numberline {2.6}Learning Arbitrary Functions}{16}{section.2.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.7}Alternative Frameworks}{16}{section.2.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.7.1}Alternative Applications of Real Logic}{16}{subsection.2.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.7.2}Embedded Logic and Relations}{16}{subsection.2.7.2}\protected@file@percent }
 \citation{embeddedgoogle}
 \citation{embeddedlogicreg}
 \citation{embeddedcollabreasoning}
@@ -115,9 +148,9 @@
 \citation{normalizingflows}
 \citation{markovlogicnetworks}
 \citation{probsoftlogic}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.6.3}Bayesian Models and Probabilistic Logic}{14}{subsection.2.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.7.3}Bayesian Models and Probabilistic Logic}{17}{subsection.2.7.3}\protected@file@percent }
 \@setckpt{c2}{
-\setcounter{page}{15}
+\setcounter{page}{18}
 \setcounter{equation}{0}
 \setcounter{enumi}{0}
 \setcounter{enumii}{0}
@@ -127,16 +160,16 @@
 \setcounter{mpfootnote}{0}
 \setcounter{part}{0}
 \setcounter{chapter}{2}
-\setcounter{section}{6}
+\setcounter{section}{7}
 \setcounter{subsection}{3}
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{8}
+\setcounter{figure}{11}
 \setcounter{table}{0}
 \setcounter{Item}{0}
 \setcounter{Hfootnote}{3}
-\setcounter{bookmark@seq@number}{24}
+\setcounter{bookmark@seq@number}{23}
 \setcounter{parentequation}{0}
 \setcounter{float@type}{8}
 \setcounter{algorithm}{0}
@@ -149,7 +182,7 @@
 \setcounter{ALG@tmpcounter}{0}
 \setcounter{caption@flags}{6}
 \setcounter{continuedfloat}{0}
-\setcounter{subfigure}{2}
+\setcounter{subfigure}{3}
 \setcounter{subtable}{0}
 \setcounter{NAT@ctr}{0}
 \setcounter{section@level}{0}

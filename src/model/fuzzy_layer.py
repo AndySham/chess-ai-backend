@@ -227,31 +227,20 @@ class FuzzyDNF(nn.Module):
 
 
 class FuzzyLoss(nn.Module):
-    def __init__(self, logic: FuzzyLogic, exp=1, memory=0.99, fix_imbalance=False):
+    def __init__(self, logic: FuzzyLogic, exp=1, bce=False):
         super().__init__()
         self.logic = logic
         self.exp = exp
-        self.count_1 = 0
-        self.count_0 = 0
-        self.memory = memory
-        self.fix_imbalance = fix_imbalance
+        self.bce = bce
+        self.bce_loss = nn.BCELoss()
 
     def forward(self, y, y_hat):
-        self.count_1 *= self.memory
-        self.count_0 *= self.memory
-        self.count_1 += (y == True).sum().item()
-        self.count_0 += (y == False).sum().item()
-
-
-        diffs = self.logic.bin_xnor(y, y_hat) ** self.exp
-        if self.fix_imbalance:
-            avg_count = (self.count_1 + self.count_0)
-            #print(avg_count/self.count_1, avg_count/self.count_0)
-            if self.count_1 != 0:
-                diffs[y == True] *= avg_count / self.count_1
-            if self.count_0 != 0:
-                diffs[y == False] *= avg_count / self.count_0
-        return diffs.sum()
+        if self.bce:
+            diffs = self.bce_loss(y_hat, y) ** self.exp
+        else:
+            diffs = (self.logic.bin_xnor(y, y_hat) ** self.exp).sum()
+        
+        return diffs
 
 
 def fuzzy_loss(y, y_hat, flogic, fix_imbalance=False, exp=1):

@@ -85,3 +85,11 @@ class DNFDataset(Dataset):
             ),
         )
 
+    def get_data(self):
+        return self.conj_weights, self.conj_signs, self.disj_weights
+
+    def set_data(self, conj_weights, conj_signs, disj_weights):
+        self.conj_weights = conj_weights
+        self.conj_signs = conj_signs
+        self.disj_weights = disj_weights
+

@@ -7,6 +7,7 @@ A level-1 auxiliary file: c2.aux
 A level-1 auxiliary file: c3.aux
 A level-1 auxiliary file: c4.aux
 A level-1 auxiliary file: a1.aux
+A level-1 auxiliary file: a2.aux
 Database file #1: bib.bib
 Warning--entry type for "leela" isn't style-file defined
 --line 344 of file bib.bib
@@ -18,45 +19,47 @@ Warning--empty title in interpretdeepmodels
 Warning--empty publisher in gordon2014probabilistic
 Warning--empty publisher in ilp
 Warning--empty title in interpretbook
-You've used 36 entries,
+Warning--empty publisher in realanal
+Warning--empty year in realanal
+You've used 37 entries,
             2118 wiz_defined-function locations,
-            671 strings with 9716 characters,
-and the built_in function-call counts, 11901 in all, are:
-= -- 1072
-> -- 727
-< -- 8
-+ -- 290
-- -- 252
-* -- 793
-:= -- 1988
-add.period$ -- 101
-call.type$ -- 36
-change.case$ -- 223
+            676 strings with 9793 characters,
+and the built_in function-call counts, 12160 in all, are:
+= -- 1092
+> -- 740
+< -- 9
++ -- 295
+- -- 256
+* -- 813
+:= -- 2030
+add.period$ -- 103
+call.type$ -- 37
+change.case$ -- 227
 chr.to.int$ -- 0
-cite$ -- 44
-duplicate$ -- 425
-empty$ -- 896
-format.name$ -- 252
-if$ -- 2471
+cite$ -- 47
+duplicate$ -- 437
+empty$ -- 918
+format.name$ -- 256
+if$ -- 2523
 int.to.chr$ -- 0
-int.to.str$ -- 36
-missing$ -- 33
-newline$ -- 172
-num.names$ -- 68
-pop$ -- 340
+int.to.str$ -- 37
+missing$ -- 35
+newline$ -- 176
+num.names$ -- 70
+pop$ -- 351
 preamble$ -- 1
-purify$ -- 197
+purify$ -- 201
 quote$ -- 0
-skip$ -- 323
+skip$ -- 330
 stack$ -- 0
-substring$ -- 439
-swap$ -- 91
-text.length$ -- 8
+substring$ -- 444
+swap$ -- 93
+text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 128
-warning$ -- 8
-while$ -- 89
-width$ -- 38
-write$ -- 352
-(There were 9 warnings)
+type$ -- 130
+warning$ -- 10
+while$ -- 91
+width$ -- 39
+write$ -- 360
+(There were 11 warnings)
