@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.25)  13 MAY 2022 00:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.25)  13 MAY 2022 18:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -435,7 +435,35 @@ File: l3backend-pdftex.def 2022-04-20 L3 backend support: PDF output (pdfTeX)
 LaTeX Warning: Unused global option(s):
     [conference].
 
-(output/diss.aux (output/c1.aux) (output/c2.aux) (output/c3.aux) (output/c4.aux) (output/a1.aux) (output/a2.aux))
+(output/diss.aux (output/c1.aux) (output/c2.aux) (output/c3.aux) (output/c4.aux) (output/a1.aux) (output/a2.aux) (output/a3.aux) (output/a4.aux
+
+LaTeX Warning: Label `fig:conjgrad2false' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:conjgrad2false' multiply defined.
+
+
+LaTeX Warning: Label `fig:conjgrad2true' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:conjgrad2true' multiply defined.
+
+
+LaTeX Warning: Label `fig:conjgrad2falseavg' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:conjgrad2falseavg' multiply defined.
+
+
+LaTeX Warning: Label `fig:conjgrad2trueavg' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:conjgrad2trueavg' multiply defined.
+
+
+LaTeX Warning: Label `fig:conjgrad2' multiply defined.
+
+))
 \openout1 = `diss.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
@@ -577,475 +605,514 @@ Chapter 2.
 
 
 ]
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 71.
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 72.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 71.
-<imgs/fuzzy_min_and.png, id=226, 341.275pt x 341.275pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 72.
+<imgs/fuzzy_min_and.png, id=237, 341.275pt x 341.275pt>
 File: imgs/fuzzy_min_and.png Graphic file (type png)
 <use imgs/fuzzy_min_and.png>
-Package pdftex.def Info: imgs/fuzzy_min_and.png  used on input line 81.
+Package pdftex.def Info: imgs/fuzzy_min_and.png  used on input line 82.
 (pdftex.def)             Requested size: 100.09526pt x 100.09201pt.
-<imgs/fuzzy_prod_and.png, id=228, 341.275pt x 341.275pt>
+<imgs/fuzzy_prod_and.png, id=239, 341.275pt x 341.275pt>
 File: imgs/fuzzy_prod_and.png Graphic file (type png)
 <use imgs/fuzzy_prod_and.png>
-Package pdftex.def Info: imgs/fuzzy_prod_and.png  used on input line 87.
+Package pdftex.def Info: imgs/fuzzy_prod_and.png  used on input line 88.
 (pdftex.def)             Requested size: 100.09526pt x 100.09201pt.
-<imgs/fuzzy_luk_and.png, id=229, 341.275pt x 341.275pt>
+<imgs/fuzzy_luk_and.png, id=240, 341.275pt x 341.275pt>
 File: imgs/fuzzy_luk_and.png Graphic file (type png)
 <use imgs/fuzzy_luk_and.png>
-Package pdftex.def Info: imgs/fuzzy_luk_and.png  used on input line 93.
+Package pdftex.def Info: imgs/fuzzy_luk_and.png  used on input line 94.
 (pdftex.def)             Requested size: 100.09526pt x 100.09201pt.
-<imgs/fuzzy_dra_and.png, id=230, 341.275pt x 341.275pt>
+<imgs/fuzzy_dra_and.png, id=241, 341.275pt x 341.275pt>
 File: imgs/fuzzy_dra_and.png Graphic file (type png)
 <use imgs/fuzzy_dra_and.png>
-Package pdftex.def Info: imgs/fuzzy_dra_and.png  used on input line 99.
+Package pdftex.def Info: imgs/fuzzy_dra_and.png  used on input line 100.
 (pdftex.def)             Requested size: 100.09526pt x 100.09201pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [5] [6 <./imgs/fuzzy_min_and.png> <./imgs/fuzzy_prod_and.png> <./imgs/fuzzy_luk_and.png> <./imgs/fuzzy_dra_and.png>]
-<imgs/toyconv_min.png, id=258, 387.4475pt x 262.9825pt>
+<imgs/toyconv_min.png, id=270, 387.4475pt x 262.9825pt>
 File: imgs/toyconv_min.png Graphic file (type png)
 <use imgs/toyconv_min.png>
-Package pdftex.def Info: imgs/toyconv_min.png  used on input line 152.
+Package pdftex.def Info: imgs/toyconv_min.png  used on input line 153.
 (pdftex.def)             Requested size: 225.21626pt x 152.86702pt.
-<imgs/toyconv_prod.png, id=259, 387.4475pt x 262.9825pt>
+<imgs/toyconv_prod.png, id=271, 387.4475pt x 262.9825pt>
 File: imgs/toyconv_prod.png Graphic file (type png)
 <use imgs/toyconv_prod.png>
-Package pdftex.def Info: imgs/toyconv_prod.png  used on input line 158.
+Package pdftex.def Info: imgs/toyconv_prod.png  used on input line 159.
 (pdftex.def)             Requested size: 225.21626pt x 152.86702pt.
-<imgs/toyconv_luk.png, id=260, 387.4475pt x 262.9825pt>
+<imgs/toyconv_luk.png, id=272, 387.4475pt x 262.9825pt>
 File: imgs/toyconv_luk.png Graphic file (type png)
 <use imgs/toyconv_luk.png>
-Package pdftex.def Info: imgs/toyconv_luk.png  used on input line 164.
+Package pdftex.def Info: imgs/toyconv_luk.png  used on input line 165.
 (pdftex.def)             Requested size: 225.21626pt x 152.86702pt.
-<imgs/toyconv_dra.png, id=261, 401.5pt x 262.9825pt>
+<imgs/toyconv_dra.png, id=273, 401.5pt x 262.9825pt>
 File: imgs/toyconv_dra.png Graphic file (type png)
 <use imgs/toyconv_dra.png>
-Package pdftex.def Info: imgs/toyconv_dra.png  used on input line 170.
+Package pdftex.def Info: imgs/toyconv_dra.png  used on input line 171.
 (pdftex.def)             Requested size: 225.21626pt x 147.52199pt.
  [7 <./imgs/toyconv_min.png> <./imgs/toyconv_prod.png> <./imgs/toyconv_luk.png> <./imgs/toyconv_dra.png>]
-<imgs/conj-pmd-prod-nokeepn-1t.png, id=282, 396.48125pt x 262.9825pt>
+<imgs/conj-pmd-prod-nokeepn-1t.png, id=294, 396.48125pt x 262.9825pt>
 File: imgs/conj-pmd-prod-nokeepn-1t.png Graphic file (type png)
 <use imgs/conj-pmd-prod-nokeepn-1t.png>
-Package pdftex.def Info: imgs/conj-pmd-prod-nokeepn-1t.png  used on input line 219.
+Package pdftex.def Info: imgs/conj-pmd-prod-nokeepn-1t.png  used on input line 220.
 (pdftex.def)             Requested size: 240.23016pt x 159.34364pt.
-<imgs/conj-pmd-prod-nokeepn-5t.png, id=283, 396.48125pt x 262.9825pt>
+<imgs/conj-pmd-prod-nokeepn-5t.png, id=295, 396.48125pt x 262.9825pt>
 File: imgs/conj-pmd-prod-nokeepn-5t.png Graphic file (type png)
 <use imgs/conj-pmd-prod-nokeepn-5t.png>
-Package pdftex.def Info: imgs/conj-pmd-prod-nokeepn-5t.png  used on input line 225.
+Package pdftex.def Info: imgs/conj-pmd-prod-nokeepn-5t.png  used on input line 226.
 (pdftex.def)             Requested size: 240.23016pt x 159.34364pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<imgs/conj-pmd-prod-nokeepn-1t-bce.png, id=285, 393.47pt x 262.9825pt>
+<imgs/conj-pmd-prod-nokeepn-1t-bce.png, id=297, 393.47pt x 262.9825pt>
 File: imgs/conj-pmd-prod-nokeepn-1t-bce.png Graphic file (type png)
 <use imgs/conj-pmd-prod-nokeepn-1t-bce.png>
-Package pdftex.def Info: imgs/conj-pmd-prod-nokeepn-1t-bce.png  used on input line 239.
+Package pdftex.def Info: imgs/conj-pmd-prod-nokeepn-1t-bce.png  used on input line 240.
 (pdftex.def)             Requested size: 240.23016pt x 160.55952pt.
-<imgs/conj-pmd-prod-nokeepn-5t-bce.png, id=286, 393.47pt x 262.9825pt>
+<imgs/conj-pmd-prod-nokeepn-5t-bce.png, id=298, 393.47pt x 262.9825pt>
 File: imgs/conj-pmd-prod-nokeepn-5t-bce.png Graphic file (type png)
 <use imgs/conj-pmd-prod-nokeepn-5t-bce.png>
-Package pdftex.def Info: imgs/conj-pmd-prod-nokeepn-5t-bce.png  used on input line 245.
+Package pdftex.def Info: imgs/conj-pmd-prod-nokeepn-5t-bce.png  used on input line 246.
 (pdftex.def)             Requested size: 240.23016pt x 160.55952pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [8] [9 <./imgs/conj-pmd-prod-nokeepn-1t.png> <./imgs/conj-pmd-prod-nokeepn-5t.png> <./imgs/conj-pmd-prod-nokeepn-1t-bce.png> <./imgs/conj-pmd-prod-nokeepn-5t-bce.png>]
-<imgs/conj-pmd-prod-keep50-1t.png, id=310, 425.59pt x 281.05pt>
+<imgs/conj-pmd-prod-keep50-1t.png, id=322, 425.59pt x 281.05pt>
 File: imgs/conj-pmd-prod-keep50-1t.png Graphic file (type png)
 <use imgs/conj-pmd-prod-keep50-1t.png>
-Package pdftex.def Info: imgs/conj-pmd-prod-keep50-1t.png  used on input line 317.
+Package pdftex.def Info: imgs/conj-pmd-prod-keep50-1t.png  used on input line 318.
 (pdftex.def)             Requested size: 150.14671pt x 99.15375pt.
-<imgs/conj-pmd-prod-keep50-5t.png, id=311, 425.59pt x 281.05pt>
+<imgs/conj-pmd-prod-keep50-5t.png, id=323, 425.59pt x 281.05pt>
 File: imgs/conj-pmd-prod-keep50-5t.png Graphic file (type png)
 <use imgs/conj-pmd-prod-keep50-5t.png>
-Package pdftex.def Info: imgs/conj-pmd-prod-keep50-5t.png  used on input line 323.
+Package pdftex.def Info: imgs/conj-pmd-prod-keep50-5t.png  used on input line 324.
 (pdftex.def)             Requested size: 150.14671pt x 99.15375pt.
-<imgs/conj-pmd-prod-keep50-20t.png, id=312, 425.59pt x 281.05pt>
+<imgs/conj-pmd-prod-keep50-20t.png, id=324, 425.59pt x 281.05pt>
 File: imgs/conj-pmd-prod-keep50-20t.png Graphic file (type png)
 <use imgs/conj-pmd-prod-keep50-20t.png>
-Package pdftex.def Info: imgs/conj-pmd-prod-keep50-20t.png  used on input line 329.
+Package pdftex.def Info: imgs/conj-pmd-prod-keep50-20t.png  used on input line 330.
 (pdftex.def)             Requested size: 150.14671pt x 99.15375pt.
  [10 <./imgs/conj-pmd-prod-keep50-1t.png> <./imgs/conj-pmd-prod-keep50-5t.png> <./imgs/conj-pmd-prod-keep50-20t.png>]
-<imgs/grad_prod_1_falseparam.png, id=327, 403.5075pt x 266.9975pt>
+<imgs/grad_prod_1_falseparam.png, id=339, 403.5075pt x 266.9975pt>
 File: imgs/grad_prod_1_falseparam.png Graphic file (type png)
 <use imgs/grad_prod_1_falseparam.png>
-Package pdftex.def Info: imgs/grad_prod_1_falseparam.png  used on input line 349.
+Package pdftex.def Info: imgs/grad_prod_1_falseparam.png  used on input line 350.
 (pdftex.def)             Requested size: 235.22807pt x 155.649pt.
-<imgs/grad_prod_1_trueparam.png, id=328, 403.5075pt x 266.9975pt>
+<imgs/grad_prod_1_trueparam.png, id=340, 403.5075pt x 266.9975pt>
 File: imgs/grad_prod_1_trueparam.png Graphic file (type png)
 <use imgs/grad_prod_1_trueparam.png>
-Package pdftex.def Info: imgs/grad_prod_1_trueparam.png  used on input line 355.
+Package pdftex.def Info: imgs/grad_prod_1_trueparam.png  used on input line 356.
 (pdftex.def)             Requested size: 235.22807pt x 155.649pt.
-<imgs/grad_prod_1_falseparam_avg.png, id=329, 416.55624pt x 262.9825pt>
+<imgs/grad_prod_1_falseparam_avg.png, id=341, 416.55624pt x 262.9825pt>
 File: imgs/grad_prod_1_falseparam_avg.png Graphic file (type png)
 <use imgs/grad_prod_1_falseparam_avg.png>
-Package pdftex.def Info: imgs/grad_prod_1_falseparam_avg.png  used on input line 361.
+Package pdftex.def Info: imgs/grad_prod_1_falseparam_avg.png  used on input line 362.
 (pdftex.def)             Requested size: 235.22807pt x 148.50513pt.
-<imgs/grad_prod_1_trueparam_avg.png, id=330, 416.55624pt x 262.9825pt>
+<imgs/grad_prod_1_trueparam_avg.png, id=342, 416.55624pt x 262.9825pt>
 File: imgs/grad_prod_1_trueparam_avg.png Graphic file (type png)
 <use imgs/grad_prod_1_trueparam_avg.png>
-Package pdftex.def Info: imgs/grad_prod_1_trueparam_avg.png  used on input line 367.
+Package pdftex.def Info: imgs/grad_prod_1_trueparam_avg.png  used on input line 368.
 (pdftex.def)             Requested size: 235.22807pt x 148.50513pt.
  [11 <./imgs/grad_prod_1_falseparam.png> <./imgs/grad_prod_1_trueparam.png> <./imgs/grad_prod_1_falseparam_avg.png> <./imgs/grad_prod_1_trueparam_avg.png>]
-<imgs/grad_prod_bce_falseparam_10dim.png, id=349, 393.47pt x 266.9975pt>
+<imgs/grad_prod_bce_falseparam_10dim.png, id=363, 393.47pt x 266.9975pt>
 File: imgs/grad_prod_bce_falseparam_10dim.png Graphic file (type png)
 <use imgs/grad_prod_bce_falseparam_10dim.png>
-Package pdftex.def Info: imgs/grad_prod_bce_falseparam_10dim.png  used on input line 390.
+Package pdftex.def Info: imgs/grad_prod_bce_falseparam_10dim.png  used on input line 391.
 (pdftex.def)             Requested size: 235.22807pt x 159.61713pt.
-<imgs/grad_prod_bce_trueparam_10dim.png, id=350, 393.47pt x 266.9975pt>
+<imgs/grad_prod_bce_trueparam_10dim.png, id=364, 393.47pt x 266.9975pt>
 File: imgs/grad_prod_bce_trueparam_10dim.png Graphic file (type png)
 <use imgs/grad_prod_bce_trueparam_10dim.png>
-Package pdftex.def Info: imgs/grad_prod_bce_trueparam_10dim.png  used on input line 396.
+Package pdftex.def Info: imgs/grad_prod_bce_trueparam_10dim.png  used on input line 397.
 (pdftex.def)             Requested size: 235.22807pt x 159.61713pt.
-<imgs/grad_prod_bce_falseparam_10dim_avg.png, id=351, 401.5pt x 266.9975pt>
+<imgs/grad_prod_bce_falseparam_10dim_avg.png, id=365, 401.5pt x 266.9975pt>
 File: imgs/grad_prod_bce_falseparam_10dim_avg.png Graphic file (type png)
 <use imgs/grad_prod_bce_falseparam_10dim_avg.png>
-Package pdftex.def Info: imgs/grad_prod_bce_falseparam_10dim_avg.png  used on input line 402.
+Package pdftex.def Info: imgs/grad_prod_bce_falseparam_10dim_avg.png  used on input line 403.
 (pdftex.def)             Requested size: 235.22807pt x 156.43123pt.
-<imgs/grad_prod_bce_trueparam_10dim_avg.png, id=352, 409.53pt x 262.9825pt>
+<imgs/grad_prod_bce_trueparam_10dim_avg.png, id=366, 409.53pt x 262.9825pt>
 File: imgs/grad_prod_bce_trueparam_10dim_avg.png Graphic file (type png)
 <use imgs/grad_prod_bce_trueparam_10dim_avg.png>
-Package pdftex.def Info: imgs/grad_prod_bce_trueparam_10dim_avg.png  used on input line 408.
+Package pdftex.def Info: imgs/grad_prod_bce_trueparam_10dim_avg.png  used on input line 409.
 (pdftex.def)             Requested size: 235.22807pt x 151.05725pt.
  [12 <./imgs/grad_prod_bce_falseparam_10dim.png> <./imgs/grad_prod_bce_trueparam_10dim.png> <./imgs/grad_prod_bce_falseparam_10dim_avg.png> <./imgs/grad_prod_bce_trueparam_10dim_avg.png>]
-<imgs/conj-cp-100dim-keep50-5t.png, id=367, 396.48125pt x 262.9825pt>
+<imgs/conj-cp-100dim-keep50-5t.png, id=380, 396.48125pt x 262.9825pt>
 File: imgs/conj-cp-100dim-keep50-5t.png Graphic file (type png)
 <use imgs/conj-cp-100dim-keep50-5t.png>
-Package pdftex.def Info: imgs/conj-cp-100dim-keep50-5t.png  used on input line 428.
+Package pdftex.def Info: imgs/conj-cp-100dim-keep50-5t.png  used on input line 429.
 (pdftex.def)             Requested size: 225.21626pt x 149.38794pt.
-<imgs/conj-pmd-100dim-keep50-5t.png, id=368, 396.48125pt x 262.9825pt>
+<imgs/conj-pmd-100dim-keep50-5t.png, id=381, 396.48125pt x 262.9825pt>
 File: imgs/conj-pmd-100dim-keep50-5t.png Graphic file (type png)
 <use imgs/conj-pmd-100dim-keep50-5t.png>
-Package pdftex.def Info: imgs/conj-pmd-100dim-keep50-5t.png  used on input line 434.
+Package pdftex.def Info: imgs/conj-pmd-100dim-keep50-5t.png  used on input line 435.
 (pdftex.def)             Requested size: 225.21626pt x 149.38794pt.
-<imgs/conj-cp-10000dim-keep50-5t.png, id=369, 396.48125pt x 262.9825pt>
+<imgs/conj-cp-10000dim-keep50-5t.png, id=382, 396.48125pt x 262.9825pt>
 File: imgs/conj-cp-10000dim-keep50-5t.png Graphic file (type png)
 <use imgs/conj-cp-10000dim-keep50-5t.png>
-Package pdftex.def Info: imgs/conj-cp-10000dim-keep50-5t.png  used on input line 440.
+Package pdftex.def Info: imgs/conj-cp-10000dim-keep50-5t.png  used on input line 441.
 (pdftex.def)             Requested size: 225.21626pt x 149.38794pt.
-<imgs/conj-pmd-10000dim-keep50-5t.png, id=370, 396.48125pt x 262.9825pt>
+<imgs/conj-pmd-10000dim-keep50-5t.png, id=383, 396.48125pt x 262.9825pt>
 File: imgs/conj-pmd-10000dim-keep50-5t.png Graphic file (type png)
 <use imgs/conj-pmd-10000dim-keep50-5t.png>
-Package pdftex.def Info: imgs/conj-pmd-10000dim-keep50-5t.png  used on input line 446.
+Package pdftex.def Info: imgs/conj-pmd-10000dim-keep50-5t.png  used on input line 447.
 (pdftex.def)             Requested size: 225.21626pt x 149.38794pt.
-<imgs/fuzzy_ss-2_and.png, id=371, 341.275pt x 341.275pt>
+<imgs/fuzzy_ss-2_and.png, id=384, 341.275pt x 341.275pt>
 File: imgs/fuzzy_ss-2_and.png Graphic file (type png)
 <use imgs/fuzzy_ss-2_and.png>
-Package pdftex.def Info: imgs/fuzzy_ss-2_and.png  used on input line 457.
+Package pdftex.def Info: imgs/fuzzy_ss-2_and.png  used on input line 458.
 (pdftex.def)             Requested size: 150.14583pt x 150.14583pt.
  [13 <./imgs/conj-cp-100dim-keep50-5t.png> <./imgs/conj-pmd-100dim-keep50-5t.png> <./imgs/conj-cp-10000dim-keep50-5t.png> <./imgs/conj-pmd-10000dim-keep50-5t.png> <./imgs/fuzzy_ss-2_and.png>]
-<imgs/conj-cp-10000dim-keep50-5t-bce.png, id=396, 393.47pt x 262.9825pt>
+<imgs/conj-cp-10000dim-keep50-5t-bce.png, id=409, 393.47pt x 262.9825pt>
 File: imgs/conj-cp-10000dim-keep50-5t-bce.png Graphic file (type png)
 <use imgs/conj-cp-10000dim-keep50-5t-bce.png>
-Package pdftex.def Info: imgs/conj-cp-10000dim-keep50-5t-bce.png  used on input line 481.
+Package pdftex.def Info: imgs/conj-cp-10000dim-keep50-5t-bce.png  used on input line 482.
 (pdftex.def)             Requested size: 225.21626pt x 150.52354pt.
-<imgs/conj-pmd-10000dim-keep50-5t-bce.png, id=397, 393.47pt x 262.9825pt>
+<imgs/conj-pmd-10000dim-keep50-5t-bce.png, id=410, 393.47pt x 262.9825pt>
 File: imgs/conj-pmd-10000dim-keep50-5t-bce.png Graphic file (type png)
 <use imgs/conj-pmd-10000dim-keep50-5t-bce.png>
-Package pdftex.def Info: imgs/conj-pmd-10000dim-keep50-5t-bce.png  used on input line 487.
+Package pdftex.def Info: imgs/conj-pmd-10000dim-keep50-5t-bce.png  used on input line 488.
 (pdftex.def)             Requested size: 225.21626pt x 150.52354pt.
-<imgs/conj-cp-10000dim-5t-bce.png, id=398, 393.47pt x 262.9825pt>
+<imgs/conj-cp-10000dim-5t-bce.png, id=411, 393.47pt x 262.9825pt>
 File: imgs/conj-cp-10000dim-5t-bce.png Graphic file (type png)
 <use imgs/conj-cp-10000dim-5t-bce.png>
-Package pdftex.def Info: imgs/conj-cp-10000dim-5t-bce.png  used on input line 493.
+Package pdftex.def Info: imgs/conj-cp-10000dim-5t-bce.png  used on input line 494.
 (pdftex.def)             Requested size: 225.21626pt x 150.52354pt.
-<imgs/conj-pmd-10000dim-5t-bce.png, id=399, 393.47pt x 262.9825pt>
+<imgs/conj-pmd-10000dim-5t-bce.png, id=412, 393.47pt x 262.9825pt>
 File: imgs/conj-pmd-10000dim-5t-bce.png Graphic file (type png)
 <use imgs/conj-pmd-10000dim-5t-bce.png>
-Package pdftex.def Info: imgs/conj-pmd-10000dim-5t-bce.png  used on input line 499.
+Package pdftex.def Info: imgs/conj-pmd-10000dim-5t-bce.png  used on input line 500.
 (pdftex.def)             Requested size: 225.21626pt x 150.52354pt.
  [14 <./imgs/conj-cp-10000dim-keep50-5t-bce.png> <./imgs/conj-pmd-10000dim-keep50-5t-bce.png> <./imgs/conj-cp-10000dim-5t-bce.png> <./imgs/conj-pmd-10000dim-5t-bce.png>]
-<imgs/conj-co-prod-keep50-5t.png, id=411, 425.59pt x 281.05pt>
+<imgs/conj-co-prod-keep50-5t.png, id=424, 425.59pt x 281.05pt>
 File: imgs/conj-co-prod-keep50-5t.png Graphic file (type png)
 <use imgs/conj-co-prod-keep50-5t.png>
-Package pdftex.def Info: imgs/conj-co-prod-keep50-5t.png  used on input line 521.
+Package pdftex.def Info: imgs/conj-co-prod-keep50-5t.png  used on input line 522.
 (pdftex.def)             Requested size: 150.14671pt x 99.15375pt.
-<imgs/conj-co-prod-keep50-5t-bce.png, id=412, 425.59pt x 281.05pt>
+<imgs/conj-co-prod-keep50-5t-bce.png, id=425, 425.59pt x 281.05pt>
 File: imgs/conj-co-prod-keep50-5t-bce.png Graphic file (type png)
 <use imgs/conj-co-prod-keep50-5t-bce.png>
-Package pdftex.def Info: imgs/conj-co-prod-keep50-5t-bce.png  used on input line 527.
+Package pdftex.def Info: imgs/conj-co-prod-keep50-5t-bce.png  used on input line 528.
 (pdftex.def)             Requested size: 150.14671pt x 99.15375pt.
-<imgs/conj-co-ss-nokeepn-5t-bce.png, id=413, 425.59pt x 281.05pt>
+<imgs/conj-co-ss-nokeepn-5t-bce.png, id=426, 425.59pt x 281.05pt>
 File: imgs/conj-co-ss-nokeepn-5t-bce.png Graphic file (type png)
 <use imgs/conj-co-ss-nokeepn-5t-bce.png>
-Package pdftex.def Info: imgs/conj-co-ss-nokeepn-5t-bce.png  used on input line 533.
+Package pdftex.def Info: imgs/conj-co-ss-nokeepn-5t-bce.png  used on input line 534.
 (pdftex.def)             Requested size: 150.14671pt x 99.15375pt.
  [15 <./imgs/conj-co-prod-keep50-5t.png> <./imgs/conj-co-prod-keep50-5t-bce.png> <./imgs/conj-co-ss-nokeepn-5t-bce.png>] [16]) [17]
 \openout2 = `c3.aux'.
 
  (./c3.tex
 Chapter 3.
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 13.
+(/usr/local/texlive/2022/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ) [18
 
 
 
 
 ]
+<imgs/mnist-co.png, id=482, 393.47pt x 262.9825pt>
+File: imgs/mnist-co.png Graphic file (type png)
+<use imgs/mnist-co.png>
+Package pdftex.def Info: imgs/mnist-co.png  used on input line 46.
+(pdftex.def)             Requested size: 225.21626pt x 150.52354pt.
+<imgs/mnist-crispness.png, id=483, 409.53pt x 266.9975pt>
+File: imgs/mnist-crispness.png Graphic file (type png)
+<use imgs/mnist-crispness.png>
+Package pdftex.def Info: imgs/mnist-crispness.png  used on input line 52.
+(pdftex.def)             Requested size: 225.21626pt x 146.83684pt.
+<imgs/mnist-unsatisfied.png, id=484, 409.53pt x 262.9825pt>
+File: imgs/mnist-unsatisfied.png Graphic file (type png)
+<use imgs/mnist-unsatisfied.png>
+Package pdftex.def Info: imgs/mnist-unsatisfied.png  used on input line 58.
+(pdftex.def)             Requested size: 225.21626pt x 144.62877pt.
+<imgs/mnist-examples.png, id=485, 409.53pt x 262.9825pt>
+File: imgs/mnist-examples.png Graphic file (type png)
+<use imgs/mnist-examples.png>
+Package pdftex.def Info: imgs/mnist-examples.png  used on input line 64.
+(pdftex.def)             Requested size: 225.21626pt x 144.62877pt.
+ [19 <./imgs/mnist-co.png> <./imgs/mnist-crispness.png> <./imgs/mnist-unsatisfied.png> <./imgs/mnist-examples.png>]
+<imgs/interpret7.png, id=505, 350.30875pt x 603.25375pt>
+File: imgs/interpret7.png Graphic file (type png)
+<use imgs/interpret7.png>
+Package pdftex.def Info: imgs/interpret7.png  used on input line 82.
+(pdftex.def)             Requested size: 175.17244pt x 301.66295pt.
+) [20 <./imgs/interpret7.png>]
 \openout2 = `c4.aux'.
 
  (./c4.tex
 Chapter 4.
-[19
+) [21
 
 
 
 
-]) [20]
-Chapter 5.
-[21
+] (output/diss.bbl [22
 
 
 
-]
+]) [23]
 \openout2 = `a1.aux'.
 
  (./a1.tex
 Appendix A.
-[22
+[24
 
 
-]) [23]
+]) [25]
 \openout2 = `a2.aux'.
 
  (./a2.tex
 Appendix B.
-<imgs/grad_prod_2_falseparam.png, id=505, 403.5075pt x 266.9975pt>
+<imgs/grad_prod_2_falseparam.png, id=545, 403.5075pt x 266.9975pt>
 File: imgs/grad_prod_2_falseparam.png Graphic file (type png)
 <use imgs/grad_prod_2_falseparam.png>
 Package pdftex.def Info: imgs/grad_prod_2_falseparam.png  used on input line 8.
 (pdftex.def)             Requested size: 235.22807pt x 155.649pt.
-<imgs/grad_prod_2_trueparam.png, id=506, 403.5075pt x 266.9975pt>
+<imgs/grad_prod_2_trueparam.png, id=546, 403.5075pt x 266.9975pt>
 File: imgs/grad_prod_2_trueparam.png Graphic file (type png)
 <use imgs/grad_prod_2_trueparam.png>
 Package pdftex.def Info: imgs/grad_prod_2_trueparam.png  used on input line 14.
 (pdftex.def)             Requested size: 235.22807pt x 155.649pt.
-<imgs/grad_prod_2_falseparam_avg.png, id=507, 416.55624pt x 262.9825pt>
+<imgs/grad_prod_2_falseparam_avg.png, id=547, 416.55624pt x 262.9825pt>
 File: imgs/grad_prod_2_falseparam_avg.png Graphic file (type png)
 <use imgs/grad_prod_2_falseparam_avg.png>
 Package pdftex.def Info: imgs/grad_prod_2_falseparam_avg.png  used on input line 20.
 (pdftex.def)             Requested size: 235.22807pt x 148.50513pt.
-<imgs/grad_prod_2_trueparam_avg.png, id=508, 416.55624pt x 262.9825pt>
+<imgs/grad_prod_2_trueparam_avg.png, id=548, 416.55624pt x 262.9825pt>
 File: imgs/grad_prod_2_trueparam_avg.png Graphic file (type png)
 <use imgs/grad_prod_2_trueparam_avg.png>
 Package pdftex.def Info: imgs/grad_prod_2_trueparam_avg.png  used on input line 26.
 (pdftex.def)             Requested size: 235.22807pt x 148.50513pt.
-<imgs/grad_prod_10_falseparam.png, id=509, 403.5075pt x 266.9975pt>
+<imgs/grad_prod_10_falseparam.png, id=549, 403.5075pt x 266.9975pt>
 File: imgs/grad_prod_10_falseparam.png Graphic file (type png)
 <use imgs/grad_prod_10_falseparam.png>
 Package pdftex.def Info: imgs/grad_prod_10_falseparam.png  used on input line 38.
 (pdftex.def)             Requested size: 235.22807pt x 155.649pt.
-<imgs/grad_prod_10_trueparam.png, id=510, 403.5075pt x 266.9975pt>
+<imgs/grad_prod_10_trueparam.png, id=550, 403.5075pt x 266.9975pt>
 File: imgs/grad_prod_10_trueparam.png Graphic file (type png)
 <use imgs/grad_prod_10_trueparam.png>
 Package pdftex.def Info: imgs/grad_prod_10_trueparam.png  used on input line 44.
 (pdftex.def)             Requested size: 235.22807pt x 155.649pt.
-<imgs/grad_prod_10_falseparam_avg.png, id=511, 401.5pt x 262.9825pt>
+<imgs/grad_prod_10_falseparam_avg.png, id=551, 401.5pt x 262.9825pt>
 File: imgs/grad_prod_10_falseparam_avg.png Graphic file (type png)
 <use imgs/grad_prod_10_falseparam_avg.png>
 Package pdftex.def Info: imgs/grad_prod_10_falseparam_avg.png  used on input line 50.
 (pdftex.def)             Requested size: 235.22807pt x 154.07887pt.
-<imgs/grad_prod_10_trueparam_avg.png, id=512, 416.55624pt x 262.9825pt>
+<imgs/grad_prod_10_trueparam_avg.png, id=552, 416.55624pt x 262.9825pt>
 File: imgs/grad_prod_10_trueparam_avg.png Graphic file (type png)
 <use imgs/grad_prod_10_trueparam_avg.png>
 Package pdftex.def Info: imgs/grad_prod_10_trueparam_avg.png  used on input line 56.
 (pdftex.def)             Requested size: 235.22807pt x 148.50513pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<imgs/grad_ss_10_falseparam.png, id=513, 403.5075pt x 266.9975pt>
+<imgs/grad_ss_10_falseparam.png, id=553, 403.5075pt x 266.9975pt>
 File: imgs/grad_ss_10_falseparam.png Graphic file (type png)
 <use imgs/grad_ss_10_falseparam.png>
 Package pdftex.def Info: imgs/grad_ss_10_falseparam.png  used on input line 69.
 (pdftex.def)             Requested size: 235.22807pt x 155.649pt.
-<imgs/grad_ss_10_trueparam.png, id=514, 403.5075pt x 266.9975pt>
+<imgs/grad_ss_10_trueparam.png, id=554, 403.5075pt x 266.9975pt>
 File: imgs/grad_ss_10_trueparam.png Graphic file (type png)
 <use imgs/grad_ss_10_trueparam.png>
 Package pdftex.def Info: imgs/grad_ss_10_trueparam.png  used on input line 75.
 (pdftex.def)             Requested size: 235.22807pt x 155.649pt.
-<imgs/grad_ss_10_falseparam_avg.png, id=515, 401.5pt x 262.9825pt>
+<imgs/grad_ss_10_falseparam_avg.png, id=555, 401.5pt x 262.9825pt>
 File: imgs/grad_ss_10_falseparam_avg.png Graphic file (type png)
 <use imgs/grad_ss_10_falseparam_avg.png>
 Package pdftex.def Info: imgs/grad_ss_10_falseparam_avg.png  used on input line 81.
 (pdftex.def)             Requested size: 235.22807pt x 154.07887pt.
-<imgs/grad_ss_10_trueparam_avg.png, id=516, 416.55624pt x 262.9825pt>
+<imgs/grad_ss_10_trueparam_avg.png, id=556, 416.55624pt x 262.9825pt>
 File: imgs/grad_ss_10_trueparam_avg.png Graphic file (type png)
 <use imgs/grad_ss_10_trueparam_avg.png>
 Package pdftex.def Info: imgs/grad_ss_10_trueparam_avg.png  used on input line 87.
 (pdftex.def)             Requested size: 235.22807pt x 148.50513pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<imgs/grad_prod_10_falseparam_100dim.png, id=517, 409.53pt x 274.02374pt>
+<imgs/grad_prod_10_falseparam_100dim.png, id=557, 409.53pt x 274.02374pt>
 File: imgs/grad_prod_10_falseparam_100dim.png Graphic file (type png)
 <use imgs/grad_prod_10_falseparam_100dim.png>
 Package pdftex.def Info: imgs/grad_prod_10_falseparam_100dim.png  used on input line 99.
 (pdftex.def)             Requested size: 235.22807pt x 157.39935pt.
-<imgs/grad_prod_10_trueparam_100dim.png, id=518, 409.53pt x 274.02374pt>
+<imgs/grad_prod_10_trueparam_100dim.png, id=558, 409.53pt x 274.02374pt>
 File: imgs/grad_prod_10_trueparam_100dim.png Graphic file (type png)
 <use imgs/grad_prod_10_trueparam_100dim.png>
 Package pdftex.def Info: imgs/grad_prod_10_trueparam_100dim.png  used on input line 105.
 (pdftex.def)             Requested size: 235.22807pt x 157.39935pt.
-<imgs/grad_prod_10_falseparam_100dim_avg.png, id=519, 395.4775pt x 274.02374pt>
+<imgs/grad_prod_10_falseparam_100dim_avg.png, id=559, 395.4775pt x 274.02374pt>
 File: imgs/grad_prod_10_falseparam_100dim_avg.png Graphic file (type png)
 <use imgs/grad_prod_10_falseparam_100dim_avg.png>
 Package pdftex.def Info: imgs/grad_prod_10_falseparam_100dim_avg.png  used on input line 111.
 (pdftex.def)             Requested size: 235.22807pt x 162.9897pt.
-<imgs/grad_prod_10_trueparam_100dim_avg.png, id=520, 409.53pt x 262.9825pt>
+<imgs/grad_prod_10_trueparam_100dim_avg.png, id=560, 409.53pt x 262.9825pt>
 File: imgs/grad_prod_10_trueparam_100dim_avg.png Graphic file (type png)
 <use imgs/grad_prod_10_trueparam_100dim_avg.png>
 Package pdftex.def Info: imgs/grad_prod_10_trueparam_100dim_avg.png  used on input line 117.
 (pdftex.def)             Requested size: 235.22807pt x 151.05725pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<imgs/grad_ss_10_falseparam_100dim.png, id=521, 422.57875pt x 266.9975pt>
+<imgs/grad_ss_10_falseparam_100dim.png, id=561, 422.57875pt x 266.9975pt>
 File: imgs/grad_ss_10_falseparam_100dim.png Graphic file (type png)
 <use imgs/grad_ss_10_falseparam_100dim.png>
 Package pdftex.def Info: imgs/grad_ss_10_falseparam_100dim.png  used on input line 129.
 (pdftex.def)             Requested size: 235.22807pt x 148.62535pt.
-<imgs/grad_ss_10_trueparam_100dim.png, id=522, 409.53pt x 274.02374pt>
+<imgs/grad_ss_10_trueparam_100dim.png, id=562, 409.53pt x 274.02374pt>
 File: imgs/grad_ss_10_trueparam_100dim.png Graphic file (type png)
 <use imgs/grad_ss_10_trueparam_100dim.png>
 Package pdftex.def Info: imgs/grad_ss_10_trueparam_100dim.png  used on input line 135.
 (pdftex.def)             Requested size: 235.22807pt x 157.39935pt.
-<imgs/grad_ss_10_falseparam_100dim_avg.png, id=523, 401.5pt x 262.9825pt>
+<imgs/grad_ss_10_falseparam_100dim_avg.png, id=563, 401.5pt x 262.9825pt>
 File: imgs/grad_ss_10_falseparam_100dim_avg.png Graphic file (type png)
 <use imgs/grad_ss_10_falseparam_100dim_avg.png>
 Package pdftex.def Info: imgs/grad_ss_10_falseparam_100dim_avg.png  used on input line 141.
 (pdftex.def)             Requested size: 235.22807pt x 154.07887pt.
-<imgs/grad_ss_10_trueparam_100dim_avg.png, id=524, 403.5075pt x 274.02374pt>
+<imgs/grad_ss_10_trueparam_100dim_avg.png, id=564, 403.5075pt x 274.02374pt>
 File: imgs/grad_ss_10_trueparam_100dim_avg.png Graphic file (type png)
 <use imgs/grad_ss_10_trueparam_100dim_avg.png>
 Package pdftex.def Info: imgs/grad_ss_10_trueparam_100dim_avg.png  used on input line 147.
 (pdftex.def)             Requested size: 235.22807pt x 159.74504pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<imgs/grad_prod_bce_falseparam_100dim.png, id=525, 393.47pt x 266.9975pt>
+<imgs/grad_prod_bce_falseparam_100dim.png, id=565, 393.47pt x 266.9975pt>
 File: imgs/grad_prod_bce_falseparam_100dim.png Graphic file (type png)
 <use imgs/grad_prod_bce_falseparam_100dim.png>
 Package pdftex.def Info: imgs/grad_prod_bce_falseparam_100dim.png  used on input line 160.
 (pdftex.def)             Requested size: 235.22807pt x 159.61713pt.
-<imgs/grad_prod_bce_trueparam_100dim.png, id=526, 393.47pt x 266.9975pt>
+<imgs/grad_prod_bce_trueparam_100dim.png, id=566, 393.47pt x 266.9975pt>
 File: imgs/grad_prod_bce_trueparam_100dim.png Graphic file (type png)
 <use imgs/grad_prod_bce_trueparam_100dim.png>
 Package pdftex.def Info: imgs/grad_prod_bce_trueparam_100dim.png  used on input line 166.
 (pdftex.def)             Requested size: 235.22807pt x 159.61713pt.
-<imgs/grad_prod_bce_falseparam_100dim_avg.png, id=527, 407.5225pt x 262.9825pt>
+<imgs/grad_prod_bce_falseparam_100dim_avg.png, id=567, 407.5225pt x 262.9825pt>
 File: imgs/grad_prod_bce_falseparam_100dim_avg.png Graphic file (type png)
 <use imgs/grad_prod_bce_falseparam_100dim_avg.png>
 Package pdftex.def Info: imgs/grad_prod_bce_falseparam_100dim_avg.png  used on input line 172.
 (pdftex.def)             Requested size: 235.22807pt x 151.79561pt.
-<imgs/grad_prod_bce_trueparam_100dim_avg.png, id=528, 403.5075pt x 274.02374pt>
+<imgs/grad_prod_bce_trueparam_100dim_avg.png, id=568, 403.5075pt x 274.02374pt>
 File: imgs/grad_prod_bce_trueparam_100dim_avg.png Graphic file (type png)
 <use imgs/grad_prod_bce_trueparam_100dim_avg.png>
 Package pdftex.def Info: imgs/grad_prod_bce_trueparam_100dim_avg.png  used on input line 178.
 (pdftex.def)             Requested size: 235.22807pt x 159.74504pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<imgs/grad_ss_bce_falseparam_10dim.png, id=529, 393.47pt x 266.9975pt>
+<imgs/grad_ss_bce_falseparam_10dim.png, id=569, 393.47pt x 266.9975pt>
 File: imgs/grad_ss_bce_falseparam_10dim.png Graphic file (type png)
 <use imgs/grad_ss_bce_falseparam_10dim.png>
 Package pdftex.def Info: imgs/grad_ss_bce_falseparam_10dim.png  used on input line 190.
 (pdftex.def)             Requested size: 235.22807pt x 159.61713pt.
-<imgs/grad_ss_bce_trueparam_10dim.png, id=530, 393.47pt x 266.9975pt>
+<imgs/grad_ss_bce_trueparam_10dim.png, id=570, 393.47pt x 266.9975pt>
 File: imgs/grad_ss_bce_trueparam_10dim.png Graphic file (type png)
 <use imgs/grad_ss_bce_trueparam_10dim.png>
 Package pdftex.def Info: imgs/grad_ss_bce_trueparam_10dim.png  used on input line 196.
 (pdftex.def)             Requested size: 235.22807pt x 159.61713pt.
-<imgs/grad_ss_bce_falseparam_10dim_avg.png, id=531, 401.5pt x 266.9975pt>
+<imgs/grad_ss_bce_falseparam_10dim_avg.png, id=571, 401.5pt x 266.9975pt>
 File: imgs/grad_ss_bce_falseparam_10dim_avg.png Graphic file (type png)
 <use imgs/grad_ss_bce_falseparam_10dim_avg.png>
 Package pdftex.def Info: imgs/grad_ss_bce_falseparam_10dim_avg.png  used on input line 202.
 (pdftex.def)             Requested size: 235.22807pt x 156.43123pt.
-<imgs/grad_ss_bce_trueparam_10dim_avg.png, id=532, 403.5075pt x 262.9825pt>
+<imgs/grad_ss_bce_trueparam_10dim_avg.png, id=572, 403.5075pt x 262.9825pt>
 File: imgs/grad_ss_bce_trueparam_10dim_avg.png Graphic file (type png)
 <use imgs/grad_ss_bce_trueparam_10dim_avg.png>
 Package pdftex.def Info: imgs/grad_ss_bce_trueparam_10dim_avg.png  used on input line 208.
 (pdftex.def)             Requested size: 235.22807pt x 153.30843pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<imgs/grad_ss_bce_falseparam_100dim.png, id=533, 393.47pt x 266.9975pt>
+<imgs/grad_ss_bce_falseparam_100dim.png, id=573, 393.47pt x 266.9975pt>
 File: imgs/grad_ss_bce_falseparam_100dim.png Graphic file (type png)
 <use imgs/grad_ss_bce_falseparam_100dim.png>
 Package pdftex.def Info: imgs/grad_ss_bce_falseparam_100dim.png  used on input line 220.
 (pdftex.def)             Requested size: 235.22807pt x 159.61713pt.
-<imgs/grad_ss_bce_trueparam_100dim.png, id=534, 393.47pt x 266.9975pt>
+<imgs/grad_ss_bce_trueparam_100dim.png, id=574, 393.47pt x 266.9975pt>
 File: imgs/grad_ss_bce_trueparam_100dim.png Graphic file (type png)
 <use imgs/grad_ss_bce_trueparam_100dim.png>
 Package pdftex.def Info: imgs/grad_ss_bce_trueparam_100dim.png  used on input line 226.
 (pdftex.def)             Requested size: 235.22807pt x 159.61713pt.
-<imgs/grad_ss_bce_falseparam_100dim_avg.png, id=535, 401.5pt x 266.9975pt>
+<imgs/grad_ss_bce_falseparam_100dim_avg.png, id=575, 401.5pt x 266.9975pt>
 File: imgs/grad_ss_bce_falseparam_100dim_avg.png Graphic file (type png)
 <use imgs/grad_ss_bce_falseparam_100dim_avg.png>
 Package pdftex.def Info: imgs/grad_ss_bce_falseparam_100dim_avg.png  used on input line 232.
 (pdftex.def)             Requested size: 235.22807pt x 156.43123pt.
-<imgs/grad_ss_bce_trueparam_100dim_avg.png, id=536, 409.53pt x 262.9825pt>
+<imgs/grad_ss_bce_trueparam_100dim_avg.png, id=576, 409.53pt x 262.9825pt>
 File: imgs/grad_ss_bce_trueparam_100dim_avg.png Graphic file (type png)
 <use imgs/grad_ss_bce_trueparam_100dim_avg.png>
 Package pdftex.def Info: imgs/grad_ss_bce_trueparam_100dim_avg.png  used on input line 238.
 (pdftex.def)             Requested size: 235.22807pt x 151.05725pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<imgs/grad_min_1_falseparam.png, id=537, 403.5075pt x 266.9975pt>
+<imgs/grad_min_1_falseparam.png, id=577, 403.5075pt x 266.9975pt>
 File: imgs/grad_min_1_falseparam.png Graphic file (type png)
 <use imgs/grad_min_1_falseparam.png>
 Package pdftex.def Info: imgs/grad_min_1_falseparam.png  used on input line 250.
 (pdftex.def)             Requested size: 235.22807pt x 155.649pt.
-<imgs/grad_min_1_trueparam.png, id=538, 403.5075pt x 266.9975pt>
+<imgs/grad_min_1_trueparam.png, id=578, 403.5075pt x 266.9975pt>
 File: imgs/grad_min_1_trueparam.png Graphic file (type png)
 <use imgs/grad_min_1_trueparam.png>
 Package pdftex.def Info: imgs/grad_min_1_trueparam.png  used on input line 256.
 (pdftex.def)             Requested size: 235.22807pt x 155.649pt.
-<imgs/grad_min_2_falseparam.png, id=539, 403.5075pt x 266.9975pt>
+<imgs/grad_min_2_falseparam.png, id=579, 403.5075pt x 266.9975pt>
 File: imgs/grad_min_2_falseparam.png Graphic file (type png)
 <use imgs/grad_min_2_falseparam.png>
 Package pdftex.def Info: imgs/grad_min_2_falseparam.png  used on input line 262.
 (pdftex.def)             Requested size: 235.22807pt x 155.649pt.
-<imgs/grad_min_2_trueparam.png, id=540, 403.5075pt x 266.9975pt>
+<imgs/grad_min_2_trueparam.png, id=580, 403.5075pt x 266.9975pt>
 File: imgs/grad_min_2_trueparam.png Graphic file (type png)
 <use imgs/grad_min_2_trueparam.png>
 Package pdftex.def Info: imgs/grad_min_2_trueparam.png  used on input line 268.
 (pdftex.def)             Requested size: 235.22807pt x 155.649pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-) [24
+) [26
 
 
 
 
- <./imgs/grad_prod_2_falseparam.png> <./imgs/grad_prod_2_trueparam.png> <./imgs/grad_prod_2_falseparam_avg.png> <./imgs/grad_prod_2_trueparam_avg.png>] [25 <./imgs/grad_prod_10_falseparam.png> <./imgs/grad_prod_10_trueparam.png> <./imgs/grad_prod_10_falseparam_avg.png> <./imgs/grad_prod_10_trueparam_avg.png>] [26 <./imgs/grad_ss_10_falseparam.png> <./imgs/grad_ss_10_trueparam.png> <./imgs/grad_ss_10_falseparam_avg.png> <./imgs/grad_ss_10_trueparam_avg.png>] [27 <./imgs/grad_prod_10_falseparam_100dim.png> <./imgs/grad_prod_10_trueparam_100dim.png> <./imgs/grad_prod_10_falseparam_100dim_avg.png> <./imgs/grad_prod_10_trueparam_100dim_avg.png>] [28 <./imgs/grad_ss_10_falseparam_100dim.png> <./imgs/grad_ss_10_trueparam_100dim.png> <./imgs/grad_ss_10_falseparam_100dim_avg.png> <./imgs/grad_ss_10_trueparam_100dim_avg.png>] [29 <./imgs/grad_prod_bce_falseparam_100dim.png> <./imgs/grad_prod_bce_trueparam_100dim.png> <./imgs/grad_prod_bce_falseparam_100dim_avg.png> <./imgs/grad_prod_bce_trueparam_100dim_avg.png>] [30 <./imgs/grad_ss_bce_falseparam_10dim.png> <./imgs/grad_ss_bce_trueparam_10dim.png> <./imgs/grad_ss_bce_falseparam_10dim_avg.png> <./imgs/grad_ss_bce_trueparam_10dim_avg.png>] [31 <./imgs/grad_ss_bce_falseparam_100dim.png> <./imgs/grad_ss_bce_trueparam_100dim.png> <./imgs/grad_ss_bce_falseparam_100dim_avg.png> <./imgs/grad_ss_bce_trueparam_100dim_avg.png>] [32 <./imgs/grad_min_1_falseparam.png> <./imgs/grad_min_1_trueparam.png> <./imgs/grad_min_2_falseparam.png> <./imgs/grad_min_2_trueparam.png>] (output/diss.bbl [33
+ <./imgs/grad_prod_2_falseparam.png> <./imgs/grad_prod_2_trueparam.png> <./imgs/grad_prod_2_falseparam_avg.png> <./imgs/grad_prod_2_trueparam_avg.png>] [27 <./imgs/grad_prod_10_falseparam.png> <./imgs/grad_prod_10_trueparam.png> <./imgs/grad_prod_10_falseparam_avg.png> <./imgs/grad_prod_10_trueparam_avg.png>] [28 <./imgs/grad_ss_10_falseparam.png> <./imgs/grad_ss_10_trueparam.png> <./imgs/grad_ss_10_falseparam_avg.png> <./imgs/grad_ss_10_trueparam_avg.png>] [29 <./imgs/grad_prod_10_falseparam_100dim.png> <./imgs/grad_prod_10_trueparam_100dim.png> <./imgs/grad_prod_10_falseparam_100dim_avg.png> <./imgs/grad_prod_10_trueparam_100dim_avg.png>] [30 <./imgs/grad_ss_10_falseparam_100dim.png> <./imgs/grad_ss_10_trueparam_100dim.png> <./imgs/grad_ss_10_falseparam_100dim_avg.png> <./imgs/grad_ss_10_trueparam_100dim_avg.png>] [31 <./imgs/grad_prod_bce_falseparam_100dim.png> <./imgs/grad_prod_bce_trueparam_100dim.png> <./imgs/grad_prod_bce_falseparam_100dim_avg.png> <./imgs/grad_prod_bce_trueparam_100dim_avg.png>] [32 <./imgs/grad_ss_bce_falseparam_10dim.png> <./imgs/grad_ss_bce_trueparam_10dim.png> <./imgs/grad_ss_bce_falseparam_10dim_avg.png> <./imgs/grad_ss_bce_trueparam_10dim_avg.png>] [33 <./imgs/grad_ss_bce_falseparam_100dim.png> <./imgs/grad_ss_bce_trueparam_100dim.png> <./imgs/grad_ss_bce_falseparam_100dim_avg.png> <./imgs/grad_ss_bce_trueparam_100dim_avg.png>] [34 <./imgs/grad_min_1_falseparam.png> <./imgs/grad_min_1_trueparam.png> <./imgs/grad_min_2_falseparam.png> <./imgs/grad_min_2_trueparam.png>]
+\openout2 = `a3.aux'.
+
+ (./a3.tex
+Appendix C.
+) [35
 
 
 
-]) [34] (output/diss.aux (output/c1.aux) (output/c2.aux) (output/c3.aux) (output/c4.aux) (output/a1.aux) (output/a2.aux))
+
+]
+\openout2 = `a4.aux'.
+
+ (./a4.tex
+Appendix D.
+File: imgs/grad_prod_2_falseparam.png Graphic file (type png)
+<use imgs/grad_prod_2_falseparam.png>
+Package pdftex.def Info: imgs/grad_prod_2_falseparam.png  used on input line 8.
+(pdftex.def)             Requested size: 235.22807pt x 155.649pt.
+File: imgs/grad_prod_2_trueparam.png Graphic file (type png)
+<use imgs/grad_prod_2_trueparam.png>
+Package pdftex.def Info: imgs/grad_prod_2_trueparam.png  used on input line 14.
+(pdftex.def)             Requested size: 235.22807pt x 155.649pt.
+File: imgs/grad_prod_2_falseparam_avg.png Graphic file (type png)
+<use imgs/grad_prod_2_falseparam_avg.png>
+Package pdftex.def Info: imgs/grad_prod_2_falseparam_avg.png  used on input line 20.
+(pdftex.def)             Requested size: 235.22807pt x 148.50513pt.
+File: imgs/grad_prod_2_trueparam_avg.png Graphic file (type png)
+<use imgs/grad_prod_2_trueparam_avg.png>
+Package pdftex.def Info: imgs/grad_prod_2_trueparam_avg.png  used on input line 26.
+(pdftex.def)             Requested size: 235.22807pt x 148.50513pt.
+) [36
+
+
+
+
+] (output/diss.aux (output/c1.aux) (output/c2.aux) (output/c3.aux) (output/c4.aux) (output/a1.aux) (output/a2.aux) (output/a3.aux) (output/a4.aux))
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `diss.out' has not changed.
-(rerunfilecheck)             Checksum: C7E80F10445645CEDC3550F47DDF4225;5383.
+(rerunfilecheck)             Checksum: 88737E1410B0997C87B1CC0588AC23BE;5851.
  ) 
 Here is how much of TeX's memory you used:
- 16471 strings out of 478233
- 273566 string characters out of 5843844
- 577361 words of memory out of 5000000
- 34214 multiletter control sequences out of 15000+600000
- 488151 words of font info for 98 fonts, out of 8000000 for 9000
+ 16595 strings out of 478233
+ 276491 string characters out of 5843844
+ 579567 words of memory out of 5000000
+ 34308 multiletter control sequences out of 15000+600000
+ 488811 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 82i,10n,91p,1345b,611s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on output/diss.pdf (36 pages, 2022176 bytes).
+ 82i,10n,91p,1427b,611s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/andy/.texlive2022/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600pk></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on output/diss.pdf (38 pages, 2099152 bytes).
 PDF statistics:
- 785 PDF objects out of 1000 (max. 8388607)
- 539 compressed objects within 6 object streams
- 127 named destinations out of 1000 (max. 500000)
- 596 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 829 PDF objects out of 1000 (max. 8388607)
+ 570 compressed objects within 6 object streams
+ 130 named destinations out of 1000 (max. 500000)
+ 637 words of extra memory for PDF output out of 10000 (max. 10000000)
 

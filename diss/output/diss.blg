@@ -8,12 +8,9 @@ A level-1 auxiliary file: c3.aux
 A level-1 auxiliary file: c4.aux
 A level-1 auxiliary file: a1.aux
 A level-1 auxiliary file: a2.aux
+A level-1 auxiliary file: a3.aux
+A level-1 auxiliary file: a4.aux
 Database file #1: bib.bib
-Warning--entry type for "leela" isn't style-file defined
---line 344 of file bib.bib
-Warning--to sort, need author or key in stockfish
-Warning--to sort, need author or key in lichess
-Warning--can't use both author and editor fields in gradientattribute
 Warning--empty journal in probsoftlogic
 Warning--empty title in interpretdeepmodels
 Warning--empty publisher in gordon2014probabilistic
@@ -21,45 +18,45 @@ Warning--empty publisher in ilp
 Warning--empty title in interpretbook
 Warning--empty publisher in realanal
 Warning--empty year in realanal
-You've used 37 entries,
+You've used 33 entries,
             2118 wiz_defined-function locations,
-            676 strings with 9793 characters,
-and the built_in function-call counts, 12160 in all, are:
-= -- 1092
-> -- 740
-< -- 9
-+ -- 295
-- -- 256
-* -- 813
-:= -- 2030
-add.period$ -- 103
-call.type$ -- 37
-change.case$ -- 227
+            666 strings with 8997 characters,
+and the built_in function-call counts, 10944 in all, are:
+= -- 989
+> -- 664
+< -- 8
++ -- 264
+- -- 228
+* -- 741
+:= -- 1845
+add.period$ -- 92
+call.type$ -- 33
+change.case$ -- 201
 chr.to.int$ -- 0
-cite$ -- 47
-duplicate$ -- 437
-empty$ -- 918
-format.name$ -- 256
-if$ -- 2523
+cite$ -- 40
+duplicate$ -- 394
+empty$ -- 819
+format.name$ -- 228
+if$ -- 2258
 int.to.chr$ -- 0
-int.to.str$ -- 37
-missing$ -- 35
-newline$ -- 176
-num.names$ -- 70
-pop$ -- 351
+int.to.str$ -- 33
+missing$ -- 34
+newline$ -- 157
+num.names$ -- 66
+pop$ -- 303
 preamble$ -- 1
-purify$ -- 201
+purify$ -- 179
 quote$ -- 0
-skip$ -- 330
+skip$ -- 291
 stack$ -- 0
-substring$ -- 444
-swap$ -- 93
-text.length$ -- 9
+substring$ -- 422
+swap$ -- 78
+text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 130
-warning$ -- 10
-while$ -- 91
-width$ -- 39
-write$ -- 360
-(There were 11 warnings)
+type$ -- 114
+warning$ -- 7
+while$ -- 87
+width$ -- 35
+write$ -- 325
+(There were 7 warnings)

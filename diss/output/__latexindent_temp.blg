@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99d (TeX Live 2022)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: __latexindent_temp.aux
+The style file: plain.bst
+A level-1 auxiliary file: c1.aux
+A level-1 auxiliary file: c2.aux
+A level-1 auxiliary file: c3.aux
+A level-1 auxiliary file: c4.aux
+Database file #1: bib.bib
+Warning--empty journal in probsoftlogic
+Warning--empty title in interpretdeepmodels
+Warning--empty publisher in gordon2014probabilistic
+Warning--empty publisher in ilp
+Warning--empty title in interpretbook
+You've used 32 entries,
+            2118 wiz_defined-function locations,
+            658 strings with 8930 characters,
+and the built_in function-call counts, 10685 in all, are:
+= -- 969
+> -- 651
+< -- 7
++ -- 259
+- -- 224
+* -- 721
+:= -- 1803
+add.period$ -- 90
+call.type$ -- 32
+change.case$ -- 197
+chr.to.int$ -- 0
+cite$ -- 37
+duplicate$ -- 382
+empty$ -- 797
+format.name$ -- 224
+if$ -- 2206
+int.to.chr$ -- 0
+int.to.str$ -- 32
+missing$ -- 32
+newline$ -- 153
+num.names$ -- 64
+pop$ -- 292
+preamble$ -- 1
+purify$ -- 175
+quote$ -- 0
+skip$ -- 284
+stack$ -- 0
+substring$ -- 417
+swap$ -- 76
+text.length$ -- 7
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 112
+warning$ -- 5
+while$ -- 85
+width$ -- 34
+write$ -- 317
+(There were 5 warnings)

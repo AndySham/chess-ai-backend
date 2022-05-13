@@ -1,15 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{lichess}
-lichess.org open database.
-\newblock \url{https://database.lichess.org/}.
-\newblock Accessed: 2022-04-24.
-
-\bibitem{stockfish}
-Stockfish - open source chess engine.
-\newblock \url{https://stockfishchess.org/blog/2022/stockfish-15/}.
-\newblock Accessed: 2022-04-24.
-
 \bibitem{neuraladditive}
 Rishabh Agarwal, Levi Melnick, Nicholas Frosst, Xuezhou Zhang, Ben Lengerich,
   Rich Caruana, and Geoffrey~E Hinton.
@@ -123,17 +113,6 @@ Christoph Molnar, Giuseppe Casalicchio, and Bernd Bischl.
 \newblock In {\em Interpretable Machine Learning -- A Brief History,
   State-of-the-Art and Challenges}. Springer International Publishing, 2020.
 
-\bibitem{nnue}
-Yu~Nasu.
-\newblock Efficiently updatable neural-network-based evaluation functions for
-  computer shogi.
-\newblock {\em The 28th World Computer Shogi Championship Appeal Document},
-  2018.
-
-\bibitem{leela}
-{Pascutto, Gian-Carlo and Linscott, Gary}.
-\newblock Leela chess zero.
-
 \bibitem{diffilpGT}
 Ali Payani and Faramarz Fekri.
 \newblock Inductive logic programming via differentiable deep neural logic
@@ -161,13 +140,6 @@ Ryan Riegel, Alexander Gray, Francois Luus, Naweed Khan, Ndivhuwo Makondo,
 Halsey~Lawrence Royden and Patrick Fitzpatrick.
 \newblock {\em Real analysis}, volume~32.
 
-\bibitem{bitboard}
-Pablo~San Segundo, Ramon Galan, Fernando Matia, Diego Rodriguez-Losada, and
-  Agustin Jimenez.
-\newblock Efficient search using bitboard models.
-\newblock In {\em 2006 18th IEEE International Conference on Tools with
-  Artificial Intelligence (ICTAI'06)}, pages 132--138, 2006.
-
 \bibitem{ltn2016}
 Luciano Serafini and Artur~d'Avila Garcez.
 \newblock Logic tensor networks: Deep learning and logical reasoning from data
@@ -178,12 +150,10 @@ Shaoyun Shi, Hanxiong Chen, Weizhi Ma, Jiaxin Mao, Min Zhang, and Yongfeng
   Zhang.
 \newblock Neural logic reasoning, 2020.
 
-\bibitem{alphazero}
-David Silver, Thomas Hubert, Julian Schrittwieser, Ioannis Antonoglou, Matthew
-  Lai, Arthur Guez, Marc Lanctot, Laurent Sifre, Dharshan Kumaran, Thore
-  Graepel, Timothy Lillicrap, Karen Simonyan, and Demis Hassabis.
-\newblock Mastering chess and shogi by self-play with a general reinforcement
-  learning algorithm, 2017.
+\bibitem{hornclause}
+Maarten~H Van~Emden and Robert~A Kowalski.
+\newblock The semantics of predicate logic as a programming language.
+\newblock {\em Journal of the ACM (JACM)}, 23(4):733--742, 1976.
 
 \bibitem{analyzefuzzy}
 Emile {van Krieken}, Erman Acar, and Frank {van Harmelen}.
@@ -193,6 +163,11 @@ Emile {van Krieken}, Erman Acar, and Frank {van Harmelen}.
 \bibitem{xnn}
 Joel Vaughan, Agus Sudjianto, Erind Brahimi, Jie Chen, and Vijayan~N. Nair.
 \newblock Explainable neural networks based on additive index models, 2018.
+
+\bibitem{leakyrelu}
+Bing Xu, Naiyan Wang, Tianqi Chen, and Mu~Li.
+\newblock Empirical evaluation of rectified activations in convolutional
+  network, 2015.
 
 \bibitem{fuzzysetbook}
 Lotfi~A Zadeh.

@@ -6,13 +6,13 @@ In Section \ref{section:prodvanishgradient}, we observe that conjunctions in the
 As mentioned in \ref{section:prodvanishgradient}, the partial derivative of conjunction in this logic (wherever $\forall i, x_i$ is non-vanishing) is given by;
 $$\frac{\partial}{\partial x_j} \forall i, x_i = \left(\frac{x_j}{\forall i, x_i}\right)^{p-1}$$
 
-We focus on logics where $p < -1$. In this region, Schweizer-Sklar logic never vanishes, as the additive generator $f$ is unbounded.
+We focus on logics where $p < -1$. In this region, Schweizer-Sklar logic is strict, as the additive generator $f$ is unbounded.
 $$
 \begin{aligned}
 \lVert \nabla_\forall \rVert_1
 &= \sum_{j=1}^n \left(\frac{x_j}{\forall i, x_i}\right)^{p-1} \\
 &= (\forall i, x_i)^{1-p}\sum_{j=1}^nx_j^{p-1} \\
-&= \left[\sum_ix_i^p-D+1\right]^\frac{1-p}{p}\sum_{i=1}^nx_j^{p-1} \text{, as Schweizer-Sklar logic is not vanishing for } p < 0 \\
+&= \left[\sum_ix_i^p-D+1\right]^\frac{1-p}{p}\sum_{i=1}^nx_j^{p-1} \text{, as Schweizer-Sklar logic is strict for } p < 0 \\
 &\geq \left[\sum_ix_i^p\right]^\frac{1-p}{p}\sum_{j=1}^nx_j^{p-1} \text{, as } p < 0 \\
 &= \left(\frac{\left[\sum_ix_i^p\right]^\frac{1}{p}}{\left[\sum_jx_j^{p-1}\right]^\frac{1}{p-1}}\right)^{1-p} \\
 &= \left(\frac{\left[\sum_j(x_j^{-1})^{1-p}\right]^\frac{1}{1-p}}{\left[\sum_i(x_i^{-1})^{-p}\right]^\frac{1}{-p}}\right)^{1-p} \\

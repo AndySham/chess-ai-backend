@@ -302,8 +302,8 @@ class FuzzyMLP(nn.Module):
 
     def preconditions(self, input):
         memberships = self.memberships(input)
-        if self.training:
-            memberships = take_rand_n(memberships, 16, dim=-1)
+        #if self.training:
+        #    memberships = take_rand_n(memberships, 16, dim=-1)
         return self.logic.conjoin(memberships, dim=-1)
 
     def satisfactions(self, input, output):
